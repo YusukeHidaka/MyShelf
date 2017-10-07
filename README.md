@@ -1,24 +1,32 @@
-# README
+# myshelf
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### How to build(first time)
 
-Things you may want to cover:
+go to `localhost:3000/` on browser
+(root path is `welcome/index`)
 
-* Ruby version
+### How to develop
 
-* System dependencies
+### Reference
 
-* Configuration
+### Link
 
-* Database creation
+### Structure
 
-* Database initialization
+### Routing
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+/ → welcome:index (for now it's set as top page like `landing page` )
+│
+├── users
+│
+├── original_books
+│
+├── shelved_books
+│
+├── comments
+│
+├── reviews
+│
+└── *
+```
