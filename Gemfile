@@ -63,3 +63,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # TODO ググれ。よくある。
 # gem 'compass-rails','~> 2.0'
 # gem 'sprockets', '2.11.0'
+
+# for user and google auth
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+# for environment values
+gem 'dotenv-rails'
