@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <%= render partial: 'common/header' %>
     <%= yield %>
+    <footer class='row text-center'>
+      <p>(C) MyShelf 2017</p>
+    </footer>
   </body>
 </html>

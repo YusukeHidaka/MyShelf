@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <div>
+    <%= link_to root_path, :class => 'navbar-brand' do %>
+      <%= image_tag 'logo.png' %> <small class='hidden-xs hidden-sm'>本棚をラクラク管理して、みんなで共有しよう！</small>
+    <% end %>
+    <div>
+      <ul>
+        <li><%= link_to 'HOME', root_path %></li>
+        <li>
+          アカウント
+          <ul>
+            <li><%= link_to "マイページ", user_path(current_user) %></li>
+            <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>

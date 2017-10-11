@@ -1,5 +1,9 @@
 <h1>Welcome#index</h1>
 <h1>LandingPage</h1>
 <div>
-  <%= link_to 'Signin with Google', user_google_oauth2_omniauth_authorize_path %>
+  <% if user_signed_in? %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Signin with Google', user_google_oauth2_omniauth_authorize_path %>
+  <% end %>
 </div>
