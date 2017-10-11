@@ -1,0 +1,24 @@
+<div class="content_post" style="background-image: url(<%= review.image %>);">
+  <div class="more">
+    <span><%= image_tag 'arrow_top.png' %></span>
+    <ul class="more_list">
+      <li>
+        <%= link_to "詳細", review_path(review.id), method: :get %>
+      </li>
+      <% if user_signed_in? && current_user.id == review.user_id %>
+        <li>
+          <%= link_to '編集', "/tweets/#{review.id}/edit", method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', "/tweets/#{review.id}", method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= simple_format(review.text) %>
+  <span class="name">
+    <a href="/users/<%= review.user_id %>">
+      <span>投稿者</span><%= review.user.name %>
+    </a>
+  </span>
+</div>

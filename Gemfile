@@ -71,3 +71,6 @@ gem 'omniauth-google-oauth2'
 
 # for environment values
 gem 'dotenv-rails'
+
+# for pagenation
+gem 'kaminari'

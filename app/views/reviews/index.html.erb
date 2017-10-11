@@ -1,0 +1,7 @@
+<h1>TimeLine (Review Index Page)</h1>
+<div>
+  <% @reviews.each do |review| %>
+    <%= render partial: "review", locals: { review: review } %>
+  <% end %>
+  <%= paginate(@reviews) %>
+</div>
