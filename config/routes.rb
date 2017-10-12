@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
   resources :reviews
-  resources :original_books
+  resources :original_books do
+  collection do
+      get 'search'
+    end
+  end
 
   root "welcome#index"
 end

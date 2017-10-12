@@ -24,7 +24,9 @@
         <td><%= original_book.title %></td>
         <td><%= original_book.author %></td>
         <td><%= original_book.description %></td>
-        <td><%= image_tag original_book.image_url %></td>
+        <% if original_book.image_url%>
+          <td><%= image_tag original_book.image_url %></td>
+        <% end %>
         <td><%= original_book.publisher %></td>
         <td><%= original_book.isbn %></td>
         <td><%= original_book.publish_date %></td>

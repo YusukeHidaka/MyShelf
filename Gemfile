@@ -77,3 +77,6 @@ gem 'kaminari'
 
 # for scraping
 gem 'mechanize'
+
+# for amazon api
+gem 'amazon-ecs'
