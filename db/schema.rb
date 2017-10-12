@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011083138) do
+ActiveRecord::Schema.define(version: 20171012032113) do
+
+  create_table "original_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.string "author"
+    t.text "description"
+    t.text "image_url"
+    t.string "publisher"
+    t.string "isbn"
+    t.date "publish_date"
+    t.integer "read_amount"
+    t.integer "reading_amount"
+    t.integer "tsundoku_amount"
+    t.integer "wish_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"

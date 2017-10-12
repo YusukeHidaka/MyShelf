@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
   resources :reviews
+  resources :original_books
 
   root "welcome#index"
 end
