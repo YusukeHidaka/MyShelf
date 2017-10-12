@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:show, :edit, :update]
-  resources :reviews, only: [:index]
-  # resources :reviews, only: [:index, :show, :edit, :update]
+  resources :reviews
 
   root "welcome#index"
 end
