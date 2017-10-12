@@ -1,5 +1,6 @@
 class OriginalBook < ApplicationRecord
-  validates :isbn,
-  presence: true,
-  uniqueness: true
+  # after connecting api, it's gonna be change
+  # validates :isbn,
+  # presence: true,
+  # uniqueness: true
 end

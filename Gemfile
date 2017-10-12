@@ -74,3 +74,6 @@ gem 'dotenv-rails'
 
 # for pagenation
 gem 'kaminari'
+
+# for scraping
+gem 'mechanize'
