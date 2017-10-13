@@ -14,6 +14,7 @@ class OriginalBooksController < ApplicationController
         search_index:  'Books',
         dataType: 'script',
         response_group: 'ItemAttributes, Images',
+        sort: 'salesrank',
         country:  'jp',
         power: "Not kindle"
       )

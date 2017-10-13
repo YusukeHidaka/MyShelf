@@ -3,4 +3,5 @@ class OriginalBook < ApplicationRecord
   # validates :isbn,
   # presence: true,
   # uniqueness: true
+  has_many :shelved_books, dependent: :destroy
 end
