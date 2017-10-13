@@ -1,0 +1,2 @@
+class ShelvedBooksController < ApplicationController
+end

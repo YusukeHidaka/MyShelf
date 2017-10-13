@@ -1,5 +1,5 @@
 class AmazonBook
-  attr_accessor :title, :image_url, :url 
+  attr_accessor :title, :image_url, :url
 
   def initialize(title, image_url, url)
     @title = title
