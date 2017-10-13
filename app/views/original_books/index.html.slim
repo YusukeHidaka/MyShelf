@@ -1,0 +1,56 @@
+p#notice
+  = notice
+h1
+  | Original Books
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Author
+      th
+        | Description
+      th
+        | Image url
+      th
+        | Publisher
+      th
+        | Isbn
+      th
+        | Publish date
+      th
+        | Read amount
+      th
+        | Tsundoku amount
+      th[colspan="3"]
+  tbody
+    - @original_books.each do |original_book|
+      tr
+        td
+          = original_book.title
+        td
+          = original_book.author
+        td
+          = original_book.description
+        - if original_book.image_url
+          td
+            = image_tag original_book.image_url
+        td
+          = original_book.publisher
+        td
+          = original_book.isbn
+        td
+          = original_book.publish_date
+        td
+          = original_book.read_amount
+        td
+          = original_book.tsundoku_amount
+        td
+          = link_to 'Show', original_book
+        td
+          = link_to 'Edit', edit_original_book_path(original_book)
+        td
+          = link_to 'Destroy', original_book, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Original Book', new_original_book_path

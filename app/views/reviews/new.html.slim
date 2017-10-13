@@ -1,0 +1,7 @@
+.contents.row
+  .container
+    = form_tag('/reviews', method: :post) do
+      h3
+        |  投稿する 
+      textarea[cols="30" name="content" placeholder="content" rows="10"]
+      input[type="submit" value="SENT"]

@@ -1,0 +1,7 @@
+.contents.row
+  = form_tag("/reviews/#{@review.id}", method: :patch ) do
+    h3
+      |  編集する 
+    textarea[cols="30" name="text" placeholder="text" rows="10"]
+      = @review.content
+    input[type="submit" value="SENT"]
