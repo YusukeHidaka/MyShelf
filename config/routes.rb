@@ -11,5 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  root "welcome#index"
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'reviews#index', as: :authenticated_root
+    end
+    unauthenticated :user do
+      root :to => "welcome#index", as: :unauthenticated_root
+    end
+  end
 end

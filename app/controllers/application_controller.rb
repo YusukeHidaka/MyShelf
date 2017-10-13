@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
 
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource)
-      reviews_path
+      authenticated_root_path
   end
   # ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
-      root_path
+      unauthenticated_root_path
   end
 end
