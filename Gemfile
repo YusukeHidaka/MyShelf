@@ -81,5 +81,5 @@ gem 'mechanize'
 # for amazon api
 gem 'amazon-ecs'
 
+# for jquery
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
