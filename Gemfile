@@ -74,3 +74,12 @@ gem 'dotenv-rails'
 
 # for pagenation
 gem 'kaminari'
+
+# for scraping
+gem 'mechanize'
+
+# for amazon api
+gem 'amazon-ecs'
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'

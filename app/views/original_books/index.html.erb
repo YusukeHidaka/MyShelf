@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Original Books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>Image url</th>
+      <th>Publisher</th>
+      <th>Isbn</th>
+      <th>Publish date</th>
+      <th>Read amount</th>
+      <th>Tsundoku amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @original_books.each do |original_book| %>
+      <tr>
+        <td><%= original_book.title %></td>
+        <td><%= original_book.author %></td>
+        <td><%= original_book.description %></td>
+        <% if original_book.image_url%>
+          <td><%= image_tag original_book.image_url %></td>
+        <% end %>
+        <td><%= original_book.publisher %></td>
+        <td><%= original_book.isbn %></td>
+        <td><%= original_book.publish_date %></td>
+        <td><%= original_book.read_amount %></td>
+        <td><%= original_book.tsundoku_amount %></td>
+        <td><%= link_to 'Show', original_book %></td>
+        <td><%= link_to 'Edit', edit_original_book_path(original_book) %></td>
+        <td><%= link_to 'Destroy', original_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Original Book', new_original_book_path %>
