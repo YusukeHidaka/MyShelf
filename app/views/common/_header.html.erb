@@ -4,7 +4,7 @@
       <%= image_tag 'logo.png' %> <small class='hidden-xs hidden-sm'>本棚をラクラク管理して、みんなで共有しよう！</small>
     <% end %>
   <% else %>
-    <%= link_to root_path, :class => 'navbar-brand' do %>
+    <%= link_to unauthenticated_root_path, :class => 'navbar-brand' do %>
       <%= image_tag 'logo.png' %> <small class='hidden-xs hidden-sm'>本棚をラクラク管理して、みんなで共有しよう！</small>
     <% end %>
   <% end %>
