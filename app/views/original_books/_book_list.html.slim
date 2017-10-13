@@ -1,0 +1,40 @@
+- if @amazon_books.present?
+  table
+    thead
+      tr
+        th
+          | Image url
+        th
+          | Title
+        th
+          | Author
+        th
+          | Publisher
+        th
+          | Publish date
+        th
+          | Isbn
+        th
+          | 積ん読
+        th
+          | 読んだ本
+    tbody
+      - @amazon_books.each do |book|
+        tr
+          - if book.image_url.present?
+            td
+              = link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url
+          td
+            = book.title
+          td
+            = book.author
+          td
+            = book.publisher
+          td
+            = book.publication_date
+          td
+            = book.isbn
+          td
+            | 積ん読
+          td
+            | 読んだ本

@@ -83,3 +83,7 @@ gem 'amazon-ecs'
 
 # for jquery
 gem 'jquery-rails'
+
+# for html template
+gem 'slim-rails'
+gem 'html2slim'

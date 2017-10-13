@@ -1,0 +1,8 @@
+h1
+  | TimeLine (Review Index Page)
+a.post[href="/reviews/new"]
+  | レビューを投稿する
+div
+  - @reviews.each do |review|
+    = render partial: "review", locals: { review: review }
+  = paginate(@reviews)
