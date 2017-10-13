@@ -24,6 +24,10 @@ class OriginalBooksController < ApplicationController
       books.items.each do |item|
         book = AmazonBook.new(
           item.get('ItemAttributes/Title'),
+          item.get('ItemAttributes/Author'),
+          item.get('ItemAttributes/Publisher'),
+          item.get('ItemAttributes/PublicationDate'),
+          item.get('ItemAttributes/ISBN'),
           item.get('LargeImage/URL'),
           item.get('DetailPageURL'),
         )
@@ -35,6 +39,6 @@ class OriginalBooksController < ApplicationController
   private
 
   def original_book_params
-    params.require(:original_book).permit(:title, :author, :description, :image_url, :publisher, :isbn, :publish_date, :read_amount, :tsundoku_amount)
+    params.require(:original_book).permit(:title, :author, :image_url, :publisher, :isbn, :publish_date, :read_amount, :tsundoku_amount)
   end
 end
