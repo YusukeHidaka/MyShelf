@@ -3,7 +3,6 @@ class CreateOriginalBooks < ActiveRecord::Migration[5.1]
     create_table :original_books do |t|
       t.string :title
       t.string :author
-      t.text :description
       t.text :image_url
       t.string :publisher
       t.string :isbn

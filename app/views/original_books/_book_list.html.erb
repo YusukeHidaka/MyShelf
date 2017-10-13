@@ -1,10 +1,34 @@
 <% if @amazon_books.present? %>
-  <% @amazon_books.each do |book| %>
-    <div class="list">
-      <%= link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url %>
-      <%= book.title %>
-    </div>
-    <div>積ん読に追加</div>
-    <div>読んだ本に追加</div>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Image url</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Publish date</th>
+        <th>Isbn</th>
+        <th>積ん読</th>
+        <th>読んだ本</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @amazon_books.each do |book| %>
+        <tr>
+          <% if book.image_url.present? %>
+            <td>
+              <%= link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url %>
+            </td>
+          <% end %>
+          <td><%= book.title %></td>
+          <td><%= book.author %></td>
+          <td><%= book.publisher %></td>
+          <td><%= book.publication_date %></td>
+          <td><%= book.isbn %></td>
+          <td>積ん読</td>
+          <td>読んだ本</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
