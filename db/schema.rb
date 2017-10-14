@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013070957) do
+ActiveRecord::Schema.define(version: 20171014062206) do
 
   create_table "original_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "author"
+    t.text "description"
     t.text "image_url"
     t.string "publisher"
     t.string "isbn"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20171013070957) do
     t.string "uid"
     t.string "name"
     t.string "token"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

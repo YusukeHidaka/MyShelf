@@ -1,0 +1,15 @@
+.row.form
+  .col-lg-12
+    = form_for current_user do |f|
+      / .user_image
+      /  = image_tag current_user.image
+      h2
+        | 登録情報
+      .form-group
+        .col-lg-6
+          = f.text_field :name, placeholder: "Name", class: "form-control"
+      .form-group
+        .col-lg-6
+          = f.text_field :description, placeholder: "Description", class: "form-control"
+      .form-group
+        = f.submit "送信", class: "btn btn-primary withripple"
