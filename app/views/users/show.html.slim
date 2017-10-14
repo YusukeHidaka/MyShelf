@@ -3,8 +3,8 @@ h1
 .row.form.user_profile
   .col-lg-12
     h2 名前：#{@user.name}
-    / .user_image
-    /   = image_tag @user.image
+    .user_image
+      = image_tag @user.image
     p 自己紹介：#{@user.description}
     - if @user.id == current_user.id
       button
