@@ -10,35 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013070957) do
+ActiveRecord::Schema.define(version: 20171015071659) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "original_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "author"
     t.text "image_url"
     t.string "publisher"
-    t.string "isbn"
     t.date "publish_date"
-    t.integer "read_amount"
-    t.integer "reading_amount"
-    t.integer "tsundoku_amount"
-    t.integer "wish_amount"
+    t.string "isbn"
+    t.integer "read_amount", default: 0, null: false
+    t.integer "tsundoku_amount", default: 0, null: false
+    t.integer "wish_amount", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "shelved_book_id"
+    t.integer "shelved_book_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shelved_book_id"], name: "index_reviews_on_shelved_book_id"
   end
 
   create_table "shelved_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "original_book_id"
-    t.integer "status"
+    t.integer "user_id", null: false
+    t.integer "original_book_id", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,6 +70,8 @@ ActiveRecord::Schema.define(version: 20171013070957) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
+    t.text "description"
     t.string "provider"
     t.string "uid"
     t.string "name"

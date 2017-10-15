@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show'
+
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :reviews
   resources :original_books do
   collection do
