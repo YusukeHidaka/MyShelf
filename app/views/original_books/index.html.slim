@@ -1,5 +1,8 @@
 p#notice
   = notice
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
 h1
   | Original Books
 table
