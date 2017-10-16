@@ -10,23 +10,32 @@ go to `localhost:3000/` on browser
 ## Reference
 
 ## Link
+- [MyShelfHerokuApp](https://myshelf-web.herokuapp.com/)
 
-## Routing
+## Client Routing (URL List)
 
 ```
-/ → welcome:index (for now it's set as top page like `landing page` )
+/ → welcome:index ( only logged out user can visit here like landing page )
 │
-├── users
+├── reviews  => Tilme Line (root_path)
+│
+├── users => User List (pending)
+│     │
+│     ├── /:id => Profile
+│     │    │
+│     │    ├── /reviews => One's Reviews
+│     │    │
+│     │    └── /shelf => One's Shelf
+│     │
+│     └── /search => User Search (pending)
 │
 ├── original_books
+│     │
+│     ├── /:id => Book Detail
+│     │
+│     └── /search => Book Search (AmazonAPI)
 │
-├── shelved_books
-│
-├── comments
-│
-├── reviews
-│
-└── *
+└── * => 404
 ```
 
 ## Structure
@@ -45,7 +54,7 @@ go to `localhost:3000/` on browser
 - read_amount     :integer
 - tsundoku_amount :integer
 - with_amount     :integer
-- 
+-
 
 ### ShelvedlBooks
 #### association
