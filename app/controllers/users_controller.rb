@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     @shelved_books = ShelvedBook.all.where(user_id: params[:id])
   end
 
+  def reviews
+    @reviews = Review.with_user.search_with_user_id(current_user.id)
+  end
+
   private
 
   def update_params

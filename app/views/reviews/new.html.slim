@@ -1,7 +1,8 @@
 .contents.row
   .container
-    = form_tag('/reviews', method: :post) do
-      h3
-        |  投稿する 
-      textarea[cols="30" name="content" placeholder="content" rows="10"]
-      input[type="submit" value="SENT"]
+    h3
+      |  投稿する
+    = form_for @review do |f|
+      = f.text_area :content, placeholder: "reviewを入力してください"
+      = f.select :shelved_book_id, options_from_collection_for_select(set_condition, :id, :original_book_id)
+      = f.submit "レビューを投稿する"

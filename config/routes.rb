@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
   collection do
       get '/:id/shelf', to: 'users#shelf', as: 'shelf'
+      get '/:id/reviews', to: 'users#reviews', as: 'reviews'
     end
   end
   resources :reviews
@@ -30,3 +31,27 @@ Rails.application.routes.draw do
     end
   end
 end
+
+
+
+# / → welcome:index ( only logged out user can visit here like landing page )
+# │
+# ├── reviews  => Tilme Line (root_path)
+# │
+# ├── users => User List (pending)
+# │     │
+# │     ├── /:id => Profile
+# │     │    │
+# │     │    ├── /reviews => One's Reviews
+# │     │    │
+# │     │    └── /shelf => One's Shelf
+# │     │
+# │     └── /search => User Search (pending)
+# │
+# ├── original_books
+# │     │
+# │     ├── /:id => Book Detail
+# │     │
+# │     └── /search => Book Search (AmazonAPI)
+# │
+# └── * => 404

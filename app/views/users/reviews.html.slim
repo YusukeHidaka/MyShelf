@@ -1,0 +1,31 @@
+p#notice
+  = notice
+h1
+  = current_user.name
+  | 's Shelf
+table
+  thead
+    tr
+      th
+        | Image
+      th
+        | Title
+      th
+        | Status
+      th
+        | content
+    /   th
+      /  | ステータスをreadに変更
+    /  th
+      /  | ステータスをwishに変更
+  tbody
+    - @reviews.each do |review|
+      tr
+        td
+          = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
+        td
+          = review.shelved_book.original_book.title
+        td
+          = review.shelved_book.status
+        td
+          = review.content

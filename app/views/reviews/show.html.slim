@@ -1,6 +1,6 @@
 .contents.row
   .content_post
-    - if user_signed_in? && current_user.id == @review.user_id
+    - if user_signed_in? && current_user.id == @review.shelved_book.user_id
       .more
         span
           = image_tag 'arrow_top.png'
@@ -12,11 +12,11 @@
     = simple_format(@review.content)
     span.name
       |  <a href="/users/
-      = @review.user.id
-      | "> 
+      = @review.shelved_book.user.id
+      | ">
       span
         | 投稿者
-      = @review.user.name
+      = @review.shelved_book.user.name
   .container
     - if current_user
       = form_tag("/reviews/#{@review.id}/comments", method: :post) do
