@@ -7,13 +7,19 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+  collection do
+      get '/:id/shelf', to: 'users#shelf', as: 'shelf'
+    end
+  end
   resources :reviews
   resources :original_books do
   collection do
       get 'search'
     end
   end
+
+  resources :shelved_books
 
   devise_scope :user do
     authenticated :user do

@@ -1,5 +1,8 @@
 p#notice
   = notice
+- if flash[:alert]
+  .alert.alert-danger
+    = flash[:alert]
 h1
   | Original Books
 table
@@ -23,7 +26,8 @@ table
         | Read amount
       th
         | Tsundoku amount
-      th[colspan="3"]
+      th
+        | Wish amount
   tbody
     - @original_books.each do |original_book|
       tr

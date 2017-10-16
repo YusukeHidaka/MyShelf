@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :reviews
-  # has_many :shelved_books
+  has_many :shelved_books
 
   def self.find_for_google_oauth2(auth)
     user = User.where(email: auth.info.email).first

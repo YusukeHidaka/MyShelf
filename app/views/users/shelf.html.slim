@@ -1,0 +1,27 @@
+p#notice
+  = notice
+h1
+  = current_user.name
+  | 's Shelf
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Status
+    /   th
+      /  | ステータスをtsundokuに変更
+    /   th
+      /  | ステータスをreadに変更
+    /  th
+      /  | ステータスをwishに変更
+  tbody
+    - @shelved_books.each do |shelved_book|
+      tr
+        td
+          = shelved_book.original_book.title
+        td
+          = shelved_book.status
+        / td
+        /   = link_to '積ん読に追加する', shelved_books_path(status:"tsundoku"), method: :post

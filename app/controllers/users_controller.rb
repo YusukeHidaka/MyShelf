@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     current_user.update(update_params)
   end
 
+  def shelf
+    @shelved_books = ShelvedBook.all.where(user_id: params[:id])
+  end
+
   private
 
   def update_params
