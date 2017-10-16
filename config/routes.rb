@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :shelved_books do
+  collection do
+      get '/:user_id/shelf', to: 'shelved_books#shelf'
+    end
+  end
+
   devise_scope :user do
     authenticated :user do
       root :to => 'reviews#index', as: :authenticated_root

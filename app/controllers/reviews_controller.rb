@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    Review.create(content: review_params[:content], user_id: current_user.id)
+    Review.create(content: review_params[:content], user_id: current_user.id, shelved_book_id: review_params[:shelved_book_id])
   end
 
   def destroy
@@ -32,6 +32,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.permit(:content)
+    params.permit(:content, :shelved_book_id)
   end
 end

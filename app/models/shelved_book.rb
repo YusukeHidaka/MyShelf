@@ -1,8 +1,10 @@
 class ShelvedBook < ApplicationRecord
   belongs_to :original_book, optional: true
+  belongs_to :user
+
   enum status: { tsundoku: 0, read: 1, wish: 2 }
 
-  has_one :review
+  has_one :review, dependent: :destroy
 
   def update_status_amount(original_book)
     target_book_reviews = ShelvedBook.where(original_book_id: original_book.id)

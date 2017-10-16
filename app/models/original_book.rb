@@ -1,7 +1,7 @@
 class OriginalBook < ApplicationRecord
   # after connecting api, it's gonna be change
-  # validates :isbn,
+  validates :isbn,
   # presence: true,
-  # uniqueness: true
+  uniqueness: true
   has_many :shelved_books, dependent: :destroy
 end

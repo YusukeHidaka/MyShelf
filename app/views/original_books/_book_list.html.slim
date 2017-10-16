@@ -18,6 +18,10 @@
           | 積ん読
         th
           | 読んだ本
+        th
+          | 読みたい本
+        /th
+        /  | レビュー
     tbody
       - @amazon_books.each do |book|
         tr
@@ -35,6 +39,10 @@
           td
             = book.isbn
           td
-            | 積ん読
+            = link_to '積ん読に追加する', original_books_path(original_book:{author: book.author, title: book.title, publisher: book.publisher, publish_date: book.publication_date, isbn: book.isbn, image_url: book.image_url, url: book.url}, status:"tsundoku"), method: :post
           td
-            | 読んだ本
+            = link_to "読んだ本に追加する", original_books_path(original_book:{author: book.author, title: book.title, publisher: book.publisher, publish_date: book.publication_date, isbn: book.isbn, image_url: book.image_url, url: book.url}, status:"read"), method: :post
+          td
+            = link_to '読みたい本に追加する', original_books_path(original_book:{author: book.author, title: book.title, publisher: book.publisher, publish_date: book.publication_date, isbn: book.isbn, image_url: book.image_url, url: book.url}, status:"wish"), method: :post
+          /td
+          /  = link_to 'reviewを書く', new_reviews_path()
