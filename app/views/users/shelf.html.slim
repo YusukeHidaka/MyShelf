@@ -1,5 +1,7 @@
 p#notice
   = notice
+- if flash[:notice]
+  = flash[:notice]
 h1
   = @user.name
   | 's Shelf
@@ -10,10 +12,10 @@ table
         | Title
       th
         | Status
-    /   th
-      /  | ステータスをtsundokuに変更
-    /   th
-      /  | ステータスをreadに変更
+      th
+        | ステータスを変更
+      th
+        | レビューを書く
     /  th
       /  | ステータスをwishに変更
   tbody
@@ -23,5 +25,11 @@ table
           = shelved_book.original_book.title
         td
           = shelved_book.status
-        / td
-        /   = link_to '積ん読に追加する', shelved_books_path(status:"tsundoku"), method: :post
+        - if shelved_book.user_id == current_user.id
+          td
+            = link_to 'ステータスを変更する'
+        - else
+          td
+            = link_to '本を登録する'
+        td
+          = link_to 'レビュー投稿', new_review_path(id: shelved_book.id)

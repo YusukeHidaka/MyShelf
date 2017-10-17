@@ -1,13 +1,10 @@
 # myshelf
+買ったら勝手に本棚に
 
 ## How to build(first time)
 
 go to `localhost:3000/` on browser
 (root path is `welcome/index`)
-
-## How to develop
-
-## Reference
 
 ## Link
 - [MyShelfHerokuApp](https://myshelf-web.herokuapp.com/)

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get '/:id/reviews', to: 'users#reviews', as: 'reviews'
     end
   end
-  resources :reviews, only: [:index, :new, :create, :edit, :update] 
+  resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy]
   resources :original_books do
   collection do
       get 'search'

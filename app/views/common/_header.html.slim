@@ -2,18 +2,16 @@ header
   - if user_signed_in?
     = link_to reviews_path, :class => 'navbar-brand' do
       = image_tag 'logo.png'
-      small.hidden-xs.hidden-sm
-        | 本棚をラクラク管理して、みんなで共有しよう！
+      | 本棚をラクラク管理して、みんなで共有しよう！(TimeLineへ)
   - else
     = link_to unauthenticated_root_path, :class => 'navbar-brand' do
       = image_tag 'logo.png'
-      small.hidden-xs.hidden-sm
-        | 本棚をラクラク管理して、みんなで共有しよう！
+      | 本棚をラクラク管理して、みんなで共有しよう！(ログイン画面へ)
   div
     ul
       - if user_signed_in?
         li
-          |  アカウント 
+          |  アカウント
           ul
             li
               = link_to "My Page", user_path(current_user)
@@ -25,3 +23,5 @@ header
         li
           = link_to 'SignIn or SignUp with Google', user_google_oauth2_omniauth_authorize_path
   = render partial: 'common/search'
+  a.post[href="/reviews/new"]
+    | レビューを投稿する

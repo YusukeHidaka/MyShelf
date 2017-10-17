@@ -34,6 +34,7 @@ class Book
         )
       rescue => e
         retry_count += 1
+        logger = Logger.new
         logger.error e.message
         if retry_count < 10
           sleep(3)
