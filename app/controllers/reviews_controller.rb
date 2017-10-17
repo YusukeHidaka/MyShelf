@@ -23,12 +23,12 @@ class ReviewsController < ApplicationController
     # 存在したら勝手にアップデートにしてくれる
     Review.create(review_params)
     redirect_to reviews_path, flash: {notice: 'レビューを投稿しました'}
-
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy if review.shelved_book.user_id == current_user.id
+    redirect_to reviews_path, flash: {notice: '削除が完了しました。'}
   end
 
   def edit
