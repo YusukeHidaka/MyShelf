@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
 
   def create
     Review.create(review_params)
+    redirect_to reviews_path, notice: 'レビューを投稿しました'
   end
 
   def destroy
