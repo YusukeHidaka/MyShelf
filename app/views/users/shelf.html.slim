@@ -5,6 +5,7 @@ p#notice
 h1
   = @user.name
   | 's Shelf
+#ones-shelf
 table
   thead
     tr
@@ -37,3 +38,4 @@ table
             = link_to '本を登録する'
         td
           = link_to 'レビュー投稿', new_review_path(id: shelved_book.id)
+= javascript_pack_tag 'shelf'
