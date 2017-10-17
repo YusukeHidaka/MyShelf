@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :shelved_book
-  # has_many :likes
-  # has_many :comments
+  has_many :likes
+  has_many :comments
 
   # scope :with_shelved_book, -> { joins(:shelved_book) }
   scope :with_user, -> { joins({:shelved_book => :user}) }
