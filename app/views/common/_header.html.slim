@@ -11,7 +11,7 @@ header
     ul
       - if user_signed_in?
         li
-          |  アカウント
+          = current_user.name 
           ul
             li
               = link_to "My Page", user_path(current_user)

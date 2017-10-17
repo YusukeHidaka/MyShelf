@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   def new
     # TODO:params(指定のshelved_book.id)がなかった場合本棚に飛ばす処理
     if params[:id].nil?
-      # redirect_to shelf_users_path(current_user.id), notice: 'レビューを書く本を選択してください'
+      # redirect_to shelf_users_path(current_user.id), flash: {notice: 'レビューを書く本を選択してください'}
     end
     @shelved_book = ShelvedBook.find(params[:id])
 
@@ -22,6 +22,8 @@ class ReviewsController < ApplicationController
   def create
     # 存在したら勝手にアップデートにしてくれる
     Review.create(review_params)
+    redirect_to reviews_path, flash: {notice: 'レビューを投稿しました'}
+
   end
 
   def destroy
@@ -36,9 +38,7 @@ class ReviewsController < ApplicationController
   def update
     review = Review.find(params[:id])
     review.update(review_params) if review.shelved_book.user_id == current_user.id
-  end
-
-  def temp
+    redirect_to reviews_path, flash: {notice: 'レビューを更新しました'}
   end
 
   private

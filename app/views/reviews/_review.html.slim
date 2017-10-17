@@ -2,8 +2,6 @@
   hr/
   .more
     ul.more_list
-      li
-        = link_to "詳細", review_path(review.id), method: :get
       - if user_signed_in? && current_user.id == review.shelved_book.user_id
         li
           = link_to '編集', "/reviews/#{review.id}/edit", method: :get

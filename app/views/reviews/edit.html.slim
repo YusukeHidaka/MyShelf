@@ -1,7 +1,9 @@
 .contents.row
-  = form_tag("/reviews/#{@review.id}", method: :patch ) do
-    h3
-      |  編集する 
-    textarea[cols="30" name="text" placeholder="text" rows="10"]
+h3
+  |  編集する
+  = form_for @review, url: review_path do |f|
+    .form-group
+    = f.text_area :content, placeholder: @review.content
       = @review.content
-    input[type="submit" value="SENT"]
+    = f.hidden_field :shelved_book_id, :value => @review.shelved_book.id
+    = f.submit "レビューを更新する"
