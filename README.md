@@ -31,7 +31,7 @@ go to `localhost:3000/` on browser
 │
 ├── original_books
 │     │
-│     ├── /:id => Book Detail
+│     ├── /:id => Book Detail (pending)
 │     │
 │     └── /search => Book Search (AmazonAPI)
 │

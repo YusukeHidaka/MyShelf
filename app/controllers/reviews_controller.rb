@@ -1,18 +1,19 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.includes(:user).page(params[:page]).per(5).order("created_at DESC")
+    @reviews = Review.page(params[:page]).per(5).order("created_at DESC")
   end
 
   def new
+    @review = Review.new
   end
 
   def create
-    Review.create(content: review_params[:content], user_id: current_user.id, shelved_book_id: review_params[:shelved_book_id])
+    Review.create(review_params)
   end
 
   def destroy
     review = Review.find(params[:id])
-    review.destroy if review.user_id == current_user.id
+    review.destroy if review.shelved_book.user_id == current_user.id
   end
 
   def edit
@@ -21,7 +22,7 @@ class ReviewsController < ApplicationController
 
   def update
     review = Review.find(params[:id])
-    review.update(review_params) if review.user_id == current_user.id
+    review.update(review_params) if review.shelved_book.user_id == current_user.id
   end
 
   def show
@@ -32,6 +33,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.permit(:content, :shelved_book_id)
+    params.require(:review).permit(:content, :shelved_book_id)
   end
 end

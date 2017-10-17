@@ -1,11 +1,12 @@
 h1
   | Users#show
 .row.form.user_profile
-  .col-lg-12
-    h2 名前：#{@user.name}
-    .user_image
-      = image_tag @user.image
-    p 自己紹介：#{@user.description}
-    - if @user.id == current_user.id
-      button
-        = link_to 'プロフィール編集', edit_user_path(current_user)
+  h2 名前：#{@user.name}
+  .user_image
+    = image_tag @user.image
+  p 自己紹介：#{@user.description}
+  = link_to '本棚を見る', shelf_users_path(@user.id)
+  = link_to '本のレビューを見る', reviews_users_path(@user.id)
+  - if @user.id == current_user.id
+    button
+      = link_to 'プロフィール編集', edit_user_path(current_user)

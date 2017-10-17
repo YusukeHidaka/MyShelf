@@ -1,18 +1,22 @@
 .content_post
+  hr/
   .more
     ul.more_list
       li
         = link_to "詳細", review_path(review.id), method: :get
-      - if user_signed_in? && current_user.id == review.user_id
+      - if user_signed_in? && current_user.id == review.shelved_book.user_id
         li
           = link_to '編集', "/reviews/#{review.id}/edit", method: :get
         li
           = link_to '削除', "/reviews/#{review.id}", method: :delete
+  = simple_format(review.shelved_book.original_book.title)
+  = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
   = simple_format(review.content)
   span.name
     |  <a href="/users/
-    = review.user_id
+    = review.shelved_book.user_id
     | ">
     span
       | 投稿者
-    = review.user.name
+    = review.shelved_book.user.name
+  hr/
