@@ -1,8 +1,12 @@
 footer.row.text-center
   div
     ul
-      | デバック用です 
+      | デバック用です
       li
-        = link_to "Original Books", original_books_path
+        = link_to "TileLine", reviews_path
+      li
+        = link_to "UserList", users_path
+      li
+        = link_to "ShelvedBooks(it's not used in client)", shelved_books_path
   p
     | (C) MyShelf 2017
