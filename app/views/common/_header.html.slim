@@ -11,7 +11,7 @@ header
     ul
       - if user_signed_in?
         li
-          = current_user.name 
+          = current_user.name
           ul
             li
               = link_to "My Page", user_path(current_user)
@@ -23,5 +23,3 @@ header
         li
           = link_to 'SignIn or SignUp with Google', user_google_oauth2_omniauth_authorize_path
   = render partial: 'common/search'
-  a.post[href="/reviews/new"]
-    | レビューを投稿する
