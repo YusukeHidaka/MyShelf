@@ -12,11 +12,22 @@
   = simple_format(review.shelved_book.original_book.title)
   = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
   = simple_format(review.content)
-  span.name
+  .name
     |  <a href="/users/
     = review.shelved_book.user_id
     | ">
     span
-      | 投稿者
+      | 投稿者：
     = review.shelved_book.user.name
+  .book-edit
+  - if review.shelved_book.user_id == current_user.id
+    = link_to 'ステータスを変更する'
+  - else
+    = link_to '本を登録する'
+  .comments
+    | コメント：
+    = @comments
+  .likes
+    | ライク：
+    = @likes
   hr/

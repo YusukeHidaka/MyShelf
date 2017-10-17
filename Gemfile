@@ -87,3 +87,6 @@ gem 'jquery-rails'
 # for html template
 gem 'slim-rails'
 gem 'html2slim'
+
+# for react
+gem 'webpacker', github: "rails/webpacker"

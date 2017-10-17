@@ -5,6 +5,9 @@ p#notice
     = flash[:alert]
 h1
   | Original Books
+.react
+  | reactのコンポーネント
+  = javascript_pack_tag 'shelf'
 table
   thead
     tr
@@ -12,8 +15,6 @@ table
         | Title
       th
         | Author
-      th
-        | Description
       th
         | Image url
       th
@@ -35,8 +36,6 @@ table
           = original_book.title
         td
           = original_book.author
-        td
-          = original_book.description
         - if original_book.image_url
           td
             = image_tag original_book.image_url

@@ -14,8 +14,8 @@ table
         | Status
       th
         | content
-    /   th
-      /  | ステータスをreadに変更
+      th
+        | 本棚に追加
     /  th
       /  | ステータスをwishに変更
   tbody
@@ -29,3 +29,9 @@ table
           = review.shelved_book.status
         td
           = review.content
+        - if @user.id == current_user.id
+          td
+            = link_to 'ステータスを変更する'
+        - else
+          td
+            = link_to '本を登録する'

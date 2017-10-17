@@ -2,7 +2,24 @@
   .container
     h3
       |  投稿する
-    = form_for @review do |f|
-      = f.text_area :content, placeholder: "reviewを入力してください"
-      = f.select :shelved_book_id, options_from_collection_for_select(set_condition, :id, :original_book_id)
+    = form_for @review, url: reviews_path do |f|
+      .form-group
+      - if @shelved_book.present?
+        = f.hidden_field :shelved_book_id, :value => @shelved_book.id
+        = image_tag @shelved_book.original_book.image_url
+        = @shelved_book.original_book.title
+        = @shelved_book.original_book_id
+      - else
+        = f.select :shelved_book_id, options_from_collection_for_select(set_condition, :id, :original_book_id)
+      - unless @review.content.blank?
+        = f.text_area :content, placeholder: @review.content
+      - else
+        = f.text_area :content, placeholder: "reviewを入力してください"
+      = fields_for :shelved_book do |s|
+        .form-group
+          = s.label :status
+          - if @shelved_book.present?
+            = s.select :status, ["read", "tsundoku", "wish"], :prompt => @shelved_book.status
+          - else
+            = s.select :status, ["read", "tsundoku", "wish"], :prompt => "read"
       = f.submit "レビューを投稿する"
