@@ -13,8 +13,6 @@ table
       th
         | Author
       th
-        | Description
-      th
         | Image url
       th
         | Publisher
@@ -35,8 +33,6 @@ table
           = original_book.title
         td
           = original_book.author
-        td
-          = original_book.description
         - if original_book.image_url
           td
             = image_tag original_book.image_url
