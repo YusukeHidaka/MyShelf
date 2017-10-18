@@ -1,0 +1,10 @@
+.modal-contents
+  /= form_for shelved_book, url: edit_shelved_book_path(id: shelved_book.id), remote: true do |f|
+    /.form-group
+    /= f.submit "積ん読", name: "tsundoku_button", id: shelved_book.id
+    /= f.submit "read", name: "read_button"
+    /= f.submit "wish", name: "wish_button"
+  = shelved_book.original_book.title
+  = shelved_book.status
+  = shelved_book.user.name
+  a#modal-close.button-link 閉じる

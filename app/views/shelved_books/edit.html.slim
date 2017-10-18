@@ -1,0 +1,13 @@
+/= render partial: 'common/modal/shelf_book'
+/= render partial: 'common/modal/button'
+
+#modal-content.modal-content
+  = form_for @shelved_book, remote: true do |f|
+    .form-group
+    = f.submit "積ん読", name: "tsundoku_button"
+    = f.submit "read", name: "read_button"
+    = f.submit "wish", name: "wish_button"
+  a#modal-close.button-link 閉じる
+
+p
+  a.modal-shelf.button-link data-target="modal-content"  モーダルウィンドウを開く

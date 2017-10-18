@@ -1,5 +1,9 @@
 .content_post
   hr/
+  - if review.shelved_book.user_id == current_user.id
+    = render partial: 'common/modal/edit_button'
+  - else
+    = render partial: 'common/modal/register_button'
   .more
     ul.more_list
       - if user_signed_in? && current_user.id == review.shelved_book.user_id
@@ -18,10 +22,7 @@
       | 投稿者：
     = review.shelved_book.user.name
   .book-edit
-  - if review.shelved_book.user_id == current_user.id
-    = link_to 'ステータスを変更する'
-  - else
-    = link_to '本を登録する'
+    /この中だとaタグになります。。。
   .comments
     | コメント：
     = @comments

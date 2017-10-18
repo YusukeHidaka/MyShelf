@@ -1,3 +1,4 @@
+= javascript_pack_tag 'modal'
 - if flash[:notice]
   .alert.alert-success
     = flash[:notice]
@@ -7,5 +8,6 @@ a.post[href="/reviews/new"]
   | レビューを投稿する
 div
   - @reviews.each do |review|
+    = render partial: 'common/modal/shelf_book', locals: { shelved_book: review.shelved_book }
     = render partial: "review", locals: { review: review }
   = paginate(@reviews)
