@@ -26,4 +26,7 @@ header
       - else
         li
           = link_to 'SignIn or SignUp with Google', user_google_oauth2_omniauth_authorize_path
-  = render partial: 'common/search'
+  |本の検索
+  = render partial: 'common/book_search'
+  |ユーザーの検索
+  = render partial: 'common/user_search'

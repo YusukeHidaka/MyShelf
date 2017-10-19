@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   collection do
       get '/:id/shelf', to: 'users#shelf', as: 'shelf'
       get '/:id/reviews', to: 'users#reviews', as: 'reviews'
+      get 'search'
     end
   member do
      get :following, :followers

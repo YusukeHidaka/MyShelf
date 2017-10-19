@@ -30,7 +30,7 @@ go to `localhost:3000/` on browser
 │     │    │
 │     │    └── /shelf => One's Shelf
 │     │
-│     └── /search => User Search (pending)
+│     └── /search => User Search
 │
 ├── original_books
 │     │

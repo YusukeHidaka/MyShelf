@@ -37,6 +37,13 @@ class UsersController < ApplicationController
     render 'show_follower'
   end
 
+  def search
+    @users = User.where("name LIKE :keyword OR email LIKE :keyword", keyword: "%#{params[:keyword]}%")
+    @users.each do |user|
+      @user = user
+    end
+  end
+
   private
 
   def update_params
