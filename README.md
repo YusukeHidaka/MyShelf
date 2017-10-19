@@ -37,6 +37,15 @@ go to `localhost:3000/` on browser
 └── * => 404
 ```
 
+## Main Function
+- Search books -> done
+- Post/Edit review -> done
+- Like/Unlike review -> done
+- Ajax of like -> pending
+- Comment -> pending
+- Add book from gmail by amazon -> pending
+- Change book status by Ajax -> pending
+
 ## Structure
 
 ### OriginalBooks

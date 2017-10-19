@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  has_many :shelved_books
+  has_many :shelved_books, dependent: :destroy
 
   def self.find_for_google_oauth2(auth)
     user = User.where(email: auth.info.email).first
