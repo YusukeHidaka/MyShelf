@@ -1,0 +1,10 @@
+h2
+  | 検索結果
+#user-list
+  - @users.each do |user|
+    table
+      tr
+        td= user.name
+        td= link_to '詳細', user_path(user)
+        td= render 'follow_form'
+        td= render 'stats'
