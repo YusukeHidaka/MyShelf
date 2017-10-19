@@ -22,7 +22,7 @@ table
         | レビューを書く
   tbody
     - @shelved_books.each do |shelved_book|
-      = render partial: 'common/modal/for_original_book', locals: { original_book: shelved_book.original_book }
+      = render partial: 'common/modal/modal', locals: { original_book: shelved_book.original_book }
       tr
         td
           = image_tag(shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")

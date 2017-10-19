@@ -18,7 +18,7 @@ table
         | 本棚に追加
   tbody
     - @reviews.each do |review|
-      = render partial: 'common/modal/for_original_book', locals: { original_book: review.shelved_book.original_book }
+      = render partial: 'common/modal/modal', locals: { original_book: review.shelved_book.original_book }
       tr
         td
           = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")

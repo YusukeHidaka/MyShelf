@@ -4,10 +4,8 @@
     = flash[:notice]
 h1
   | TimeLine (Review Index Page)
-a.post[href="/reviews/new"]
-  | レビューを投稿する
 div
   - @reviews.each do |review|
-    = render partial: 'common/modal/for_original_book', locals: { original_book: review.shelved_book.original_book }
+    = render partial: 'common/modal/modal', locals: { original_book: review.shelved_book.original_book }
     = render partial: "review", locals: { review: review }
   = paginate(@reviews)

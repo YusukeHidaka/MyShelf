@@ -36,6 +36,8 @@ class OriginalBooksController < ApplicationController
       # read関連のamountを更新
       shelved_book.update_status_amount(original_book)
 
+      if params[:status] == "read"
+      end
       redirect_to shelf_users_path(current_user.id)
       # respond_to do |format|
       #   format.json

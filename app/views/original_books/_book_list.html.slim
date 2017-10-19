@@ -20,7 +20,7 @@
           | 本を登録する
     tbody
       - @amazon_books.each do |book|
-        = render partial: 'common/modal/for_original_book', locals: { original_book: book }
+        = render partial: 'common/modal/modal', locals: { original_book: book }
         tr
           - if book.image_url.present?
             td

@@ -31,7 +31,7 @@ table
         | Wish amount
   tbody
     - @original_books.each do |original_book|
-      = render partial: 'common/modal/for_original_book', locals: { original_book: original_book }
+      = render partial: 'common/modal/modal', locals: { original_book: original_book }
       tr
         td
           = original_book.title
