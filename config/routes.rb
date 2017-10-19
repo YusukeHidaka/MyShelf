@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shelved_books
+  resources :shelved_books, only: [:edit, :new, :create, :update, :destroy]
 
   devise_scope :user do
     authenticated :user do

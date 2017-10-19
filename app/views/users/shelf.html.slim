@@ -1,3 +1,4 @@
+= javascript_pack_tag 'modal'
 p#notice
   = notice
 - if flash[:notice]
@@ -19,10 +20,9 @@ table
         | ステータスを変更
       th
         | レビューを書く
-    /  th
-      /  | ステータスをwishに変更
   tbody
     - @shelved_books.each do |shelved_book|
+      = render partial: 'common/modal/modal', locals: { original_book: shelved_book.original_book }
       tr
         td
           = image_tag(shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
@@ -32,10 +32,9 @@ table
           = shelved_book.status
         - if shelved_book.user_id == current_user.id
           td
-            = link_to 'ステータスを変更する'
+            = render partial: 'common/modal/edit_button'
         - else
           td
-            = link_to '本を登録する'
+            = render partial: 'common/modal/register_button'
         td
           = link_to 'レビュー投稿', new_review_path(id: shelved_book.id)
-= javascript_pack_tag 'shelf'

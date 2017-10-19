@@ -1,0 +1,25 @@
+.modal-contents
+  = original_book.title
+  = image_tag(original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
+  div 現在のstatus:#{check_shelved(original_book.isbn)}
+
+  ul.regisration-items
+    li.regisration-item
+      /.read-item data-book="#{original_book.to_json}"
+      - if check_shelved(original_book.isbn) == "read"
+        = link_to check_read_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+      - else
+        = link_to check_read_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"read")), method: :post
+    li.regisration-item
+      /.tsundoku-item data-book="#{original_book.to_json}" #{check_tsundoku_status(check_shelved(original_book.isbn))}
+      - if check_shelved(original_book.isbn) == "tsundoku"
+        = link_to check_tsundoku_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+      - else
+        = link_to check_tsundoku_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"tsundoku")), method: :post
+    li.regisration-item
+      /.wish-item data-book="#{original_book.to_json}" #{check_wish_status(check_shelved(original_book.isbn))}
+      - if check_shelved(original_book.isbn) == "wish"
+        = link_to check_wish_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+      - else
+        = link_to check_wish_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"wish")), method: :post
+  a#modal-close.button-link 閉じる

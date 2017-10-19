@@ -3,6 +3,8 @@
 
 ## How to build(first time)
 
+`yarn start`
+
 go to `localhost:3000/` on browser
 (root path is `welcome/index`)
 
@@ -41,15 +43,16 @@ go to `localhost:3000/` on browser
 #### association
 - has_many :shelved_books
 #### columns
-- title           :string
-- author          :string
-- image_url       :text
-- publisher       :string
-- publish_date    :date
-- isbn            :string
-- read_amount     :integer
-- tsundoku_amount :integer
-- with_amount     :integer
+- title            :string
+- author           :string
+- image_url        :text
+- publisher        :string
+- publication_date :date
+- isbn             :string
+- read_amount      :integer
+- tsundoku_amount  :integer
+- with_amount      :integer
+- url              :string
 
 
 ### ShelvedlBooks
@@ -88,3 +91,6 @@ go to `localhost:3000/` on browser
 #### columns
 - user_id   :integer
 - review_id :integer
+
+## Comming Soon
+- user follow, unfollow

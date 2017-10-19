@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015071659) do
+ActiveRecord::Schema.define(version: 20171019183645) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -32,13 +32,14 @@ ActiveRecord::Schema.define(version: 20171015071659) do
     t.string "author"
     t.text "image_url"
     t.string "publisher"
-    t.date "publish_date"
+    t.date "publication_date"
     t.string "isbn"
     t.integer "read_amount", default: 0, null: false
     t.integer "tsundoku_amount", default: 0, null: false
     t.integer "wish_amount", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "url"
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

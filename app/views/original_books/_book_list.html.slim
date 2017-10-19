@@ -15,15 +15,12 @@
         th
           | Isbn
         th
-          | 積ん読
+          | 追加済
         th
-          | 読んだ本
-        th
-          | 読みたい本
-        / th
-          / | レビュー
+          | 本を登録する
     tbody
       - @amazon_books.each do |book|
+        = render partial: 'common/modal/modal', locals: { original_book: book }
         tr
           - if book.image_url.present?
             td
@@ -39,11 +36,10 @@
           td
             = book.isbn
           td
-            = link_to '積ん読に追加する', original_books_path(set_book(book,"tsundoku")), method: :post
-          td
-            = link_to "読んだ本に追加する", original_books_path(set_book(book,"read")), method: :post
-          td
-            = link_to '読みたい本に追加する', original_books_path(set_book(book,"wish")), method: :post
-          / shelved_book/:id/review
-          / =>shelved_book.params[:id]
-          / サービスクラス、デコレータークラスに切り出して行くというのもあります。
+            = check_shelved(book.isbn)
+          - if check_shelved(book.isbn) == false
+            td
+              = render partial: 'common/modal/register_button'
+          - else
+            td
+              = render partial: 'common/modal/edit_button'
