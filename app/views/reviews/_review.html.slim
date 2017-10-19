@@ -1,6 +1,6 @@
 .content_post
   hr/
-  - if review.shelved_book.user_id == current_user.id
+  - if check_shelved(review.shelved_book.original_book.isbn)
     = render partial: 'common/modal/edit_button'
   - else
     = render partial: 'common/modal/register_button'

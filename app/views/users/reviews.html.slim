@@ -16,10 +16,9 @@ table
         | content
       th
         | 本棚に追加
-    /  th
-      /  | ステータスをwishに変更
   tbody
     - @reviews.each do |review|
+      = render partial: 'common/modal/for_original_book', locals: { original_book: review.shelved_book.original_book }
       tr
         td
           = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
@@ -31,7 +30,7 @@ table
           = review.content
         - if @user.id == current_user.id
           td
-            = link_to 'ステータスを変更する'
+            = render partial: 'common/modal/edit_button'
         - else
           td
-            = link_to '本を登録する'
+            = render partial: 'common/modal/register_button'
