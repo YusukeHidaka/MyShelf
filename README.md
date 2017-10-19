@@ -22,6 +22,10 @@ go to `localhost:3000/` on browser
 │     │
 │     ├── /:id => Profile
 │     │    │
+│     │    ├── /followings => One's Followings
+│     │    │
+│     │    ├── /followers => One's Followers
+│     │    │
 │     │    ├── /reviews => One's Reviews
 │     │    │
 │     │    └── /shelf => One's Shelf
