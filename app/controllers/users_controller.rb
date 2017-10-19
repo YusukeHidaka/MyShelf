@@ -25,6 +25,18 @@ class UsersController < ApplicationController
     @reviews = Review.with_user.search_with_user_id(params[:id]).order("created_at DESC")
   end
 
+  def following
+      @user  = User.find(params[:id])
+      @users = @user.followings
+      render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+  end
+
   private
 
   def update_params
