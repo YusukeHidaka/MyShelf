@@ -15,12 +15,15 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy]
   resources :original_books, only: [:index, :create] do
+  
   collection do
       get 'search'
     end
   end
 
   resources :shelved_books, only: [:edit, :destroy]
+
+  resources :likes, only: [:create, :destroy]
 
   devise_scope :user do
     authenticated :user do
