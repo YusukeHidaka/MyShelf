@@ -12,18 +12,20 @@ Rails.application.routes.draw do
       get '/:id/shelf', to: 'users#shelf', as: 'shelf'
       get '/:id/reviews', to: 'users#reviews', as: 'reviews'
     end
+  member do
+     get :following, :followers
+    end
   end
+
+  resources :relationships, only: [:create, :destroy]
+  resources :shelved_books, only: [:edit, :destroy]
+  resources :likes, only: [:create, :destroy]
   resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy]
   resources :original_books, only: [:index, :create] do
-  
   collection do
       get 'search'
     end
   end
-
-  resources :shelved_books, only: [:edit, :destroy]
-
-  resources :likes, only: [:create, :destroy]
 
   devise_scope :user do
     authenticated :user do
