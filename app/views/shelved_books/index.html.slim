@@ -13,6 +13,8 @@ table
         | UserName
       th
         | Status
+      th
+        | 追加済
   tbody
     - @shelved_books.each do |shelved_book|
       tr
@@ -24,3 +26,5 @@ table
           = shelved_book.user.name
         td
           = shelved_book.status
+        td
+          = check_shelved(book.isbn)

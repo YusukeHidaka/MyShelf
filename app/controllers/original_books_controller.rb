@@ -37,6 +37,9 @@ class OriginalBooksController < ApplicationController
       shelved_book.update_status_amount(original_book)
 
       redirect_to shelf_users_path(current_user.id)
+      # respond_to do |format|
+      #   format.json
+      # end
     else
       shelved_book = ShelvedBook.new(original_book_id: original_book.id, status: params[:status], user_id: current_user.id)
       if shelved_book.save
@@ -44,6 +47,9 @@ class OriginalBooksController < ApplicationController
         shelved_book.update_status_amount(original_book)
 
         redirect_to shelf_users_path(current_user.id)
+        # respond_to do |format|
+        #   format.json
+        # end
       else
         flash.now[:alert] = "Some errors occured"
         render search_original_books_path
@@ -58,7 +64,7 @@ class OriginalBooksController < ApplicationController
   private
 
   def original_book_params
-    params.require(:original_book).permit(:title, :author, :image_url, :publisher, :isbn, :publish_date, :read_amount, :tsundoku_amount, :wish_amount)
+    params.require(:original_book).permit(:title, :author, :image_url, :publisher, :isbn, :publication_date, :read_amount, :tsundoku_amount, :wish_amount, :url)
   end
 
   # def shelved_book_params

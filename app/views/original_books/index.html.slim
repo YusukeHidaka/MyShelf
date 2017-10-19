@@ -1,3 +1,4 @@
+= javascript_pack_tag 'modal', 'data-turbolinks-track': 'reload'
 p#notice
   = notice
 - if flash[:alert]
@@ -19,6 +20,8 @@ table
       th
         | Isbn
       th
+        | 追加済
+      th
         | Publish date
       th
         | Read amount
@@ -28,6 +31,7 @@ table
         | Wish amount
   tbody
     - @original_books.each do |original_book|
+      = render partial: 'common/modal/for_original_book', locals: { original_book: original_book }
       tr
         td
           = original_book.title
@@ -41,12 +45,19 @@ table
         td
           = original_book.isbn
         td
-          = original_book.publish_date
+          = check_shelved(original_book.isbn)
+        td
+          = original_book.publication_date
         td
           = original_book.read_amount
         td
           = original_book.tsundoku_amount
-        td
-          = link_to 'Show', original_book
+        - if check_shelved(original_book.isbn) == false
+          td
+            = render partial: 'common/modal/register_button'
+        - else
+          td
+            = render partial: 'common/modal/edit_button'
+            /.modal-button.edit-button.button-link data-status="#{check_shelved(original_book.isbn)}" ステータスを変更する
 br
 = link_to 'New Original Book', new_original_book_path
