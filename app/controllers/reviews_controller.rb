@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.page(params[:page]).per(5).order("created_at DESC")
+    @reviews = Review.page(params[:page]).per(10).order("updated_at DESC")
   end
 
   def new
@@ -44,5 +44,9 @@ class ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:content, :shelved_book_id)
+  end
+
+  def use_before_action?
+    true
   end
 end

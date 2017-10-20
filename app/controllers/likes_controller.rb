@@ -20,4 +20,8 @@ class LikesController < ApplicationController
   def set_review
     @review = Review.find(params[:review_id])
   end
+
+  def use_before_action?
+    true
+  end
 end

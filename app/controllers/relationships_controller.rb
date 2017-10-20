@@ -10,4 +10,10 @@ class RelationshipsController < ApplicationController
     current_user.unfollow!(@user)
     redirect_to @user
   end
+
+  private
+
+  def use_before_action?
+    true
+  end
 end
