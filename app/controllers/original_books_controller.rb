@@ -72,4 +72,8 @@ class OriginalBooksController < ApplicationController
   # def shelved_book_params
   #   params.require(:shelved_book).permit(:status).merge(user_id: current_user.id, original_book_id: original_book.id)
   # end
+  
+  def use_before_action?
+    true
+  end
 end

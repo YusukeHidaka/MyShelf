@@ -12,4 +12,10 @@ class ShelvedBooksController < ApplicationController
     shelved_book.destroy
     redirect_to shelf_users_path(current_user.id)
   end
+
+  private
+
+  def use_before_action?
+    true
+  end
 end

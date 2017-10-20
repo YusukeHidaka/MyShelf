@@ -17,18 +17,18 @@ class UsersController < ApplicationController
 
   def shelf
     @user = User.find(params[:id])
-    @shelved_books = ShelvedBook.all.where(user_id: params[:id]).order("created_at DESC")
+    @shelved_books = ShelvedBook.all.where(user_id: params[:id]).order("updated_at DESC")
   end
 
   def reviews
     @user = User.find(params[:id])
-    @reviews = Review.with_user.search_with_user_id(params[:id]).order("created_at DESC")
+    @reviews = Review.with_user.search_with_user_id(params[:id]).order("updated_at DESC")
   end
 
   def following
-      @user  = User.find(params[:id])
-      @users = @user.followings
-      render 'show_follow'
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
   end
 
   def followers
@@ -48,5 +48,9 @@ class UsersController < ApplicationController
 
   def update_params
     params.require(:user).permit(:name, :description, :image)
+  end
+
+  def use_before_action?
+    true
   end
 end
