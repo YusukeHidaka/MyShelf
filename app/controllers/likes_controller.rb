@@ -1,11 +1,15 @@
 class LikesController < ApplicationController
   def create
-    Like.create(like_params)
+    @like = Like.create(user_id: current_user.id, review_id: params[:review_id])
+    @likes = Like.where(review_id: params[:review_id])
+    @reviews = Review.all
   end
 
   def destroy
-    target_like = Like.find(params[:id])
-    target_like.destroy
+    like = Like.find_by(user_id: current_user.id, review_id: params[:review_id])
+    like.destroy
+    @likes = Like.where(review_id: params[:review_id])
+    @reviews = Review.all
   end
 
   private
