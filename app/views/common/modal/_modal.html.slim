@@ -22,4 +22,9 @@
         = link_to check_wish_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
       - else
         = link_to check_wish_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"wish")), method: :post
+    li.regisration-item
+      - if check_reviewed(original_book.isbn)
+        = link_to 'レビューを編集', edit_review_path(id: get_review_id(original_book.isbn)), method: :get
+      - else
+        = link_to 'レビューを投稿', original_books_path(set_book(original_book,"read")), method: :post
   a#modal-close.button-link 閉じる

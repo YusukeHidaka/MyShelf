@@ -21,9 +21,6 @@
     span
       | 投稿者：
     = review.shelved_book.user.name
-  .comments
-    | コメント：
-    = @comments
   .likes
     | ライク：
     = review.likes.count

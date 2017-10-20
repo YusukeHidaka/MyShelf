@@ -19,7 +19,37 @@ module OriginalBooksHelper
 
   def get_shelved_book_id(isbn)
     original_book = OriginalBook.find_by(isbn: isbn)
+    unless original_book.present?
+      return false
+    end
     shelved_book = ShelvedBook.find_by(original_book_id: original_book.id, user_id: current_user.id)
+    unless shelved_book.present?
+      return false
+    end
     shelved_book.attributes["id"]
+  end
+
+  def check_reviewed(isbn)
+    original_book = OriginalBook.find_by(isbn: isbn)
+    unless original_book.present?
+      return false
+    end
+    shelved_book = ShelvedBook.find_by(original_book_id: original_book.id, user_id: current_user.id)
+    unless shelved_book.present?
+      return false
+    end
+    shelved_book_id = shelved_book.attributes["id"]
+    Review.find_by(shelved_book_id: shelved_book_id).present?
+  end
+
+  def get_review_id(isbn)
+    original_book = OriginalBook.find_by(isbn: isbn)
+    shelved_book = ShelvedBook.find_by(original_book_id: original_book.id, user_id: current_user.id)
+    unless shelved_book.present?
+      return false
+    end
+    shelved_book_id = shelved_book.attributes["id"]
+    review = Review.find_by(shelved_book_id: shelved_book_id)
+    review.attributes["id"]
   end
 end
