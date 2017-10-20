@@ -1,1 +1,1 @@
-$("#unlike-button").html("<%= j(render partial: 'like', locals: { reviews: @reviews, likes: @likes }) %>");
+$("#like-of-<%= @review.id %>").html("<%= j(render partial: 'like', locals: { review: @review }) %>");

@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20171020044341) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "likes_count"
+    t.integer "likes_count", default: 0
     t.index ["shelved_book_id"], name: "index_reviews_on_shelved_book_id"
   end
 

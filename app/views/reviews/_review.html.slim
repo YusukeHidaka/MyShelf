@@ -20,6 +20,6 @@
     = link_to review.shelved_book.user.name, users_show_path(id: review.shelved_book.user.id)
   .likes
     | ライク：
-    = review.likes.count
-  = render partial: 'likes/like', locals: { review: review }
+  span id="like-of-#{review.id}"
+    = render partial: 'likes/like', locals: { review: review }
   hr/
