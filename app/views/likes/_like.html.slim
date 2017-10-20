@@ -1,0 +1,13 @@
+/ - if user_signed_in?
+- if review.like_user(current_user.id)
+  = review.likes.count
+  = button_to review_like_path(Like, review_id: review.id), method: :delete, id: "like-button", remote: true do
+    = image_tag 'likes/icon_red_heart.png', style: "width: 20px;height: 20px;display: inline-block;"
+- else
+  = review.likes.count
+  = button_to review_likes_path(review_id: review.id), method: :post, id: "unlike-button", remote: true do
+    = image_tag 'likes/icon_heart.png', style: "width: 20px;height: 20px;display: inline-block;"
+
+/ - else
+/   = review.likes_count
+/   = image_tag 'likes/icon_heart.png'

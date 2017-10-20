@@ -20,8 +20,9 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
   resources :shelved_books, only: [:edit, :destroy]
-  resources :likes, only: [:create, :destroy]
-  resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy]
+  resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy] do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :original_books, only: [:index, :create] do
   collection do
       get 'search'

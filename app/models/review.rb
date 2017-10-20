@@ -3,6 +3,10 @@ class Review < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  def like_user(user_id)
+   likes.find_by(user_id: user_id)
+  end
+
   # scope :with_shelved_book, -> { joins(:shelved_book) }
   scope :with_user, -> { joins({:shelved_book => :user}) }
   # scope :with_original_book, -> { joins({:shelved_book => :original_book}) }
