@@ -39,7 +39,7 @@ class OriginalBooksController < ApplicationController
       if params[:status] == "read"
         redirect_to new_review_path(id: shelved_book.id)
       else
-        redirect_to shelf_users_path(current_user.id)
+        redirect_to user_path(current_user.id)
       end
     else
       shelved_book = ShelvedBook.new(original_book_id: original_book.id, status: params[:status], user_id: current_user.id)
@@ -50,7 +50,7 @@ class OriginalBooksController < ApplicationController
         if params[:status] == "read"
           redirect_to new_review_path(id: shelved_book.id)
         else
-          redirect_to shelf_users_path(current_user.id)
+          redirect_to user_path(current_user.id)
         end
       else
         flash.now[:alert] = "Some errors occured"
@@ -72,7 +72,7 @@ class OriginalBooksController < ApplicationController
   # def shelved_book_params
   #   params.require(:shelved_book).permit(:status).merge(user_id: current_user.id, original_book_id: original_book.id)
   # end
-  
+
   def use_before_action?
     true
   end

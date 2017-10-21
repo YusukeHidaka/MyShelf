@@ -1,6 +1,5 @@
-.content
-  #book-search-box
-    = form_tag('/original_books/search', method: :get) do
-      = text_field_tag :book, "",  id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"
-      button[title="検索" type="submit"]
-        | 検索
+.Search__book 本の検索
+= form_tag('/original_books/search', method: :get) do
+  = text_field_tag :book, "",  id: "book_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"
+  button[title="検索" type="submit"]
+    | 検索

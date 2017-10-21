@@ -1,29 +1,23 @@
-header
+header.Header.l-column
+  #menu-button.Header__button
+    span.fa.fa-bars
+  .Header__head
+    h1.logo
+      = image_tag 'logo.png'
   - if user_signed_in?
-    = link_to reviews_path, :class => 'navbar-brand' do
-      = image_tag 'logo.png'
-      | 本棚をラクラク管理して、みんなで共有しよう！(TimeLineへ)
+    = link_to "本棚をラクラク管理して、みんなで共有しよう！(TimeLineへ)", reviews_path, :class => 'Header__link'
   - else
-    = link_to user_google_oauth2_omniauth_authorize_path, :class => 'navbar-brand' do
-      = image_tag 'logo.png'
-      | 本棚をラクラク管理して、みんなで共有しよう！(googleを使ってログイン)
-  div
-    ul
-      - if user_signed_in?
-        li
-          = current_user.name
-          ul
-            li
-              = link_to "My Page", user_path(current_user)
-            li
-              = link_to "My Shelf", shelf_users_path(current_user)
-            li
-              = link_to "My Reviews", reviews_users_path(current_user)
-            li
-              = link_to "Edit Profile", edit_user_path(current_user)
-            li
-              = link_to "Log Out", destroy_user_session_path, method: :delete
-        |本の検索
-        = render partial: 'common/book_search'
-        |ユーザーの検索
-        = render partial: 'common/user_search'
+    = link_to "本棚をラクラク管理して、みんなで共有しよう！(googleを使ってログイン)", user_google_oauth2_omniauth_authorize_path, :class => 'Header__link'
+  nav.Header__body.SpMenu
+    ul.Menu
+      li
+        = link_to "My Shelf", user_path(current_user), class: "Menu__item"
+      li
+        = link_to "My Reviews", reviews_users_path(current_user), class: "Menu__item"
+      li
+        = link_to "Edit Profile", edit_user_path(current_user), class: "Menu__item"
+      li
+        = link_to "Log Out", destroy_user_session_path, method: :delete, class: "Menu__item"
+  .Search
+    = render partial: 'common/book_search'
+    = render partial: 'common/user_search'

@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   def new
     # TODO:params(指定のshelved_book.id)がなかった場合本棚に飛ばす処理
     if params[:id].nil?
-      # redirect_to shelf_users_path(current_user.id), flash: {notice: 'レビューを書く本を選択してください'}
+      # redirect_to user_path(current_user.id), flash: {notice: 'レビューを書く本を選択してください'}
     end
     @shelved_book = ShelvedBook.find(params[:id])
 

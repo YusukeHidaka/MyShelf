@@ -1,17 +1,54 @@
+= javascript_pack_tag 'modal'
 - if flash[:notice]
   .alert.alert-success
     = flash[:notice]
 h1
-  | Users#show
+  | ユーザープロフィール
 .row.form.user_profile
   h2 名前：#{@user.name}
   .user_image
     = image_tag @user.image
   p 自己紹介：#{@user.description}
-  = link_to '本棚を見る', shelf_users_path(@user.id)
+  = link_to '本棚を見る', user_path(@user.id)
   = link_to '本のレビューを見る', reviews_users_path(@user.id)
   - if @user.id == current_user.id
     button
       = link_to 'プロフィール編集', edit_user_path(current_user)
   = render 'follow_form'
   = render 'stats'
+
+h1
+  = @user.name
+  | 's Shelf
+#ones-shelf
+table
+  thead
+    tr
+      th
+        | Image
+      th
+        | Title
+      th
+        | Status
+      th
+        | ステータスを変更
+      th
+        | レビューを書く
+  tbody
+    - @shelved_books.each do |shelved_book|
+      = render partial: 'common/modal/modal', locals: { original_book: shelved_book.original_book }
+      tr
+        td
+          = image_tag(shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
+        td
+          = shelved_book.original_book.title
+        td
+          = shelved_book.status
+        - if shelved_book.user_id == current_user.id
+          td
+            = render partial: 'common/modal/edit_button'
+        - else
+          td
+            = render partial: 'common/modal/register_button'
+        td
+          = link_to 'レビュー投稿', new_review_path(id: shelved_book.id)

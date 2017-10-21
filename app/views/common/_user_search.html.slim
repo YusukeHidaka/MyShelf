@@ -1,6 +1,5 @@
-.content
-  #user-search-box
-    = form_tag('/users/search', method: :get) do
-      = text_field_tag :user, "",  id: "user_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"
-      button[title="検索" type="submit"]
-        | 検索
+.Search__user ユーザーの検索
+= form_tag('/users/search', method: :get) do
+  = text_field_tag :user, "",  id: "user_search", name: "keyword", placeholder: "キーワードを打ち込んでください", style: "width: 200px;"
+  button[title="検索" type="submit"]
+    | 検索

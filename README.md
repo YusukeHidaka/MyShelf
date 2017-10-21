@@ -20,15 +20,13 @@ go to `localhost:3000/` on browser
 │
 ├── users => User List (pending)
 │     │
-│     ├── /:id => Profile
+│     ├── /:id => Profile (One's Shelf)
 │     │    │
 │     │    ├── /followings => One's Followings
 │     │    │
 │     │    ├── /followers => One's Followers
 │     │    │
-│     │    ├── /reviews => One's Reviews
-│     │    │
-│     │    └── /shelf => One's Shelf
+│     │    └── /reviews => One's Reviews
 │     │
 │     └── /search => User Search
 │
@@ -41,11 +39,15 @@ go to `localhost:3000/` on browser
 └── * => 404
 ```
 
+## SCSS policy
+- using BEM
+-
+
 ## Main Function
 - Search books -> done
 - Post/Edit review -> done
 - Like/Unlike review -> done
-- Ajax of like -> pending
+- Ajax of like -> done
 - Comment -> pending
 - Add book from gmail by amazon -> pending
 - Change book status by Ajax -> pending
