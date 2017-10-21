@@ -1,13 +1,13 @@
 header.Header.l-column
   #menu-button.Header__button
     span.fa.fa-bars
-  .Header__head
+  .Header__head.Logo
     h1.logo
-      = image_tag 'logo.png'
-  - if user_signed_in?
-    = link_to "本棚をラクラク管理して、みんなで共有しよう！(TimeLineへ)", reviews_path, :class => 'Header__link'
-  - else
-    = link_to "本棚をラクラク管理して、みんなで共有しよう！(googleを使ってログイン)", user_google_oauth2_omniauth_authorize_path, :class => 'Header__link'
+      = image_tag 'logo.png', style: "width: 80px;height: auto;display: inline-block;"
+    - if user_signed_in?
+        = link_to reviews_path, :class => 'Logo__link'
+    - else
+        = link_to user_google_oauth2_omniauth_authorize_path, :class => 'Logo__link'
   nav.Header__body.SpMenu
     ul.Menu
       li
@@ -18,6 +18,7 @@ header.Header.l-column
         = link_to "Edit Profile", edit_user_path(current_user), class: "Menu__item"
       li
         = link_to "Log Out", destroy_user_session_path, method: :delete, class: "Menu__item"
-  .Search
-    = render partial: 'common/book_search'
-    = render partial: 'common/user_search'
+  .Header__search
+    .Search
+      = render partial: 'common/book_search'
+      = render partial: 'common/user_search'
