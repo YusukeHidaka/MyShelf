@@ -1,36 +1,41 @@
 .Header {
   display: flex;
-  // align-items: center;
-  flex-direction: column;
+  align-items: center;
   min-height: 98px;
-  &__top {
-      display: flex;
-      justify-content: flex-end;
+  &__left {
+
   }
-  &__body {
-      flex: 3 1 auto;
-      font-size: 16px;
+  &__logo {
+
+  }
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__search {
+    display: flex;
   }
   &__logo {
       // short hand { flex : -grow -shrink -basis }
       // grow : コンテナに対するアイテムの伸び率
       // shrink : コンテナに対するアイテムの縮み率
       // basis : アイテムの基準幅。widthみたいなもんだけど固定ではない。
-      flex: 1 1 auto;
-      text-align: center;
+      // flex: 1 1 auto;
+      // text-align: center;
   }
-  &__bottom {
-      display: flex;
-  }
-  &__button {
-    margin-right: auto;
-      // @include mq-pc {
-      //     display: none;
-      // }
-      // @include mq-sp {
-      //     display: block;
-      //     color: $color-main-text;
-      //     font-size: 22px;
-      // }
+  &__user {
+    position: relative;
+    .UserIcon {
+      &__pic {
+        width: 80px;
+        height: auto;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      &__menu {
+        display: none;
+        position: absolute;
+      }
+    }
   }
 }
