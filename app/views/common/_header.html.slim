@@ -1,24 +1,27 @@
 header.Header.l-column
-  #menu-button.Header__button
-    span.fa.fa-bars
-  .Header__head.Logo
-    h1.logo
-      = image_tag 'logo.png', style: "width: 80px;height: auto;display: inline-block;"
-    - if user_signed_in?
-        = link_to reviews_path, :class => 'Logo__link'
-    - else
-        = link_to user_google_oauth2_omniauth_authorize_path, :class => 'Logo__link'
-  nav.Header__body.SpMenu
-    ul.Menu
-      li
-        = link_to "My Shelf", user_path(current_user), class: "Menu__item"
-      li
-        = link_to "My Reviews", reviews_users_path(current_user), class: "Menu__item"
-      li
-        = link_to "Edit Profile", edit_user_path(current_user), class: "Menu__item"
-      li
-        = link_to "Log Out", destroy_user_session_path, method: :delete, class: "Menu__item"
-  .Header__search
-    .Search
+  .Header__top
+    #menu-button.Header__button
+      span.fa.fa-bars
+    nav.Header__body.SpMenu
+      ul.Menu
+        li
+          = link_to "My Shelf", user_path(current_user), class: "Menu__item"
+        li
+          = link_to "My Reviews", reviews_users_path(current_user), class: "Menu__item"
+        li
+          = link_to "Edit Profile", edit_user_path(current_user), class: "Menu__item"
+        li
+          = link_to "Log Out", destroy_user_session_path, method: :delete, class: "Menu__item"
+  .Header__bottom
+    .Header__logo
+      h1.logo
+        = image_tag 'logo.png', style: "width: 80px;height: auto;display: inline-block;"
+      - if user_signed_in?
+          = link_to reviews_path, :class => 'Logo__link'
+      - else
+          = link_to user_google_oauth2_omniauth_authorize_path, :class => 'Logo__link'
+    .Header__search.Search
+      .Search__book
       = render partial: 'common/book_search'
+      .Search__user
       = render partial: 'common/user_search'

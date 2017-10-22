@@ -1,9 +1,17 @@
 .Header {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  // align-items: center;
+  flex-direction: column;
   min-height: 98px;
-  &__head {
+  &__top {
+      display: flex;
+      justify-content: flex-end;
+  }
+  &__body {
+      flex: 3 1 auto;
+      font-size: 16px;
+  }
+  &__logo {
       // short hand { flex : -grow -shrink -basis }
       // grow : コンテナに対するアイテムの伸び率
       // shrink : コンテナに対するアイテムの縮み率
@@ -11,14 +19,11 @@
       flex: 1 1 auto;
       text-align: center;
   }
-  &__body {
-      flex: 3 1 auto;
-      font-size: 16px;
-  }
-  &__search {
-      flex:
+  &__bottom {
+      display: flex;
   }
   &__button {
+    margin-right: auto;
       // @include mq-pc {
       //     display: none;
       // }
