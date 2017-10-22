@@ -90,3 +90,6 @@ gem 'html2slim'
 
 # for react
 gem 'webpacker', github: "rails/webpacker"
+
+# font awesome
+gem 'font-awesome-sass'
