@@ -92,4 +92,4 @@ gem 'html2slim'
 gem 'webpacker', github: "rails/webpacker"
 
 # font awesome
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.4.0'
