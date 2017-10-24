@@ -1,36 +1,48 @@
 .TimeLine__review.Review
-  .Review__head
-    .Review__user
-      = image_tag review.shelved_book.user.image, class: "Review__user__pic"
-    .Review__info
-      .Review__info__text
-        = link_to review.shelved_book.user.name, user_path(review.shelved_book.user)
-        | さんがレビューを投稿しました
-      .Review__info__date = time_ago_in_words(review.created_at)
-  .Review__body
-    .Review__book
-      = image_tag review.shelved_book.original_book.image_url, class: "Review__book__image"
-      = link_to 'Amazonで詳細を確認', review.shelved_book.original_book.url
-    .Review__content
-      .Review__title
-        = review.shelved_book.original_book.title
-      .Review__author
-        = review.shelved_book.original_book.author
-      .Review__sentence
-        = review.content
-      .Review__like
-        span id="like-of-#{review.id}"
-          = render partial: 'likes/like', locals: { review: review }
-      .Review__setting
-        - if check_shelved(review.shelved_book.original_book.isbn)
-          = render partial: 'common/modal/edit_button'
-        - else
-          = render partial: 'common/modal/register_button'
-        .more
-          ul.more_list
-            - if user_signed_in? && current_user.id == review.shelved_book.user_id
-              li
-                = link_to '編集', "/reviews/#{review.id}/edit", method: :get
-              li
-                = link_to '削除', "/reviews/#{review.id}", method: :delete
+  .Review__left
+    .Review__head
+      = image_tag review.shelved_book.user.image, class: "Review__head__pic"
+      .Review__head__info
+        .Review__head__text
+          = link_to review.shelved_book.user.name, user_path(review.shelved_book.user)
+          span さんがレビューを投稿しました
+        .Review__head__date = time_ago_in_words(review.created_at)
+    .Review__body
+      .Review__content
+        .Review__title
+          = review.shelved_book.original_book.title
+        .Review__author
+          = review.shelved_book.original_book.author
+        .Review__sentence
+          = review.content
+        .Review__like
+          span id="like-of-#{review.id}"
+            = render partial: 'likes/like', locals: { review: review }
+        .Review__setting
+          - if check_shelved(review.shelved_book.original_book.isbn)
+            = render partial: 'common/modal/edit_button'
+          - else
+            = render partial: 'common/modal/register_button'
+          .more
+            ul.more_list
+              - if user_signed_in? && current_user.id == review.shelved_book.user_id
+                li
+                  = link_to '編集', "/reviews/#{review.id}/edit", method: :get
+                li
+                  = link_to '削除', "/reviews/#{review.id}", method: :delete
+  .Review__right
+    .Book
+      = link_to review.shelved_book.original_book.url
+        = image_tag review.shelved_book.original_book.image_url, class: "Book__image"
+      ul.Status
+        li.Status__item
+          = link_to edit_user_path(current_user)
+            .Status__title
+              i.fa.fa-barcode.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_shelved(review.shelved_book.original_book.id)
+        li.Status__item
+          = link_to user_path(current_user)
+            .Status__title
+              i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_reviews(review.shelved_book.original_book.id)
   hr/

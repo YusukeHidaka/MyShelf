@@ -1,9 +1,12 @@
 .Body {
-  width: 1000px;
-  margin: auto;
-  padding-top: 60px;
-  background-color: white;
-  display: flex;
+    font-size: 14px;
+    width: 1000px;
+    margin: auto;
+    padding-top: 60px;
+    background-color: white;
+    &__content {
+        display: flex;
+    }
 }
 
 // fontawesome setting

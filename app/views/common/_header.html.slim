@@ -12,13 +12,13 @@ header
               i.fa.fa-book
               h1.Logo__title Myshelf
         - if user_signed_in?
-        ul.Header__navi
-          li.Header__navi__item
-            = link_to "TimeLine", reviews_path
-          li.Header__navi__item
-            = link_to "Shelf", user_path(current_user)
-          li.Header__navi__item
-            = link_to "Reviews", reviews_users_path(current_user)
+          ul.Header__navi
+            li.Header__navi__item
+              = link_to "TimeLine", reviews_path
+            li.Header__navi__item
+              = link_to "Shelf", user_path(current_user)
+            li.Header__navi__item
+              = link_to "Reviews", reviews_users_path(current_user)
       .Header__right
         - if user_signed_in?
           .Header__search
