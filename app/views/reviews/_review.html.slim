@@ -11,16 +11,15 @@
   .Review__body
     .Review__book
       = image_tag review.shelved_book.original_book.image_url, class: "Review__book__image"
-      .Review__book__title
-        = review.shelved_book.original_book.title
-      .Review__book__author
-        = review.shelved_book.original_book.author
       = link_to 'Amazonで詳細を確認', review.shelved_book.original_book.url
     .Review__content
+      .Review__title
+        = review.shelved_book.original_book.title
+      .Review__author
+        = review.shelved_book.original_book.author
       .Review__sentence
         = review.content
       .Review__like
-        | ライク：
         span id="like-of-#{review.id}"
           = render partial: 'likes/like', locals: { review: review }
       .Review__setting

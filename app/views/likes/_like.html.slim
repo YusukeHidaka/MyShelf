@@ -1,12 +1,14 @@
 - if user_signed_in?
   - if review.like_user(current_user.id)
-    = review.likes.count
     = button_to review_like_path(Like, review_id: review.id), method: :delete, id: "like-button", remote: true do
       i.fa.fa-heart.fa-red
+      | いいね！
+      span = review.likes.count
   - else
-    = review.likes.count
     = button_to review_likes_path(review_id: review.id), method: :post, id: "unlike-button", remote: true do
       i.fa.fa-heart-o
+      | いいね！
+      span = review.likes.count
 - else
   = review.likes.count
   i.fa.fa-heart.fa-red

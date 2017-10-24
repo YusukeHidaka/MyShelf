@@ -55,21 +55,31 @@
   }
   &__book {
     width: 230px;
+    margin-right: 20px;
     &__image {
       width: 200px;
       height: auto;
       display: inline-block;
-    }
-    &__title, &__author {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
   }
   &__content {
     width: 100%;
   }
   &__sentence {
-    border: solid 1px #aaa;
+    border-top: 1px solid #eee;
+    padding-bottom: 20px;
+  }
+  &__title {
+    font-weight: 600;
+  }
+  &__title, &__author {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &__like {
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
   }
 }
