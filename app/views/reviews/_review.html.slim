@@ -34,19 +34,24 @@
     .Book
       = link_to review.shelved_book.original_book.url
         = image_tag review.shelved_book.original_book.image_url, class: "Book__image"
-      .Review__setting
-        - if check_shelved(review.shelved_book.original_book.isbn)
-          = render partial: 'common/modal/edit_button'
-        - else
-          = render partial: 'common/modal/register_button'
-      ul.Status
-        li.Status__item
-          = link_to edit_user_path(current_user)
+      ul.Status.modal-button
+        - unless check_shelved(review.shelved_book.original_book.isbn)
+          li.Status__item.yet
             .Status__title
               i.fa.fa-barcode.fa-3x  aria-hidden="true"
             span.Status__number = OriginalBook.count_shelved(review.shelved_book.original_book.id)
-        li.Status__item
-          = link_to user_path(current_user)
+        - else
+          li.Status__item.already
+            .Status__title
+              i.fa.fa-barcode.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_shelved(review.shelved_book.original_book.id)
+        - unless check_reviewed(review.shelved_book.original_book.isbn)
+          li.Status__item.yet
+            .Status__title
+              i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_reviews(review.shelved_book.original_book.id)
+        - else
+          li.Status__item.already
             .Status__title
               i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
             span.Status__number = OriginalBook.count_reviews(review.shelved_book.original_book.id)
