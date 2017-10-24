@@ -1,0 +1,12 @@
+.SideContent {
+  width: 280px;
+  padding: 25px;
+  &__pic {
+  height: 230px;
+  border-radius: 5px;
+  }
+  &__name {
+    font-size: 26px;
+    line-height: 60px;
+  }
+}

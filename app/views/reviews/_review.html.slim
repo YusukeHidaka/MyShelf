@@ -1,25 +1,38 @@
-.content_post
-  hr/
-  - if check_shelved(review.shelved_book.original_book.isbn)
-    = render partial: 'common/modal/edit_button'
-  - else
-    = render partial: 'common/modal/register_button'
-  .more
-    ul.more_list
-      - if user_signed_in? && current_user.id == review.shelved_book.user_id
-        li
-          = link_to '編集', "/reviews/#{review.id}/edit", method: :get
-        li
-          = link_to '削除', "/reviews/#{review.id}", method: :delete
-  = simple_format(review.shelved_book.original_book.title)
-  = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
-  = simple_format(review.content)
-  .name
-    span
-      | 投稿者：
-    = link_to review.shelved_book.user.name, users_show_path(id: review.shelved_book.user.id)
-  .likes
-    | ライク：
-  span id="like-of-#{review.id}"
-    = render partial: 'likes/like', locals: { review: review }
+.TimeLine__review.Review
+  .Review__head
+    .Review__user
+      = image_tag review.shelved_book.user.image, class: "Review__user__pic"
+    .Review__info
+      .Review__info__text
+        = link_to review.shelved_book.user.name, users_show_path(id: review.shelved_book.user.id)
+        | さんがレビューを投稿しました
+      .Review__info__date = time_ago_in_words(review.created_at)
+
+  .Review__body
+    .Review__book
+      = image_tag review.shelved_book.original_book.image_url, class: "Review__book__image"
+      .Review__book__title
+        = review.shelved_book.original_book.title
+      .Review__book__author
+        = review.shelved_book.original_book.author
+      = link_to 'Amazonで詳細を確認', review.shelved_book.original_book.url
+    .Review__content
+      .Review__sentence
+        = review.content
+      .Review__like
+        | ライク：
+        span id="like-of-#{review.id}"
+          = render partial: 'likes/like', locals: { review: review }
+      .Review__setting
+        - if check_shelved(review.shelved_book.original_book.isbn)
+          = render partial: 'common/modal/edit_button'
+        - else
+          = render partial: 'common/modal/register_button'
+        .more
+          ul.more_list
+            - if user_signed_in? && current_user.id == review.shelved_book.user_id
+              li
+                = link_to '編集', "/reviews/#{review.id}/edit", method: :get
+              li
+                = link_to '削除', "/reviews/#{review.id}", method: :delete
   hr/

@@ -1,8 +1,4 @@
-h1
-  | Welcome#index
-h1
-  | LandingPage
-div
+.Landing
   - if user_signed_in?
     = link_to "ログアウト", destroy_user_session_path, method: :delete
   - else

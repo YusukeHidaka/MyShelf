@@ -1,0 +1,75 @@
+.TimeLine{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
+  margin: 25px;
+  width: 100%;
+  &__title {
+    padding-left: 25px;
+    height: 50px;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 50px;
+  }
+}
+
+.Review {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #aaa;
+  padding: 20px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin-bottom:20px;
+  &__head {
+    display: flex;
+  }
+  &__user {
+    &__pic {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+  }
+  &__info {
+    &__text {
+      font-weight: 600;
+    }
+    &__date {
+      color: #7e7e7e;
+      font-size: 12px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    margin-top: 10px;
+  }
+  &__book {
+    width: 230px;
+    &__image {
+      width: 200px;
+      height: auto;
+      display: inline-block;
+    }
+    &__title, &__author {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  &__content {
+    width: 100%;
+  }
+  &__sentence {
+    border: solid 1px #aaa;
+  }
+}

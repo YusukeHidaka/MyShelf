@@ -1,41 +1,143 @@
+header {
+  width: 1190px;
+  margin: auto;
+}
 .Header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  min-height: 98px;
+  width: inherit;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e4;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  height: 46px;
+  position: fixed;
+  z-index: 999;
   &__left {
-
-  }
-  &__logo {
-
+    width: 33%;
   }
   &__right {
     display: flex;
-    justify-content: flex-end;
-  }
-  &__search {
-    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
   &__logo {
-      // short hand { flex : -grow -shrink -basis }
-      // grow : コンテナに対するアイテムの伸び率
-      // shrink : コンテナに対するアイテムの縮み率
-      // basis : アイテムの基準幅。widthみたいなもんだけど固定ではない。
-      // flex: 1 1 auto;
-      // text-align: center;
+    text-align: center;
+    margin: auto;
+    .Logo__title {
+      text-align: center;
+      margin-top: -5px;
+    }
   }
   &__user {
     position: relative;
     .UserIcon {
       &__pic {
-        width: 80px;
-        height: auto;
+        background-color: #F2F2F2;
+        box-shadow: 0 0 0 2px #DBDBDB;
         border-radius: 50%;
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: middle;
+        width: 35px;
+        height: 35px;
         cursor: pointer;
       }
       &__menu {
-        display: none;
+        z-index: 999;
+        width: 200px;
         position: absolute;
+        right: 10%;
+        display: none;
+        min-width: 100%;
+        margin: 15px 0;
+        border: 1px solid #b5b5b5;
+        border-radius: 4px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 1px rgba(0,0,0,.1);
+        background: #fff;
+        li {
+          position: relative;
+          border-bottom: 1px solid #b5b5b5;
+          color: #b5b5b5;
+          line-height: 45px;
+          cursor: pointer;
+          display:block;
+          padding: 0;
+          margin: 0;
+          :first-of-type {
+            border-radius: 4px 4px 0 0;
+          }
+          :last-of-type {
+            border-bottom: 0;
+            border-radius: 0 0 4px 4px;
+          }
+          :hover,
+          .selection {
+            background: #f9f9f9;
+          }
+          a {
+            font-size: 12px;
+            display:block;
+            width:100%;
+            padding: 0 22px;
+          }
+          i {
+            margin-right: 10px;
+          }
+        }
       }
     }
   }
+  &__search {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    form {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      color: #484848;
+      background-color: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #DBDBDB;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      padding: 0px;
+      width: 100%;
+      position: relative;
+      margin: 20px;
+      input {
+        height: 100%;
+        padding-left: 5px;
+      }
+      button {
+        cursor: pointer;
+        padding: 0px 10px;
+        border-left: 1px solid #DBDBDB;
+      }
+    }
+  }
+}
+
+.Navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // @include menu-font;
+  // @include mq-sp {
+  //     flex-direction: column;
+  // }
+  &__item {
+    text-align: center;
+    a {
+        display: block;
+        padding: 0px auto;
+        i {
+          padding: 0px 15px;
+        }
+    }
+  }
+  // フッターのメニュー
+  // &--sub {
+  //     flex-direction: column;
+  // }
 }

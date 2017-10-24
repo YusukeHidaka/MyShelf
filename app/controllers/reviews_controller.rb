@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.page(params[:page]).per(10).order("updated_at DESC")
+    @user = current_user
   end
 
   def new

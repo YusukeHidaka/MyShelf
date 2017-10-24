@@ -8,7 +8,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    = render partial: 'common/header'
     #wrapper
-      = render partial: 'common/header'
       = yield
-      = render partial: 'common/footer'
+    = render partial: 'common/footer'
