@@ -20,10 +20,7 @@
 
 .Review {
     display: flex;
-    justify-content: flex-end;
-    div:first-child {
-        margin-right: auto;
-    }
+    justify-content: flex-start;
     border-bottom: 1px solid #aaa;
     padding: 20px;
     border: 1px solid #eee;
@@ -32,11 +29,17 @@
     overflow-wrap: break-word;
     margin-bottom:20px;
     &__left {
-      display: flex;
-      flex-direction: column;
+        height: 315px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-width: 400px;
+        max-width: 400px
     }
     &__head {
         display: flex;
+        justify-content: flex-start;
+        min-height: 60px;
         &__pic {
             width: 50px;
             height: 50px;
@@ -48,7 +51,7 @@
             flex-direction: column;
         }
         &__text {
-          display: flex;
+            display: flex;
             a {
                 font-weight: 600;
             }
@@ -57,36 +60,103 @@
             color: #7e7e7e;
             font-size: 12px;
         }
+        &__setting {
+            margin-left: 50px;
+            cursor: pointer;
+            &__menu {
+                z-index: 995;
+                width: 75px;
+                position: absolute;
+                display: none;
+                margin: 15px 0;
+                border: 1px solid #b5b5b5;
+                border-radius: 4px;
+                box-sizing: border-box;
+                box-shadow: 0 2px 1px rgba(0,0,0,.1);
+                background: #fff;
+                &__item {
+                    position: relative;
+                    border-bottom: 1px solid #b5b5b5;
+                    color: #b5b5b5;
+                    line-height: 45px;
+                    cursor: pointer;
+                    display:block;
+                    padding: 0;
+                    margin: 0;
+                    :first-of-type {
+                        border-radius: 4px 4px 0 0;
+                    }
+                    :last-of-type {
+                        border-bottom: 0;
+                        border-radius: 0 0 4px 4px;
+                    }
+                    :hover,.selection {
+                        background: #f9f9f9;
+                    }
+                    a {
+                        font-size: 12px;
+                        display:block;
+                        width:100%;
+                        padding: 0 22px;
+                    }
+                }
+            }
+        }
     }
 
     // __body
     &__body {
-      display: flex;
-      margin-top: 10px;
+        margin-top: 10px;
     }
     &__content {
-      width: 100%;
-    }
-    &__sentence {
-      border-top: 1px solid #eee;
-      padding-bottom: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 290px;
     }
     &__title {
-      font-weight: 600;
+        font-size: 130%;
+        font-weight: bold;
+        padding: 0px 10px;
+    }
+    &__author {
+        text-align: right;
+        margin-right: 5px;
+        border-bottom: 4px double #7e7e7e;
     }
     &__title, &__author {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
-    &__like {
-      padding: 20px 0;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
+    &__sentence {
+        margin: 20px 0;
+        line-height: 25px;
+        span {
+            line-height: 150%;
+            border-bottom: 2px dotted #eee;
+        }
+    }
+    &__reaction {
+        width: 100%;
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+        display: flex;
+        position: absolute;
+        bottom: 15px;
+        button span, .Review__comment span{
+            margin-left: 10px;
+            font-size: 150%;
+        }
+    }
+    &__comment {
+      padding-left: 20px;
     }
 
 
     &__right {
+      margin-left: auto;
       .Book {
         max-width: 180px;
           &__image {

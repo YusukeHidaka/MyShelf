@@ -7,33 +7,38 @@
           = link_to review.shelved_book.user.name, user_path(review.shelved_book.user)
           span さんがレビューを投稿しました
         .Review__head__date = time_ago_in_words(review.created_at)
+      .Review__head__setting
+        - if user_signed_in? && current_user.id == review.shelved_book.user_id
+          i.fa.fa-cog.fa-2x  aria-hidden="true"
+          ul.Review__head__setting__menu
+            li.Review__head__setting__menu__item
+              = link_to '編集', "/reviews/#{review.id}/edit", method: :get
+            li.Review__head__setting__menu__item
+              = link_to '削除', "/reviews/#{review.id}", method: :delete
     .Review__body
       .Review__content
-        .Review__title
-          = review.shelved_book.original_book.title
+        = link_to review.shelved_book.original_book.title, review.shelved_book.original_book.url, class: "Review__title"
         .Review__author
           = review.shelved_book.original_book.author
         .Review__sentence
-          = review.content
-        .Review__like
-          span id="like-of-#{review.id}"
-            = render partial: 'likes/like', locals: { review: review }
-        .Review__setting
-          - if check_shelved(review.shelved_book.original_book.isbn)
-            = render partial: 'common/modal/edit_button'
-          - else
-            = render partial: 'common/modal/register_button'
-          .more
-            ul.more_list
-              - if user_signed_in? && current_user.id == review.shelved_book.user_id
-                li
-                  = link_to '編集', "/reviews/#{review.id}/edit", method: :get
-                li
-                  = link_to '削除', "/reviews/#{review.id}", method: :delete
+          span
+            = review.content
+        .Review__reaction
+          .Review__like
+            span id="like-of-#{review.id}"
+              = render partial: 'likes/like', locals: { review: review }
+          .Review__comment
+            i.fa.fa-comment.fa-2x
+            span 0
   .Review__right
     .Book
       = link_to review.shelved_book.original_book.url
         = image_tag review.shelved_book.original_book.image_url, class: "Book__image"
+      .Review__setting
+        - if check_shelved(review.shelved_book.original_book.isbn)
+          = render partial: 'common/modal/edit_button'
+        - else
+          = render partial: 'common/modal/register_button'
       ul.Status
         li.Status__item
           = link_to edit_user_path(current_user)
