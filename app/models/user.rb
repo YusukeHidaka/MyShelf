@@ -28,6 +28,10 @@ class User < ApplicationRecord
     user
   end
 
+  def self.count_books(t_user)
+    ShelvedBook.where(user_id: t_user.id).count
+  end
+
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end

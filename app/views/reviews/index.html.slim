@@ -1,11 +1,10 @@
 - if flash[:notice]
   .alert.alert-success
     = flash[:notice]
-.Content
-  = render partial: "common/side_content"
-  .TimeLine
-    h1.TimeLine__title タイムライン
-    - @reviews.each do |review|
-      = render partial: "common/modal/modal", locals: { original_book: review.shelved_book.original_book }
-      = render partial: "review", locals: { review: review }
-    = paginate(@reviews)
+= render partial: "common/side"
+.TimeLine
+  h1.TimeLine__title タイムライン
+  - @reviews.each do |review|
+    = render partial: "common/modal/modal", locals: { original_book: review.shelved_book.original_book }
+    = render partial: "review", locals: { review: review }
+  = paginate(@reviews)
