@@ -34,6 +34,11 @@ class UsersController < ApplicationController
   end
 
   def search
+    puts "======================"
+    puts "======================"
+    puts params
+    puts "======================"
+    puts "======================"
     @users = User.where("name LIKE :keyword OR email LIKE :keyword", keyword: "%#{params[:keyword]}%")
     @users.each do |user|
       @user = user

@@ -60,7 +60,11 @@ class OriginalBooksController < ApplicationController
   end
 
   def search
-    @amazon_books = Book.search_amazon(params)
+    if params[:user_search]
+      redirect_to search_users_path(keyword: params[:keyword])
+    else
+      @amazon_books = Book.search_amazon(params)
+    end
   end
 
   private

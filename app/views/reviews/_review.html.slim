@@ -4,10 +4,9 @@
       = image_tag review.shelved_book.user.image, class: "Review__user__pic"
     .Review__info
       .Review__info__text
-        = link_to review.shelved_book.user.name, users_show_path(id: review.shelved_book.user.id)
+        = link_to review.shelved_book.user.name, user_path(review.shelved_book.user)
         | さんがレビューを投稿しました
       .Review__info__date = time_ago_in_words(review.created_at)
-
   .Review__body
     .Review__book
       = image_tag review.shelved_book.original_book.image_url, class: "Review__book__image"

@@ -1,50 +1,44 @@
 header
-  .Header.l-column
-    - if user_signed_in?
+  .Header__back
+    .Header__inner
       .Header__left
-        ul.Navigation
-          li.Navigation__item
+        .Header__logo
+          - if user_signed_in?
             = link_to reviews_path
-              i.fa.fa-home
-              | ホーム
-          li.Navigation__item
-            = link_to user_path(current_user)
-              i.fa.fa-barcode
-              | 本棚
-          li.Navigation__item
-            = link_to reviews_users_path(current_user)
-              i.fa.fa-newspaper-o
-              | レビュー
-    .Header__logo.Logo
-      - if user_signed_in?
-        = link_to reviews_path
-          i.fa.fa-book
-          h1.Logo__title Myshelf
-      - else
-        = link_to
-          i.fa.fa-book
-          h1.Logo__title Myshelf
-    - if user_signed_in?
+              i.fa.fa-book
+              h1.Header__logo__title Myshelf
+          - else
+            = link_to
+              i.fa.fa-book
+              h1.Logo__title Myshelf
+        - if user_signed_in?
+        ul.Header__navi
+          li.Header__navi__item
+            = link_to "TimeLine", reviews_path
+          li.Header__navi__item
+            = link_to "Shelf", user_path(current_user)
+          li.Header__navi__item
+            = link_to "Reviews", reviews_users_path(current_user)
       .Header__right
-        .Header__search.Search
-          = render partial: "common/book_search", class: "Search__book"
-          = render partial: "common/user_search", class: "Search__user"
-        .Header__user.UserIcon
-          = image_tag current_user.image, class: "UserIcon__pic", :alt => "default"
-          ul.Menu.UserIcon__menu
-            li
-              = link_to user_path(current_user), class: "Menu__item"
-                i.fa.fa-barcode aria-hidden="true"
-                | My Shelf
-            li
-              = link_to reviews_users_path(current_user), class: "Menu__item"
-                i.fa.fa-newspaper-o aria-hidden="true"
-                | My Reviews
-            li
-              = link_to edit_user_path(current_user), class: "Menu__item"
-                i.fa.fa-cog aria-hidden="true"
-                | Edit Profile
-            li
-              = link_to destroy_user_session_path, method: :delete, class: "Menu__item"
-                i.fa.fa-sign-out aria-hidden="true"
-                | Log Out
+        - if user_signed_in?
+          .Header__search
+            = render partial: "common/search"
+          .Header__user.UserIcon
+            = image_tag current_user.image, class: "UserIcon__pic", alt: "default"
+            ul.UserIcon__menu
+              li.UserIcon__menu__item
+                = link_to user_path(current_user)
+                  i.fa.fa-barcode aria-hidden="true"
+                  | My Shelf
+              li.UserIcon__menu__item
+                = link_to reviews_users_path(current_user)
+                  i.fa.fa-newspaper-o aria-hidden="true"
+                  | My Reviews
+              li.UserIcon__menu__item
+                = link_to edit_user_path(current_user)
+                  i.fa.fa-cog aria-hidden="true"
+                  | Edit Profile
+              li.UserIcon__menu__item
+                = link_to destroy_user_session_path, method: :delete
+                  i.fa.fa-sign-out aria-hidden="true"
+                  | Log Out

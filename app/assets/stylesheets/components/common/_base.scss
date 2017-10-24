@@ -1,7 +1,7 @@
-#wrapper {
-  width: 1190px;
+.Body {
+  width: 1000px;
   margin: auto;
-  padding-top: 46px;
+  padding-top: 60px;
   background-color: white;
 }
 
@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.fa-red:before
-{
+// fontawesome setting
+.fa-red:before {
 	color: red ;
 }

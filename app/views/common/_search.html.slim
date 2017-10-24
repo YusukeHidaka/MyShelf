@@ -1,0 +1,10 @@
+= form_tag('/original_books/search', method: :get) do
+  = text_field_tag :book, "",  id: "search", name: "keyword", placeholder: "キーワードを入力"
+  button[title="本を検索" type="submit"]
+    i.fa.fa-search
+    span ：
+    i.fa.fa-book
+  button[title="ユーザー検索" type="submit" name="user_search"]
+    i.fa.fa-search
+    span ：
+    i.fa.fa-users
