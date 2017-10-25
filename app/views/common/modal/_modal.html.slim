@@ -1,30 +1,56 @@
-.modal-contents
-  = original_book.title
-  = image_tag(original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
-  div 現在のstatus:#{check_shelved(original_book.isbn)}
-
-  ul.regisration-items
-    li.regisration-item
-      /.read-item data-book="#{original_book.to_json}"
-      - if check_shelved(original_book.isbn) == "read"
-        = link_to check_read_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
-      - else
-        = link_to check_read_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"read")), method: :post
-    li.regisration-item
-      /.tsundoku-item data-book="#{original_book.to_json}" #{check_tsundoku_status(check_shelved(original_book.isbn))}
-      - if check_shelved(original_book.isbn) == "tsundoku"
-        = link_to check_tsundoku_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
-      - else
-        = link_to check_tsundoku_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"tsundoku")), method: :post
-    li.regisration-item
-      /.wish-item data-book="#{original_book.to_json}" #{check_wish_status(check_shelved(original_book.isbn))}
-      - if check_shelved(original_book.isbn) == "wish"
-        = link_to check_wish_status(check_shelved(original_book.isbn)), shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
-      - else
-        = link_to check_wish_status(check_shelved(original_book.isbn)), original_books_path(set_book(original_book,"wish")), method: :post
-    li.regisration-item
-      - if check_reviewed(original_book.isbn)
-        = link_to 'レビューを編集', edit_review_path(id: get_review_id(original_book.isbn)), method: :get
-      - else
-        = link_to 'レビューを投稿', original_books_path(set_book(original_book,"read")), method: :post
-  a#modal-close.button-link 閉じる
+.Modal
+  .Model__inner
+    .Modal__header
+      h1 本を登録する
+      i.fa.fa-times#modal-close aria-hidden="true"
+    .Modal__content
+      .Modal__book__info
+        - if original_book.image_url
+          = image_tag original_book.image_url, class: "Modal__pic"
+        - else
+          = image_tag 'no_image.png', class: "Modal__pic"
+        .Modal__text
+          .Modal__title = original_book.title
+          .Modal__author = original_book.author
+          = link_to "Amazonリンク", original_book.url, class: "Modal__amazon"
+      ul.Modal__action
+        - if check_shelved(original_book.isbn) == "read"
+          li.Modal__item.already
+            = link_to  shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+              i.fa.fa-check-square-o aria-hidden="true"
+              = check_read_status(check_shelved(original_book.isbn))
+        - else
+          li.Modal__item
+            = link_to  original_books_path(set_book(original_book,"read")), method: :post
+              i.fa.fa-check-square-o aria-hidden="true"
+              = check_read_status(check_shelved(original_book.isbn))
+        - if check_shelved(original_book.isbn) == "tsundoku"
+          li.Modal__item.already
+            = link_to shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+              i.fa.fa-archive aria-hidden="true"
+              = check_tsundoku_status(check_shelved(original_book.isbn))
+        - else
+          li.Modal__item
+            = link_to original_books_path(set_book(original_book,"tsundoku")), method: :post
+              i.fa.fa-archive aria-hidden="true"
+              = check_tsundoku_status(check_shelved(original_book.isbn))
+        - if check_shelved(original_book.isbn) == "wish"
+          li.Modal__item.already
+            = link_to shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+              i.fa.fa-list-ul aria-hidden="true"
+              = check_wish_status(check_shelved(original_book.isbn))
+        - else
+          li.Modal__item
+            = link_to original_books_path(set_book(original_book,"wish")), method: :post
+              i.fa.fa-list-ul aria-hidden="true"
+              = check_wish_status(check_shelved(original_book.isbn))
+        - if check_reviewed(original_book.isbn)
+          li.Modal__item.already
+            = link_to edit_review_path(id: get_review_id(original_book.isbn)), method: :get
+              i.fa.fa-pencil-square-o aria-hidden="true"
+              | レビューを編集
+        - else
+          li.Modal__item
+            = link_to original_books_path(set_book(original_book,"read")), method: :post
+              i.fa.fa-pencil-square-o aria-hidden="true"
+              | レビューを投稿

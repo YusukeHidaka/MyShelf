@@ -1,6 +1,6 @@
 $(window).on('turbolinks:load', function(){
 
-  var modals = document.getElementsByClassName( "modal-contents" );
+  var modals = document.getElementsByClassName( "Modal" );
   for(var k=0,l=modals.length; l>k; k++){
     // modalにidを付与
     modals[k].setAttribute('id', "modal-content-" + k);
@@ -54,60 +54,3 @@ $(window).on('turbolinks:load', function(){
     $( nowModalSyncer ).css( {"left": ((w - cw)/2) + "px","top": ((h - ch)/2) + "px"} );
   }
 });
-
-
-// $(".read-item").each(function(i) {
-//   var book = $(this).data("book");
-//   $(this).on("click", function(){
-//       $.post({
-//         url: "/original_books",
-//         data: {
-//             original_book: {
-//               title: book.title,
-//               author: book.author,
-//               image_url: book.image_url,
-//               publisher: book.publisher,
-//               isbn: book.isbn,
-//               publication_date: book.publication_date
-//             },
-//             status: "read"
-//           },
-//         dataType: 'json'
-//       }).then(
-//         function(original_book, status) {
-//           status = "read"
-//           // var insertHTML = '';
-//           // insertHTML = buildModalHTML(original_book, status);
-//           // $('#modal-content-23').html(insertHTML);
-//           // modal_setting();
-//         },
-//         function(data) { console.log("failed") }
-//       );
-//   });
-// });
-
-// $(".tsundoku-item").each(function(i) {
-//   $(this).on("click", function(){
-//     console.log("tsundokuを変更")
-//   });
-// });
-//
-// $(".wish-item").each(function(i) {
-//   $(this).on("click", function(){
-//     console.log("wishを変更")
-//   });
-// });
-
-// function buildModalHTML(original_book, status) {
-//   var html = `
-//     <div>
-//       <p>${original_book.title}</p>
-//       <img src="${original_book.image_url}" style="width: 70px;height: 100px;display: inline-block;">
-//       <div>
-//         現在のstatus : ${status}
-//       </div>
-//     </div>
-//     <a id="modal-close" class="button-link">閉じる</a>
-//   `
-//   return html;
-// }

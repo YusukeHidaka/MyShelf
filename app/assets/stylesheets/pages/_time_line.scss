@@ -140,7 +140,7 @@
     }
     &__reaction {
         width: 100%;
-        padding: 20px 0;
+        padding-top: 10px;
         border-top: 1px solid #eee;
         display: flex;
         position: absolute;
@@ -150,51 +150,54 @@
             font-size: 150%;
         }
     }
+    &__like {
+        cursor: pointer;
+    }
     &__comment {
-      padding-left: 20px;
+        padding-left: 20px;
     }
 
 
     &__right {
-      margin-left: auto;
-      .Book {
-        max-width: 180px;
-          &__image {
-              width: 150px;
-              height: auto;
-              display: inline-block;
-          }
-          .Status {
-              display: flex;
-              justify-content: space-around;
-              padding-top: 10px;
-              cursor: pointer;
-              &__item {
-                  margin: 1px;
-                  text-align: center;
-                  width: 100%;
-                  a {
+        margin-left: auto;
+        .Book {
+          max-width: 180px;
+            &__image {
+                width: 150px;
+                height: auto;
+                display: inline-block;
+            }
+            .Status {
+                display: flex;
+                justify-content: space-around;
+                padding-top: 10px;
+                cursor: pointer;
+                &__item {
+                    margin: 1px;
+                    text-align: center;
+                    width: 100%;
+                    a {
+                      display: block;
+                    }
+                }
+                .yet {
+                  background: #fef298;
+                  color: #D7BC43;
+                }
+                .already {
+                  background: #ffe100;
+                  color: #333;
+                }
+                &__title {
                     display: block;
-                  }
-              }
-              .yet {
-                background: #fef298;
-                color: #D7BC43;
-              }
-              .already {
-                background: #ffe100;
-                color: #333;
-              }
-              &__title {
-                  display: block;
-                  font-size: 12px;
-              }
-              &__number {
-                  font-size: 22px;
-                  font-weight: bold;
-                  padding-top: 3px;
-              }
-          }
-      }
+                    font-size: 12px;
+                }
+                &__number {
+                    font-size: 22px;
+                    font-weight: bold;
+                    padding-top: 3px;
+                }
+            }
+        }
     }
 }

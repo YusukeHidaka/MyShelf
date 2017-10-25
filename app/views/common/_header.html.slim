@@ -24,7 +24,9 @@ header
           .Header__search
             = render partial: "common/search"
           .Header__user.UserIcon
-            = image_tag current_user.image, class: "UserIcon__pic", alt: "default"
+            .UserIcon__pic
+              i.fa.fa-angle-down aria-hidden="true"
+              = image_tag current_user.image, alt: "default"
             ul.UserIcon__menu
               li.UserIcon__menu__item
                 = link_to user_path(current_user)
