@@ -18,7 +18,7 @@ header
             li.Header__navi__item
               = link_to "Shelf", user_path(current_user)
             li.Header__navi__item
-              = link_to "Reviews", reviews_users_path(current_user)
+              = link_to "Reviews", user_path(current_user)
       .Header__right
         - if user_signed_in?
           .Header__search
@@ -26,14 +26,14 @@ header
           .Header__user.UserIcon
             .UserIcon__pic
               i.fa.fa-angle-down aria-hidden="true"
-              = image_tag current_user.image, alt: "default"
+              = image_tag current_user.image, alt: "no_image.png"
             ul.UserIcon__menu
               li.UserIcon__menu__item
                 = link_to user_path(current_user)
                   i.fa.fa-barcode aria-hidden="true"
                   | My Shelf
               li.UserIcon__menu__item
-                = link_to reviews_users_path(current_user)
+                = link_to user_path(current_user)
                   i.fa.fa-newspaper-o aria-hidden="true"
                   | My Reviews
               li.UserIcon__menu__item

@@ -1,9 +1,8 @@
 .Side
   .Side__profile
-    = image_tag @user.image, :alt => "default", class: "Side__pic"
+    = image_tag @user.image, alt: "no_image.png", class: "Side__pic"
     .Side__name
-      = link_to user_path(@user)
-        h1 = @user.name
+      h1 = @user.name
     .Side__description
       p
         = @user.description
@@ -21,3 +20,12 @@
         span.Status__title フォロワー
         span.Status__number = @user.followers.count
   = render 'users/follow_form'
+  ul.Side__links
+    li.Side__links__reviews
+      = link_to user_path(@user)
+        i.fa.fa-newspaper-o.fa-3x aria-hidden="true"
+      p レビュー
+    li.Side__links__shelf
+      = link_to shelf_users_path(@user)
+        i.fa.fa-barcode.fa-3x aria-hidden="true"
+      p 本棚

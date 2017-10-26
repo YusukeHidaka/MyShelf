@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
-     @shelved_books = ShelvedBook.all.where(user_id: params[:id]).order("updated_at DESC")
+     @reviews = Review.with_user.search_with_user_id(params[:id]).page(params[:page]).per(10)
   end
 
   def edit
@@ -14,11 +14,6 @@ class UsersController < ApplicationController
   def update
     current_user.update(update_params)
     redirect_to user_path, flash: {notice: 'プロフィールを更新しました'}
-  end
-
-  def reviews
-    @user = User.find(params[:id])
-    @reviews = Review.with_user.search_with_user_id(params[:id]).page(params[:page]).per(10)
   end
 
   def following

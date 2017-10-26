@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update] do
   collection do
-      get '/:id/reviews', to: 'users#reviews', as: 'reviews'
+      get '/:id/shelf', to: 'users#shelf', as: 'shelf'
       get 'search'
     end
   member do
