@@ -16,7 +16,7 @@ header
             li.Header__navi__item
               = link_to "TimeLine", reviews_path
             li.Header__navi__item
-              = link_to "Shelf", user_path(current_user)
+              = link_to "Shelf", shelf_users_path(current_user)
             li.Header__navi__item
               = link_to "Reviews", user_path(current_user)
       .Header__right
@@ -29,7 +29,7 @@ header
               = image_tag current_user.image, alt: "no_image.png"
             ul.UserIcon__menu
               li.UserIcon__menu__item
-                = link_to user_path(current_user)
+                = link_to shelf_users_path(current_user)
                   i.fa.fa-barcode aria-hidden="true"
                   | My Shelf
               li.UserIcon__menu__item

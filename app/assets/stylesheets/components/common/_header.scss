@@ -42,9 +42,18 @@
         &__item {
             text-align: center;
             margin-left: 30px;
+            line-height: 40px;
+            &:hover {
+                color: #fff;
+                background: $color-theme;
+            }
+            .active	{
+                border-bottom: 2px solid $color-theme;
+            }
             a {
                 display: block;
                 font-size: 11px;
+                padding: 0 10px;
                 i {
                   padding: 0px 15px;
                 }

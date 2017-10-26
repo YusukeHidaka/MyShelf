@@ -32,6 +32,18 @@ class User < ApplicationRecord
     ShelvedBook.where(user_id: t_user.id).count
   end
 
+  def self.count_read_books(t_user)
+    ShelvedBook.where(user_id: t_user.id, status: "read").count
+  end
+
+  def self.count_tsundoku_books(t_user)
+    ShelvedBook.where(user_id: t_user.id, status: "tsundoku").count
+  end
+
+  def self.count_wish_books(t_user)
+    ShelvedBook.where(user_id: t_user.id, status: "wish").count
+  end
+
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end

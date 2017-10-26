@@ -36,10 +36,10 @@ class OriginalBooksController < ApplicationController
       # read関連のamountを更新
       shelved_book.update_status_amount(original_book)
 
-      if params[:status] == "read"
+      if params[:action] == "review"
         redirect_to new_review_path(id: shelved_book.id)
       else
-        redirect_to user_path(current_user.id)
+        redirect_back fallback_location: authenticated_root_path
       end
     else
       shelved_book = ShelvedBook.new(original_book_id: original_book.id, status: params[:status], user_id: current_user.id)
@@ -47,10 +47,10 @@ class OriginalBooksController < ApplicationController
         # read関連のamountを更新
         shelved_book.update_status_amount(original_book)
 
-        if params[:status] == "read"
+        if params[:action] == "review"
           redirect_to new_review_path(id: shelved_book.id)
         else
-          redirect_to user_path(current_user.id)
+          redirect_back fallback_location: authenticated_root_path
         end
       else
         flash.now[:alert] = "Some errors occured"

@@ -18,7 +18,6 @@
         display: flex;
         justify-content: space-between;
         padding-top: 5px;
-        border-bottom: 1px solid #e4e4e4;
         &__item {
             width: 100%;
             a {
@@ -43,25 +42,25 @@
         border-radius: 3px;
         transition: .4s;
         cursor: pointer;
+        margin-top: 20px;
         input {
             cursor: pointer;
         }
         &.FollowButton {
-            color: #67c5ff;
-            border: solid 2px #67c5ff;
-            &:hover {
-                background: #67c5ff;
-                color: white;
-            }
-        }
-
-        &.UnfollowButton {
             color: #fff;
-            border: solid 2px #67c5ff;
-            background: #67c5ff;
+            border: solid 2px $color-theme;
+            background: $color-theme;
             &:hover {
                 background: #fff;
-                color: #67c5ff;
+                color: $color-theme;
+            }
+        }
+        &.UnfollowButton {
+            color: $color-theme;
+            border: solid 2px $color-theme;
+            &:hover {
+                background: $color-theme;
+                color: white;
             }
         }
     }

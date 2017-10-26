@@ -1,6 +1,6 @@
 module OriginalBooksHelper
-  def set_book(book, status)
-    {original_book:{author: book.author, title: book.title, publisher: book.publisher, publication_date: book.publication_date, isbn: book.isbn, image_url: book.image_url, url: book.url}, status: status}
+  def set_book(book, status, action)
+    {original_book:{author: book.author, title: book.title, publisher: book.publisher, publication_date: book.publication_date, isbn: book.isbn, image_url: book.image_url, url: book.url}, status: status, action: action}
   end
 
   def check_shelved(isbn)

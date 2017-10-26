@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
-     @reviews = Review.with_user.search_with_user_id(params[:id]).page(params[:page]).per(10)
+     @o_reviews = Review.with_user.search_with_user_id(params[:id])
+     @reviews = @o_reviews.page(params[:page]).per(10).order("updated_at DESC")
   end
 
   def edit
@@ -32,6 +33,15 @@ class UsersController < ApplicationController
     @users = User.where("name LIKE :keyword OR email LIKE :keyword", keyword: "%#{params[:keyword]}%")
     @users.each do |user|
       @user = user
+    end
+  end
+
+  def shelf
+    @user = User.find(params[:id])
+    unless params[:set_status].present?
+      @shelved_books = ShelvedBook.where(user_id: params[:id]).page(params[:page]).per(12).order("updated_at DESC")
+    else
+      @shelved_books = ShelvedBook.where(user_id: params[:id], status: params[:set_status]).page(params[:page]).per(12).order("updated_at DESC")      
     end
   end
 
