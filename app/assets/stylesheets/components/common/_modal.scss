@@ -72,6 +72,9 @@
         padding-top: 10px;
         .already {
             background-color: gray;
+            :hover {
+                color: #fff;
+            }
         }
     }
     &__item {

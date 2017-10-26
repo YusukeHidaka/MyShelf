@@ -1,22 +1,24 @@
 .Side
   .Side__profile
-    = image_tag current_user.image, :alt => "default", class: "Side__pic"
+    = image_tag @user.image, :alt => "default", class: "Side__pic"
     .Side__name
-      = link_to user_path(current_user)
-        h1 = current_user.name
+      = link_to user_path(@user)
+        h1 = @user.name
     .Side__description
       p
-        = current_user.description
+        = @user.description
   ul.Status
     li.Status__item
-      = link_to user_path(current_user)
+      = link_to user_path(@user)
         span.Status__title 本棚
         span.Status__number = User.count_books(@user)
     li.Status__item
-      = link_to edit_user_path(current_user)
+      = link_to following_user_path(@user)
         span.Status__title フォロー
         span.Status__number = @user.followings.count
     li.Status__item
-      = link_to destroy_user_session_path, method: :delete
+      = link_to followers_user_path(@user)
         span.Status__title フォロワー
         span.Status__number = @user.followers.count
+  .FollowForm
+    = render 'users/follow_form'

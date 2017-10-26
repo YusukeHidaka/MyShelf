@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def reviews
     @user = User.find(params[:id])
-    @reviews = Review.with_user.search_with_user_id(params[:id]).order("updated_at DESC")
+    @reviews = Review.with_user.search_with_user_id(params[:id]).page(params[:page]).per(10)
   end
 
   def following
@@ -34,11 +34,6 @@ class UsersController < ApplicationController
   end
 
   def search
-    puts "======================"
-    puts "======================"
-    puts params
-    puts "======================"
-    puts "======================"
     @users = User.where("name LIKE :keyword OR email LIKE :keyword", keyword: "%#{params[:keyword]}%")
     @users.each do |user|
       @user = user

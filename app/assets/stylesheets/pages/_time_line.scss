@@ -151,7 +151,9 @@
         }
     }
     &__like {
-        cursor: pointer;
+        button {
+          cursor: pointer;
+        }
     }
     &__comment {
         padding-left: 20px;

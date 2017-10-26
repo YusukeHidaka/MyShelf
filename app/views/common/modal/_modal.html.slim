@@ -12,7 +12,6 @@
         .Modal__text
           .Modal__title = original_book.title
           .Modal__author = original_book.author
-          = link_to "Amazonリンク", original_book.url, class: "Modal__amazon"
       ul.Modal__action
         - if check_shelved(original_book.isbn) == "read"
           li.Modal__item.already

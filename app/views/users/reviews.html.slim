@@ -1,36 +1,15 @@
-p#notice
-  = notice
-h1
-  = @user.name
-  | 's Reviews
-table
-  thead
-    tr
-      th
-        | Image
-      th
-        | Title
-      th
-        | Status
-      th
-        | content
-      th
-        | 本棚に追加
-  tbody
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+.Body__content
+  = render partial: "common/side"
+  .TimeLine
+    h1.TimeLine__title
+      = @user.name
+      | さんのレビュー ： 
+      = @reviews.count
+      | 件
     - @reviews.each do |review|
-      = render partial: 'common/modal/modal', locals: { original_book: review.shelved_book.original_book }
-      tr
-        td
-          = image_tag(review.shelved_book.original_book.image_url, style: "width: 70px;height: 100px;display: inline-block;")
-        td
-          = review.shelved_book.original_book.title
-        td
-          = review.shelved_book.status
-        td
-          = review.content
-        - if @user.id == current_user.id
-          td
-            = render partial: 'common/modal/edit_button'
-        - else
-          td
-            = render partial: 'common/modal/register_button'
+      = render partial: "common/modal/modal", locals: { original_book: review.shelved_book.original_book }
+      = render partial: "reviews/review", locals: { review: review }
+    = paginate(@reviews)
