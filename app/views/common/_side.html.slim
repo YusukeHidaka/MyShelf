@@ -20,5 +20,4 @@
       = link_to followers_user_path(@user)
         span.Status__title フォロワー
         span.Status__number = @user.followers.count
-  .FollowForm
-    = render 'users/follow_form'
+  = render 'users/follow_form'

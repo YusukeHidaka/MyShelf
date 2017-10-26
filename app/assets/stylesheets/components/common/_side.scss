@@ -35,24 +35,33 @@
         }
     }
 
-    .FollowForm {
-        border-radius: 100px;
-        box-shadow: none;
-        cursor: pointer;
-        text-align: center;
-        margin-top: 15px;
-        &__button {
-            padding: 5px;
-            text-decoration: none;
-            color: #67c5ff;
-            border: solid 2px #67c5ff;
-            border-radius: 3px;
-            transition: .4s;
-        }
-        :hover {
-            cursor: pointer;
-            background: #67c5ff;
-            color: white;
-        }
+    .FollowForm{
+      display: inline-block;
+      padding: 0.3em 1em;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: .4s;
+      cursor: pointer;
+      input {
+          cursor: pointer;
+      }
+      &.FollowButton {
+          color: #67c5ff;
+          border: solid 2px #67c5ff;
+          &:hover {
+              background: #67c5ff;
+              color: white;
+          }
+      }
+
+      &.UnfollowButton {
+          color: #fff;
+          border: solid 2px #67c5ff;
+          background: #67c5ff;
+          &:hover {
+              background: #fff;
+              color: #67c5ff;
+          }
+      }
     }
 }

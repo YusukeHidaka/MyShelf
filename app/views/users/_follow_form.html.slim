@@ -1,6 +1,7 @@
 - unless current_user?(@user)
-  .FollowButton
-    - if current_user.following?(@user)
+  - if current_user.following?(@user)
+    .FollowForm.FollowButton
       = render 'unfollow'
-    - else
+  - else
+    .FollowForm.UnfollowButton
       = render 'follow'
