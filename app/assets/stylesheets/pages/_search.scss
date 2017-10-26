@@ -1,0 +1,50 @@
+.BookList {
+    display: flex;
+    flex-direction: column;
+    .Book {
+        max-width: 180px;
+        &__image {
+            width: 180px;
+            height: 240px;
+            cursor: pointer;
+            display: inline-block;
+            background-color: #ccc;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background-size: cover;
+        }
+        .Status {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 10px;
+            cursor: pointer;
+            &__item {
+                margin: 1px;
+                text-align: center;
+                width: 100%;
+                a {
+                    display: block;
+                }
+            }
+            .yet {
+                background: #fef298;
+                color: #D7BC43;
+            }
+            .already {
+                background: #ffe100;
+                color: #333;
+            }
+            &__title {
+                display: block;
+                font-size: 12px;
+            }
+            &__number {
+                font-size: 22px;
+                font-weight: bold;
+                padding-top: 3px;
+            }
+        }
+    }
+}

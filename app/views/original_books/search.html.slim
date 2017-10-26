@@ -1,4 +1,8 @@
-h2
-  | 検索結果
-#book-list
-  = render partial: 'book_list'
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+.Body__content
+  = render partial: "common/side"
+  .BookList
+    h1.BookList__title 本の検索結果
+    = render partial: 'book_list'

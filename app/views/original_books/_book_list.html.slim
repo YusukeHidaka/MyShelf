@@ -1,48 +1,27 @@
 - if @amazon_books.present?
-  table
-    thead
-      tr
-        th
-          | Image url
-        th
-          | Title
-        th
-          | Author
-        th
-          | Publisher
-        th
-          | Publication date
-        th
-          | Isbn
-        th
-          | 追加済
-        th
-          | 本を登録する
-    tbody
-      - @amazon_books.each do |book|
-        = render partial: 'common/modal/modal', locals: { original_book: book }
-        tr
-          - if book.image_url.present?
-            td
-              = link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url
+    - @amazon_books.each do |book|
+      = render partial: 'common/modal/modal', locals: { original_book: book }
+      .Book
+        = link_to book.url
+          = image_tag book.image_url, class: "Book__image"
+        ul.Status.modal-button
+          - unless check_shelved(book.isbn)
+            li.Status__item.yet
+              .Status__title
+                i.fa.fa-barcode.fa-3x  aria-hidden="true"
+              span.Status__number = OriginalBook.count_shelved(book.isbn)
           - else
-            td
-              = image_tag 'no_image.png', class: "Modal__pic"
-          td
-            = book.title
-          td
-            = book.author
-          td
-            = book.publisher
-          td
-            = book.publication_date
-          td
-            = book.isbn
-          td
-            = check_shelved(book.isbn)
-          - if check_shelved(book.isbn) == false
-            td
-              = render partial: 'common/modal/register_button'
+            li.Status__item.already
+              .Status__title
+                i.fa.fa-barcode.fa-3x  aria-hidden="true"
+              span.Status__number = OriginalBook.count_shelved(book.isbn)
+          - unless check_reviewed(book.isbn)
+            li.Status__item.yet
+              .Status__title
+                i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+              span.Status__number = OriginalBook.count_reviews(book.isbn)
           - else
-            td
-              = render partial: 'common/modal/edit_button'
+            li.Status__item.already
+              .Status__title
+                i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+              span.Status__number = OriginalBook.count_reviews(book.isbn)
