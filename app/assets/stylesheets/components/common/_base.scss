@@ -1,6 +1,7 @@
 html,body{
      height:100%;
 }
+
 #wrap{
      width: 100%;
      position: relative;
@@ -9,24 +10,18 @@ html,body{
      min-height: 100%;
      background-color: #fff;
 }
-.Body{
-     padding-bottom:140px; /*フッターの高さと同じ*/
-}
-.Footer{
-    height:140px;
-     position:absolute;
-     bottom:0;
-}
 
 body {
     background-color: #fff;
 }
+
 .Body {
     font-size: 14px;
     width: 1000px;
     margin: auto;
     padding-top: 60px;
     background-color: #fff;
+    padding-bottom:140px;
     &__content {
         display: flex;
         margin-top: 25px;
@@ -36,10 +31,19 @@ body {
 .Footer {
     width: 1000px;
     margin: auto;
-    text-align: right;;
+    text-align: right;
+    height:140px;
+    position:absolute;
+    bottom:0;
 }
 
 // fontawesome setting
 .fa-red:before {
 	color: red ;
+}
+
+.Welcome {
+    position: fixed;
+    top: 40%;
+    left: 45%;
 }

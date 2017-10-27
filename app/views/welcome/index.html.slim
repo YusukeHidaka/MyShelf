@@ -1,8 +1,9 @@
 - if flash[:notice]
   .alert.alert-success
     = flash[:notice]
-.Landing
-  - if user_signed_in?
-    = link_to "ログアウト", destroy_user_session_path, method: :delete
-  - else
-    = link_to 'Signin with Google', user_google_oauth2_omniauth_authorize_path
+.Welcome
+  = link_to user_google_oauth2_omniauth_authorize_path, class:"Welcome__login"
+    .Welcome__login__cover
+      i.fa.fa-book
+      span Myshelf
+    p Signin with Google
