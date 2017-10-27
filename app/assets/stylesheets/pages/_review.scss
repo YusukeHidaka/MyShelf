@@ -1,6 +1,7 @@
 .ReviewForm {
     display: flex;
     flex-direction: column;
+    width: 600px;
     &__new {
         border: 1px solid #ccc;
         margin: 20px;
@@ -10,12 +11,20 @@
     }
     &__header {
         display: flex;
+        flex-direction: column;
         align-items: baseline;
     }
     &__title {
         font-weight: bold;
         font-size: 20px;
         margin-right: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    &__author {
+        margin-left: 30px;
     }
     &__body {
         display: flex;
