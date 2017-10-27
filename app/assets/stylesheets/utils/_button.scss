@@ -50,62 +50,124 @@
   height: 100%;
 }
 
-.Welcome__login{
-    display: block;
-    text-decoration:none;
+// // ぱたっと
+// .Welcome__login{
+//     display: block;
+//     text-decoration:none;
+//     position: relative;
+//     margin: auto;
+//     width: 172px;
+//     height: 172px;
+//     &:hover &__cover{
+//         -webkit-transform: rotate(75deg);
+//         transform: rotate(75deg);
+//         z-index: 5;
+//     }
+//     &__cover {
+//         position: absolute;
+//         top: 0;
+//         box-shadow: 0 0 5px rgba(0,0,0,0.1), inset 0 0 40px 15px #fff;
+//         position: absolute;
+//         height: 172px;
+//         width: 172px;
+//         display: block;
+//         border: 10px solid #ffd800;
+//         background: #fff4b5;
+//         color: #ffd119;
+//         -webkit-transform-origin: 97% 0;
+//         transform-origin: 97% 0;
+//         -webkit-transition: all 0.5s ease-out;
+//         transition: all 0.5s ease-out;
+//         .fa-book {
+//             position: absolute;
+//             top: 35%;
+//             left: 0;
+//             font-size: 40px;
+//             font-weight: bold;
+//             text-align: center;
+//             width: 100%;
+//         }
+//         span {
+//             position: absolute;
+//             top: 65%;
+//             left: 0;
+//             font-size: 14px;
+//             font-weight: bold;
+//             text-align: center;
+//             width: 100%;
+//         }
+//     }
+//     p {
+//         color: #fff;
+//         font-weight: bold;
+//         line-height: 1.3;
+//         text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+//         width: 100%;
+//         height: 100%;
+//         padding: 60px 30px 20px;
+//         background: #ffc833;
+//         border: 10px solid #fff;
+//         box-shadow: 0 0 5px rgba(0,0,0,0.1);
+//     }
+// }
+
+
+.Welcome {
+  display: inline-block;
+  width: 200px;
+  height: 54px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 54px;
+  outline: none;
+}
+.Welcome__login::before,
+.Welcome__login::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+.Welcome__login,
+.Welcome__login::before,
+.Welcome__login::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+// nomal
+.Welcome__login {
     position: relative;
-    margin: auto;
-    width: 172px;
-    height: 172px;
-    &:hover &__cover{
-        -webkit-transform: rotate(75deg);
-        transform: rotate(75deg);
-        z-index: 5;
-    }
-    &__cover {
-        position: absolute;
-        top: 0;
-        box-shadow: 0 0 5px rgba(0,0,0,0.1), inset 0 0 40px 15px #fff;
-        position: absolute;
-        height: 172px;
-        width: 172px;
-        display: block;
-        border: 10px solid #ffd800;
-        background: #fff4b5;
-        color: #ffd119;
-        -webkit-transform-origin: 97% 0;
-        transform-origin: 97% 0;
-        -webkit-transition: all 0.5s ease-out;
-        transition: all 0.5s ease-out;
-        .fa-book {
-            position: absolute;
-            top: 35%;
-            left: 0;
-            font-size: 40px;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-        }
-        span {
-            position: absolute;
-            top: 65%;
-            left: 0;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-        }
-    }
-    p {
+    padding: 50px;
+    z-index: 2;
+    border: 2px solid #333;
+    color: #333;
+    line-height: 50px;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    &:hover {
         color: #fff;
-        font-weight: bold;
-        line-height: 1.3;
-        text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    }
+    &::after {
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        padding: 60px 30px 20px;
-        background: #ffc833;
-        border: 10px solid #fff;
-        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        background: #333;
+        -webkit-transform-origin: center top;
+        transform-origin: center top;
+        -webkit-transform: rotateX(90deg);
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    &:hover::after {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        opacity: 1;
     }
 }
