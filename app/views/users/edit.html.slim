@@ -1,15 +1,28 @@
-.UserEdit
-  = form_for current_user do |f|
-    h2 プロフィール画像
-    .user_image
-      = image_tag current_user.image
-    .form-group.file
-      = f.file_field :image, class: "form-control floating-label", placeholder: "画像アップロード"
-    h2
-      | 登録情報
-    .form-group
-      = f.text_field :name, placeholder: "Name", class: "form-control"
-    .form-group
-      = f.text_field :description, placeholder: "Description", class: "form-control"
-    .form-group
-      = f.submit "送信", class: "btn btn-primary withripple"
+= form_for current_user do |f|
+  .UserEdit
+    h2 プロフィール編集
+    .UserEdit__section
+      .UserEdit__topic アイコン
+      .UserEdit__form
+        = image_tag current_user.image, class: "UserEdit__image"
+        .form-group.file
+          = f.label :実装準備中, class: "UserEdit__image__label"
+          /= f.label :image, :変更する, class: "UserEdit__image__label"
+          /= f.file_field :image, class: "form-control floating-label UserEdit__image__input", placeholder: "画像アップロード"
+    .UserEdit__section
+      .UserEdit__topic 名前
+      .UserEdit__form
+        .form-group
+          = f.text_field :name, placeholder: "Name", class: "form-control UserEdit__input", size:"40"
+    .UserEdit__section
+      .UserEdit__topic メールアドレス
+      .UserEdit__form
+        .form-group
+          = f.text_field :email, placeholder: "email", class: "form-control UserEdit__input", size:"40"
+    .UserEdit__section
+      .UserEdit__topic 自己紹介
+      .UserEdit__form
+        .form-group
+          = f.text_area :description, placeholder: "Description", class: "form-control UserEdit__input", size: "40x5"
+    .form-group.Button__nomal
+      = f.submit "保存する", class: "btn btn-primary withripple"

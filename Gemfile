@@ -93,3 +93,6 @@ gem 'webpacker', github: "rails/webpacker"
 
 # font awesome
 gem 'font-awesome-sass', '~> 4.4.0'
+
+# for image
+gem 'paperclip'

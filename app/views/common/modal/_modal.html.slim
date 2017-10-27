@@ -5,7 +5,7 @@
       i.fa.fa-times#modal-close aria-hidden="true"
     .Modal__content
       .Modal__book__info
-        - if original_book.image_url
+        - if original_book.image_url.present?
           = image_tag original_book.image_url, class: "Modal__pic"
         - else
           = image_tag 'no_image.png', class: "Modal__pic"

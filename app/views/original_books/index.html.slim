@@ -36,7 +36,7 @@ table
           = original_book.title
         td
           = original_book.author
-        - if original_book.image_url
+        - if original_book.image_url.present?
           td
             = image_tag original_book.image_url
         td

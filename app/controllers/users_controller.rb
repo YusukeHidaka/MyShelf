@@ -41,14 +41,14 @@ class UsersController < ApplicationController
     unless params[:set_status].present?
       @shelved_books = ShelvedBook.where(user_id: params[:id]).page(params[:page]).per(12).order("updated_at DESC")
     else
-      @shelved_books = ShelvedBook.where(user_id: params[:id], status: params[:set_status]).page(params[:page]).per(12).order("updated_at DESC")      
+      @shelved_books = ShelvedBook.where(user_id: params[:id], status: params[:set_status]).page(params[:page]).per(12).order("updated_at DESC")
     end
   end
 
   private
 
   def update_params
-    params.require(:user).permit(:name, :description, :image)
+    params.require(:user).permit(:name, :description, :email, :image)
   end
 
   def use_before_action?

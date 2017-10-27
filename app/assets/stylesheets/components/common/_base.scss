@@ -1,9 +1,12 @@
+body {
+    background-color: #fff; 
+}
 .Body {
     font-size: 14px;
     width: 1000px;
     margin: auto;
     padding-top: 60px;
-    background-color: white;
+    background-color: #fff;
     &__content {
         display: flex;
     }

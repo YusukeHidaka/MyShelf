@@ -1,10 +1,28 @@
-h2
-  | 検索結果
-#user-list
-  - @users.each do |user|
-    table
-      tr
-        td= user.name
-        td= link_to '詳細', user_path(user)
-        td= render 'follow_form'
-        td= render 'stats'
+.UserList
+  h1 検索結果
+  .UserList__items
+    - @users.each do |user|
+      .UserList__item
+        - if user.image.present?
+          = image_tag user.image, class: "UserList__pic"
+        - else
+          = image_tag 'no_image.png', class: "UserList__pic"
+        .UserList__name
+          = user.name
+        .UserList__desctiption
+
+          = link_to '詳細', user_path(user)
+          - unless current_user?(user)
+            - if current_user.following?(user)
+              .FollowForm.FollowButton
+                = form_for(current_user.following_relationships.find_by(following_id: user.id),html: { method: :delete }) do |f|
+                  = f.submit "フォローを解除する"
+            - else
+              .FollowForm.UnfollowButton
+                = form_for(current_user.following_relationships.build(following_id: user.id)) do |f|
+                  = f.hidden_field :following_id
+                  = f.submit "フォローする"
+          - else
+            .FollowForm.FollowButton
+              | 自分のアカウント
+          = render 'stats'

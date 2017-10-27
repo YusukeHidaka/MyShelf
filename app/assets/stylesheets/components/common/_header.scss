@@ -5,7 +5,6 @@
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         position: fixed;
         z-index: 998;
-        background: gray;
     }
     &__inner {
         display: flex;
@@ -98,17 +97,17 @@
         position: relative;
         .UserIcon {
             &__pic {
-              cursor: pointer;
-              img {
-                  background-color: #F2F2F2;
-                  box-shadow: 0 0 0 1px #DBDBDB;
-                  border-radius: 50%;
-                  display: inline-block;
-                  overflow: hidden;
-                  vertical-align: middle;
-                  width: 35px;
-                  height: 35px;
-                  margin-left: 8px;
+                cursor: pointer;
+                img {
+                    background-color: #F2F2F2;
+                    box-shadow: 0 0 0 1px #DBDBDB;
+                    border-radius: 50%;
+                    display: inline-block;
+                    overflow: hidden;
+                    vertical-align: middle;
+                    width: 35px;
+                    height: 35px;
+                    margin-left: 8px;
                 }
             }
             &__menu {

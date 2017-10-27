@@ -179,16 +179,19 @@
                     text-align: center;
                     width: 100%;
                     a {
-                      display: block;
+                        display: block;
                     }
                 }
                 .yet {
-                  background: #fef298;
-                  color: #D7BC43;
+                    opacity: 0.5;
+                    background: $color-theme;
+                    &:hover {
+                        opacity: 1;
+                    }
                 }
                 .already {
-                  background: #ffe100;
-                  color: #333;
+                    background: $color-theme;
+                    color: #333;
                 }
                 &__title {
                     display: block;

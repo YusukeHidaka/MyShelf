@@ -1,0 +1,51 @@
+.Button__nomal {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: .4s;
+    cursor: pointer;
+    margin: auto;
+    color: $color-theme;
+    border: solid 2px $color-theme;
+    background: #fff;
+    &:hover {
+        background: $color-theme;
+        color: #fff;
+    }
+    input {
+        cursor: pointer;
+    }
+}
+.Button__cross {
+    display: inline-block;
+    position: relative;
+    padding: 0.25em 1em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    text-decoration: none;
+    font-weight: bold;
+    color: #03A9F4;
+}
+.Button__cross:before, .Button__cross:after{
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: black;
+  transition: .3s;
+}
+.Button__cross:before {left: 7px;}
+.Button__cross:after {right: 7px;}
+.Button__cross:hover:before{
+  top: 0px;
+  left:0;
+  height: 100%;
+}
+.Button__cross:hover:after{
+  top: 0px;
+  right: 0;
+  height: 100%;
+}
