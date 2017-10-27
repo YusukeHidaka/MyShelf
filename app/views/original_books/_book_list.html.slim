@@ -7,24 +7,38 @@
             = image_tag book.image_url, class: "Book__image"
           - else
             = image_tag 'no_image.png', class: "Book__image"
-        ul.Status.modal-button
-          - unless check_shelved(book.isbn)
-            li.Status__item.yet
-              .Status__title
-                i.fa.fa-barcode.fa-3x  aria-hidden="true"
-              span.Status__number = OriginalBook.count_shelved(book.isbn)
-          - else
-            li.Status__item.already
-              .Status__title
-                i.fa.fa-barcode.fa-3x  aria-hidden="true"
-              span.Status__number = OriginalBook.count_shelved(book.isbn)
-          - unless check_reviewed(book.isbn)
-            li.Status__item.yet
-              .Status__title
-                i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-              span.Status__number = OriginalBook.count_reviews(book.isbn)
-          - else
-            li.Status__item.already
-              .Status__title
-                i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-              span.Status__number = OriginalBook.count_reviews(book.isbn)
+        .Book__text
+          .Book__info
+            .Book__title
+              = link_to book.url
+                = book.title
+            .Book__author
+              = book.author
+            .Book__date
+              = book.publication_date
+          ul.Status.modal-button
+            - unless check_shelved(book.isbn)
+              li.Status__item.yet
+                | 本棚追加数
+                .Status__title
+                  i.fa.fa-barcode.fa-3x  aria-hidden="true"
+                span.Status__number = OriginalBook.count_shelved(book.isbn)
+            - else
+              li.Status__item.already
+                | 本棚追加数
+                .Status__title
+                  i.fa.fa-barcode.fa-3x  aria-hidden="true"
+                span.Status__number = OriginalBook.count_shelved(book.isbn)
+            - unless check_reviewed(book.isbn)
+              li.Status__item.yet
+                | レビュー数
+                .Status__title
+                  i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+                span.Status__number = OriginalBook.count_reviews(book.isbn)
+            - else
+              li.Status__item.already
+                | レビュー数
+                .Status__title
+                  i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+                span.Status__number = OriginalBook.count_reviews(book.isbn)
+          .Book__button

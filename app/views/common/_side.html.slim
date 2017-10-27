@@ -8,10 +8,6 @@
         = @user.description
   ul.Status
     li.Status__item
-      = link_to user_path(@user)
-        span.Status__title 本棚
-        span.Status__number = User.count_books(@user)
-    li.Status__item
       = link_to following_user_path(@user)
         span.Status__title フォロー
         span.Status__number = @user.followings.count
@@ -21,11 +17,17 @@
         span.Status__number = @user.followers.count
   = render 'users/follow_form'
   ul.Side__links
-    li.Side__links__reviews
+    span レビュー
+    li
       = link_to user_path(@user)
         i.fa.fa-newspaper-o.fa-3x aria-hidden="true"
-      p レビュー
-    li.Side__links__shelf
+        span.Side__links__number ：
+        span.Side__links__number = User.count_reviews(@user)
+        span.Side__links__number  件
+    span 本棚
+    li
       = link_to shelf_users_path(@user)
         i.fa.fa-barcode.fa-3x aria-hidden="true"
-      p 本棚
+        span.Side__links__number ：
+        span.Side__links__number = User.count_books(@user)
+        span.Side__links__number  冊

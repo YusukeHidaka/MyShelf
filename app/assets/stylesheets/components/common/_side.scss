@@ -18,8 +18,8 @@
         display: flex;
         justify-content: space-between;
         padding-top: 5px;
+        margin-right: 50px;
         &__item {
-            width: 100%;
             a {
               display: block;
             }
@@ -67,10 +67,20 @@
 
     &__links {
         margin-top: 20px;
+        margin-right: 40px;
         display: flex;
-        text-align: center;
-        &__reviews {
-          margin-right: 20px;
+        flex-direction: column;
+        text-align: left;
+        &__number {
+            font-size: 38px;
+            font-weight: bold;
+            padding-top: 3px;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        i {
+            width: 48px;
         }
     }
 }

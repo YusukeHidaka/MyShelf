@@ -1,7 +1,7 @@
 - unless current_user?(@user)
   - if current_user.following?(@user)
     .FollowForm.FollowButton
-      = render 'unfollow'
+      = render 'unfollow', locals: {user: @user}
   - else
     .FollowForm.UnfollowButton
-      = render 'follow'
+      = render 'follow', locals: {user: @user}

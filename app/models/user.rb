@@ -32,6 +32,10 @@ class User < ApplicationRecord
     ShelvedBook.where(user_id: t_user.id).count
   end
 
+  def self.count_reviews(t_user)
+    Review.with_user.search_with_user_id(t_user.id).count
+  end
+
   def self.count_read_books(t_user)
     ShelvedBook.where(user_id: t_user.id, status: "read").count
   end

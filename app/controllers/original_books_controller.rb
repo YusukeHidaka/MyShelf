@@ -7,16 +7,6 @@ class OriginalBooksController < ApplicationController
   end
 
   def create
-    puts "========================"
-    puts "========================"
-    puts "========================"
-    puts "========================"
-    puts "params"
-    puts params
-    puts "========================"
-    puts "========================"
-    puts "========================"
-    puts "========================"
     original_book = create_original_book
     create_shelved_book(original_book)
   end

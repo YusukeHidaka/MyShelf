@@ -1,11 +1,21 @@
 .BookList {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
     .Book {
-        max-width: 180px;
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid #aaa;
+        padding: 20px;
+        border: 1px solid #eee;
+        background-color: #fff;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        margin-bottom: 20px;
         &__image {
-            width: 180px;
-            height: 240px;
+            width: 220x;
+            height: 320px;
             cursor: pointer;
             display: inline-block;
             background-color: #ccc;
@@ -15,11 +25,27 @@
             border: 1px solid #ccc;
             background-size: cover;
         }
+        &__text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+        &__info {
+
+        }
+        &__title {
+            font-size: 20px;
+            font-weight: bold;
+        }
         .Status {
             display: flex;
             justify-content: space-around;
             padding-top: 10px;
             cursor: pointer;
+            margin-top: auto;
+            margin-bottom: 20px;
+            width: 400px;
             &__item {
                 margin: 1px;
                 text-align: center;
@@ -29,19 +55,26 @@
                 }
             }
             .yet {
-                background: #fef298;
-                color: #D7BC43;
+                color: #333;
+                opacity: 0.5;
+                background: $color-theme;
+                &:hover {
+                    opacity: 1;
+                }
             }
             .already {
-                background: #ffe100;
+                background: $color-theme;
                 color: #333;
             }
             &__title {
                 display: block;
                 font-size: 12px;
+                i {
+                    padding: 10px;
+                }
             }
             &__number {
-                font-size: 22px;
+                font-size: 30px;
                 font-weight: bold;
                 padding-top: 3px;
             }
