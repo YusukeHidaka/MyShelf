@@ -16,6 +16,9 @@
         height: 60px;
         margin: 0 auto;
         z-index: 999;
+        @include mq-sp {
+            width: 640px;
+        }
     }
     &__left {
         display: flex;
