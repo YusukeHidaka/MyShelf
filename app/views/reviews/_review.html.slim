@@ -22,7 +22,7 @@
           = review.shelved_book.original_book.author
         .Review__sentence
           span
-            = review.content
+            = simple_format(h(review.content))
         .Review__reaction
           .Review__like
             span id="like-of-#{review.id}"
