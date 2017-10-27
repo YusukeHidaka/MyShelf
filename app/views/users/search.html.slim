@@ -3,26 +3,38 @@
   .UserList__items
     - @users.each do |user|
       .UserList__item
-        - if user.image.present?
-          = image_tag user.image, class: "UserList__pic"
-        - else
-          = image_tag 'no_image.png', class: "UserList__pic"
-        .UserList__name
-          = user.name
-        .UserList__desctiption
-
-          = link_to '詳細', user_path(user)
+        .UserList__basic
+          - if user.image.present?
+            = image_tag user.image, class: "UserList__pic"
+          - else
+            = image_tag 'no_image.png', class: "UserList__pic"
+          .UserList__name
+            = link_to user_path(user)
+              = user.name
+        .UserList__follow
+          ul.Status
+            li.Status__item
+              = link_to user_path(user)
+                span.Status__title 本棚
+                span.Status__number = User.count_books(user)
+            li.Status__item
+              = link_to following_user_path(user)
+                span.Status__title フォロー
+                span.Status__number = user.followings.count
+            li.Status__item
+              = link_to followers_user_path(user)
+                span.Status__title フォロワー
+                span.Status__number = user.followers.count
           - unless current_user?(user)
             - if current_user.following?(user)
               .FollowForm.FollowButton
                 = form_for(current_user.following_relationships.find_by(following_id: user.id),html: { method: :delete }) do |f|
-                  = f.submit "フォローを解除する"
+                  = f.submit "フォロー中"
             - else
               .FollowForm.UnfollowButton
                 = form_for(current_user.following_relationships.build(following_id: user.id)) do |f|
                   = f.hidden_field :following_id
-                  = f.submit "フォローする"
+                  = f.submit "フォロー"
           - else
-            .FollowForm.FollowButton
-              | 自分のアカウント
-          = render 'stats'
+            .SelfFollowButton
+              | 自分

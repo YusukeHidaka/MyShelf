@@ -58,6 +58,7 @@
 // UserList
 
 .UserList {
+    margin: 25px;
     display: flex;
     flex-direction: column;
     &__items {
@@ -69,33 +70,47 @@
     &__item {
         border: 1px solid #DBDBDB;
         border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        margin: 20px 10px;
+    }
+    &__basic {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
     }
     &__pic {
-        height: 50px;
+        height: 30px;
         border-radius: 5px;
+        margin: 5px 30px 0 5px;
     }
     &__name {
-        font-size: 26px;
-        line-height: 60px;
+        font-size: 16px;
     }
-    &__description {
-        padding-bottom: 10px;
-        border-bottom: 1px solid #e4e4e4;
+
+    &__follow {
+        display: flex;
+        align-items: flex-end;
+    }
+    .FollowForm {
+        margin-left: auto
     }
 
     .Status {
         display: flex;
         justify-content: space-between;
         padding-top: 5px;
+        text-align: center;
         &__item {
-            width: 100%;
+            width: 50px;
             a {
               display: block;
             }
         }
         &__title {
             display: block;
-            font-size: 12px;
+            font-size: 10px;
         }
         &__number {
             font-size: 22px;
@@ -106,13 +121,17 @@
 
     .FollowForm{
         display: inline-block;
+        height: 30px;
+        line-height: 2;
         padding: 0.3em 1em;
+        margin-right: 5px;
+        margin-bottom: 5px;
         text-decoration: none;
         border-radius: 3px;
         transition: .4s;
         cursor: pointer;
-        margin-top: 20px;
-        width: 150px;
+        width: 75px;
+        font-size: 10px;
         text-align: center;
         input {
             cursor: pointer;
@@ -134,6 +153,23 @@
                 color: white;
             }
         }
+    }
+    .SelfFollowButton {
+        display: inline-block;
+        height: 30px;
+        line-height: 2;
+        padding: 0.3em 1em;
+        margin-left: auto;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        text-decoration: none;
+        border-radius: 3px;
+        width: 75px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+        border: solid 2px $color-theme;
+        background: $color-theme;
     }
 
     &__links {

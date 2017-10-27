@@ -1,38 +1,42 @@
-.FollowList
+.UserList
   h1
-    = @user.name
-    | さんのフォローリスト
-  .FollowList__items
-    - @user.followings.each do |user|
-      .FollowList__item
-        .FollowList__profile
-          = image_tag user.image, alt: "no_image.png", class: "FollowList__pic"
-          .FollowList__name
-            h2
+   = @user.name
+   | さんのフォロワーリスト
+  .UserList__items
+    - @users.each do |user|
+      .UserList__item
+        .UserList__basic
+          - if user.image.present?
+            = image_tag user.image, class: "UserList__pic"
+          - else
+            = image_tag 'no_image.png', class: "UserList__pic"
+          .UserList__name
             = link_to user_path(user)
               = user.name
-          .FollowList__description
-            p
-              = user.description
-        ul.Status
-          li.Status__item
-            = link_to user_path(user)
-              span.Status__title 本棚
-              span.Status__number = User.count_books(user)
-          li.Status__item
-            = link_to following_user_path(user)
-              span.Status__title フォロー
-              span.Status__number = user.followings.count
-          li.Status__item
-            = link_to followers_user_path(user)
-              span.Status__title フォロワー
-              span.Status__number = user.followers.count
-        ul.FollowList__links
-          li.FollowList__reviews
-            = link_to user_path(user)
-              i.fa.fa-newspaper-o.fa-3x aria-hidden="true"
-            p レビュー
-          li.FollowList__shelf
-            = link_to shelf_users_path(user)
-              i.fa.fa-barcode.fa-3x aria-hidden="true"
-            p 本棚
+        .UserList__follow
+          ul.Status
+            li.Status__item
+              = link_to user_path(user)
+                span.Status__title 本棚
+                span.Status__number = User.count_books(user)
+            li.Status__item
+              = link_to following_user_path(user)
+                span.Status__title フォロー
+                span.Status__number = user.followings.count
+            li.Status__item
+              = link_to followers_user_path(user)
+                span.Status__title フォロワー
+                span.Status__number = user.followers.count
+          - unless current_user?(user)
+            - if current_user.following?(user)
+              .FollowForm.FollowButton
+                = form_for(current_user.following_relationships.find_by(following_id: user.id),html: { method: :delete }) do |f|
+                  = f.submit "フォロー中"
+            - else
+              .FollowForm.UnfollowButton
+                = form_for(current_user.following_relationships.build(following_id: user.id)) do |f|
+                  = f.hidden_field :following_id
+                  = f.submit "フォロー"
+          - else
+            .SelfFollowButton
+              | 自分
