@@ -58,7 +58,6 @@
 // UserList
 
 .UserList {
-    margin: 25px;
     display: flex;
     flex-direction: column;
     &__items {
@@ -72,7 +71,6 @@
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-        width: 25%;
         margin: 20px 10px;
     }
     &__basic {

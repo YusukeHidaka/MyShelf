@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @user = current_user
     # TODO:params(指定のshelved_book.id)がなかった場合本棚に飛ばす処理
     if params[:id].nil?
       # redirect_to user_path(current_user.id), flash: {notice: 'レビューを書く本を選択してください'}
@@ -34,6 +35,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @user = current_user
   end
 
   def update

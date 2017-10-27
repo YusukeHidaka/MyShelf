@@ -1,0 +1,74 @@
+.ReviewForm {
+    display: flex;
+    flex-direction: column;
+    &__new {
+        border: 1px solid #ccc;
+        margin: 20px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    &__header {
+        display: flex;
+        align-items: baseline;
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-right: 20px;
+    }
+    &__body {
+        display: flex;
+    }
+    &__pic {
+        width: 180px;
+        height: 240px;
+        cursor: pointer;
+        display: inline-block;
+        background-color: #ccc;
+        background-position: center center;
+        background-repeat: no-repeat;
+        margin: 5px;
+        border: 1px solid #ccc;
+        background-size: cover;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    &__input {
+        border-radius: 5px;
+        border: 1px solid #DBDBDB;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        padding: 5px;
+        margin: 10px;
+    }
+    &__selects {
+        display: flex;
+        align-items: baseline;
+        margin-left: 10px;
+    }
+    &__status {
+        border-radius: 5px;
+        border: 1px solid #DBDBDB;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        select {
+          	width: 100%;
+          	padding: 5px;
+          	-webkit-appearance: none;
+          	-moz-appearance: none;
+          	appearance: none;
+          	border: 1px solid #999;
+            cursor: pointer;
+            &:hover {
+                background-color: #eee;
+            }
+        }
+    }
+    .Button__nomal {
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: 0;
+        margin-right: 5px;
+    }
+}

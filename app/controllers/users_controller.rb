@@ -31,9 +31,7 @@ class UsersController < ApplicationController
 
   def search
     @users = User.where("name LIKE :keyword OR email LIKE :keyword", keyword: "%#{params[:keyword]}%")
-    @users.each do |user|
-      @user = user
-    end
+    @user = current_user
   end
 
   def shelf

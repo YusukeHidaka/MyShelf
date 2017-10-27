@@ -7,6 +7,16 @@ class OriginalBooksController < ApplicationController
   end
 
   def create
+    puts "========================"
+    puts "========================"
+    puts "========================"
+    puts "========================"
+    puts "params"
+    puts params
+    puts "========================"
+    puts "========================"
+    puts "========================"
+    puts "========================"
     original_book = create_original_book
     create_shelved_book(original_book)
   end
@@ -36,7 +46,7 @@ class OriginalBooksController < ApplicationController
       # read関連のamountを更新
       shelved_book.update_status_amount(original_book)
 
-      if params[:action] == "review"
+      if params[:kind] == "review"
         redirect_to new_review_path(id: shelved_book.id)
       else
         redirect_back fallback_location: authenticated_root_path
@@ -47,7 +57,7 @@ class OriginalBooksController < ApplicationController
         # read関連のamountを更新
         shelved_book.update_status_amount(original_book)
 
-        if params[:action] == "review"
+        if params[:kind] == "review"
           redirect_to new_review_path(id: shelved_book.id)
         else
           redirect_back fallback_location: authenticated_root_path

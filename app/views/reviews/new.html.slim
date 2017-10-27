@@ -1,25 +1,35 @@
-.contents.row
-  .container
-    h3
-      |  投稿する
-    = form_for @review, url: reviews_path do |f|
-      .form-group
-      - if @shelved_book.present?
-        = f.hidden_field :shelved_book_id, :value => @shelved_book.id
-        = image_tag @shelved_book.original_book.image_url
-        = @shelved_book.original_book.title
-        = @shelved_book.original_book_id
-      - else
-        = f.select :shelved_book_id, options_from_collection_for_select(set_condition, :id, :original_book_id)
-      - unless @review.content.blank?
-        = f.text_area :content, placeholder: @review.content
-      - else
-        = f.text_area :content, placeholder: "reviewを入力してください"
-      = fields_for :shelved_book do |s|
-        .form-group
-          = s.label :status
-          - if @shelved_book.present?
-            = s.select :status, ["read", "tsundoku", "wish"], :prompt => @shelved_book.status
-          - else
-            = s.select :status, ["read", "tsundoku", "wish"], :prompt => "read"
-      = f.submit "レビューを投稿する"
+- if flash[:notice]
+  .alert.alert-success
+    = flash[:notice]
+.Body__content
+  = render partial: "common/side"
+  .ReviewForm
+    h1 レビューを投稿する
+    .ReviewForm__new
+      = form_for @review, url: reviews_path do |f|
+        .ReviewForm__header
+          .ReviewForm__title
+            = @shelved_book.original_book.title
+          .ReviewForm__author
+            = @shelved_book.original_book.author
+        .ReviewForm__body
+          = link_to @shelved_book.original_book.url
+            - if @shelved_book.original_book.image_url.present?
+              = image_tag @shelved_book.original_book.image_url, class: "ReviewForm__pic"
+            - else
+              = image_tag 'no_image.png', class: "ReviewForm__pic"
+          .ReviewForm__form
+            .form-group
+            - unless @review.content.blank?
+              = f.text_area :content, placeholder: @review.content, class: "ReviewForm__input", size: "40x7"
+            - else
+              = f.text_area :content, placeholder: "感想を書きましょう", class: "ReviewForm__input", size: "40x7"
+            = f.hidden_field :shelved_book_id, :value => @shelved_book.id
+            .ReviewForm__selects
+              = fields_for :shelved_book do |s|
+                .form-group
+                  = s.label :ステータス
+                  .ReviewForm__status
+                    = s.select :status, ["read", "tsundoku", "wish"], :prompt => @shelved_book.status
+              .form-group.Button__nomal
+                = f.submit "レビューを投稿する"
