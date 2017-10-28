@@ -1,4 +1,7 @@
 .Side {
+    @include mq-sp {
+        display: none;
+    }
     width: 280px;
     padding: 25px;
     &__pic {

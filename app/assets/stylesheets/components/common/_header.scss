@@ -12,13 +12,11 @@
         align-items: center;
         background: #fff;
         position: relative;
-        width: 1000px;
+        max-width: 1000px;
         height: 60px;
         margin: 0 auto;
+        padding: 0 20px;
         z-index: 999;
-        @include mq-sp {
-            width: 640px;
-        }
     }
     &__left {
         display: flex;
@@ -26,6 +24,9 @@
         align-items: center;
     }
     &__logo {
+        @include mq-sp {
+            display: none;
+        }
         margin-left: 20px;
         text-align: center;
         &__title {
@@ -37,10 +38,9 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        // @include menu-font;
-        // @include mq-sp {
-        //     flex-direction: column;
-        // }
+        @include mq-sp {
+            display: none;
+        }
         &__item {
             text-align: center;
             margin-left: 30px;
@@ -156,6 +156,16 @@
                     }
                 }
             }
+        }
+    }
+    &__button {
+        @include mq-pc {
+            display: none;
+        }
+        @include mq-sp {
+            display: block;
+            color: $color-main-text;
+            font-size: 22px;
         }
     }
 }

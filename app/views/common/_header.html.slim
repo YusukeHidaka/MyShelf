@@ -2,6 +2,8 @@ header
   .Header__back
     .Header__inner
       .Header__left
+        .Header__button
+          span.fa.fa-bars
         .Header__logo
           - if user_signed_in?
             = link_to reviews_path
