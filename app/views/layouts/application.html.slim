@@ -11,5 +11,8 @@ html
     #wrap
       = render partial: 'common/header'
       .Body
+        - flash.each do |key, value|
+          div class=("Alert Alert__#{key}")
+            = value
         = yield
       = render partial: 'common/footer'

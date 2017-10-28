@@ -1,0 +1,17 @@
+.Alert {
+    margin-left: 25px;
+    margin-top: 25px;
+    padding: 10px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    opacity: 0.8;
+    &__success {
+        background-color: $color-theme;
+    }
+    &__notice {
+        background-color: $color-theme;
+    }
+    &__alert {
+        background-color: $color-theme-red;
+    }
+}

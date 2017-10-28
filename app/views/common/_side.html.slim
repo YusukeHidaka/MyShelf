@@ -6,16 +6,8 @@
     .Side__description
       p
         = @user.description
-  ul.Status
-    li.Status__item
-      = link_to following_user_path(@user)
-        span.Status__title フォロー
-        span.Status__number = @user.followings.count
-    li.Status__item
-      = link_to followers_user_path(@user)
-        span.Status__title フォロワー
-        span.Status__number = @user.followers.count
-  = render 'users/follow_form'
+  .Follow id="side-follow-of-#{@user.id}"
+    = render partial: 'relationships/side_follow_form', locals: { user: @user }
   ul.Side__links
     span レビュー
     li

@@ -4,6 +4,7 @@ class OriginalBook < ApplicationRecord
   # presence: true,
   uniqueness: true
   has_many :shelved_books, dependent: :destroy
+  has_one :original_book_ranking, dependent: :destroy
 
   def self.count_shelved(t_book)
     original_book = OriginalBook.find_by(isbn: t_book)

@@ -15,27 +15,5 @@
             .UserList__name
               = link_to user_path(user)
                 = user.name
-          .UserList__follow
-            ul.Status
-              li.Status__item
-                = link_to user_path(user)
-                  span.Status__title 本棚
-                  span.Status__number = User.count_books(user)
-              li.Status__item
-                = link_to following_user_path(user)
-                  span.Status__title フォロー
-                  span.Status__number = user.followings.count
-              li.Status__item
-                = link_to followers_user_path(user)
-                  span.Status__title フォロワー
-                  span.Status__number = user.followers.count
-            - unless current_user?(user)
-              - if current_user.following?(user)
-                .FollowForm.FollowButton
-                  = render partial: "unfollow", locals: {user: user}
-              - else
-                .FollowForm.UnfollowButton
-                  = render partial: "follow", locals: {user: user}
-            - else
-              .SelfFollowButton
-                | 自分
+          .UserList__follow id="follow-of-#{user.id}"
+            = render partial: 'relationships/follow_form', locals: { user: user }

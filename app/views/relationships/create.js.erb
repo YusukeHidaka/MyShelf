@@ -1,0 +1,2 @@
+$("#follow-of-<%= @user.id %>").html("<%= j(render partial: 'follow_form', locals: { user: @user }) %>")
+$("#side-follow-of-<%= @user.id %>").html("<%= j(render partial: 'side_follow_form', locals: { user: @user }) %>")

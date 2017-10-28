@@ -10,7 +10,7 @@ class ShelvedBooksController < ApplicationController
   def destroy
     shelved_book = ShelvedBook.find(params[:id])
     shelved_book.destroy
-    redirect_to user_path(current_user.id)
+    redirect_to user_path(current_user.id), flash: {success: '削除が完了しました。'}
   end
 
   private
