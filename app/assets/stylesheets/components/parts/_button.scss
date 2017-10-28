@@ -113,13 +113,14 @@
 
 
 .Welcome {
-  display: inline-block;
   width: 200px;
   height: 54px;
   text-align: center;
   text-decoration: none;
   line-height: 54px;
   outline: none;
+  margin: 40% auto;
+
 }
 .Welcome__login::before,
 .Welcome__login::after {
