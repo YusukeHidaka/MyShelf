@@ -39,7 +39,8 @@ class OriginalBooksController < ApplicationController
       if params[:kind] == "review"
         redirect_to new_review_path(id: shelved_book.id)
       else
-        redirect_back fallback_location: authenticated_root_path
+        message = '「' + original_book.title + '」のステータスを「' + params[:status] + '」に変更しました'
+        redirect_back fallback_location: authenticated_root_path, flash: { success: message}
       end
     else
       shelved_book = ShelvedBook.new(original_book_id: original_book.id, status: params[:status], user_id: current_user.id)
@@ -50,7 +51,8 @@ class OriginalBooksController < ApplicationController
         if params[:kind] == "review"
           redirect_to new_review_path(id: shelved_book.id)
         else
-          redirect_back fallback_location: authenticated_root_path
+          message = '本棚に「' + original_book.title + '」を追加しました'
+          redirect_back fallback_location: authenticated_root_path, flash: { success: message }
         end
       else
         flash.now[:alert] = "Some errors occured"
