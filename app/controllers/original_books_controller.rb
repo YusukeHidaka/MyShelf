@@ -21,6 +21,7 @@ class OriginalBooksController < ApplicationController
       return original_book
     else
       original_book = OriginalBook.new(original_book_params)
+
       if original_book.save
         return original_book
       else
@@ -31,11 +32,20 @@ class OriginalBooksController < ApplicationController
   end
 
   def create_shelved_book(original_book)
+    # ranking がない場合作成
+    original_book_ranking = OriginalBookRanking.find_by(original_book_id: original_book.id)
+    unless original_book_ranking.present?
+      OriginalBookRanking.create(original_book_id: original_book.id)
+    end
+
     if shelved_book = ShelvedBook.find_by(original_book_id: original_book.id, user_id: current_user.id)
       # statusをupdate
       shelved_book.update_attributes(status: params[:status])
       # read関連のamountを更新
       shelved_book.update_status_amount(original_book)
+
+      # ranking用のデータを更新
+      original_book_ranking.update_amount(original_book, original_book_ranking)
 
       if params[:kind] == "review"
         redirect_to new_review_path(id: shelved_book.id)
@@ -48,6 +58,8 @@ class OriginalBooksController < ApplicationController
       if shelved_book.save
         # read関連のamountを更新
         shelved_book.update_status_amount(original_book)
+        # ranking用のデータを更新
+        original_book_ranking.update_amount(original_book, original_book_ranking)
 
         if params[:kind] == "review"
           redirect_to new_review_path(id: shelved_book.id)
@@ -76,10 +88,6 @@ class OriginalBooksController < ApplicationController
   def original_book_params
     params.require(:original_book).permit(:title, :author, :image_url, :publisher, :isbn, :publication_date, :read_amount, :tsundoku_amount, :wish_amount, :url)
   end
-
-  # def shelved_book_params
-  #   params.require(:shelved_book).permit(:status).merge(user_id: current_user.id, original_book_id: original_book.id)
-  # end
 
   def use_before_action?
     true
