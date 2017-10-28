@@ -1,5 +1,6 @@
 class OriginalBooksController < ApplicationController
   def index
+    @user = current_user
     @original_books = OriginalBook.all
   end
 

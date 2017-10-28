@@ -18,6 +18,8 @@ header
               = link_to "Shelf", shelf_users_path(current_user)
             li.Header__navi__item
               = link_to "Reviews", user_path(current_user)
+            li.Header__navi__item
+              = link_to "Ranking", original_book_rankings_path
       .Header__right
         - if user_signed_in?
           .Header__search

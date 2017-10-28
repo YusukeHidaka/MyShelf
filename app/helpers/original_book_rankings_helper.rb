@@ -1,0 +1,2 @@
+module OriginalBookRankingsHelper
+end

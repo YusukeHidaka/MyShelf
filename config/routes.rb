@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :original_book_rankings, only: [:index]
 
   devise_scope :user do
     authenticated :user do
