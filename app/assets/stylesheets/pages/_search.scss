@@ -34,10 +34,10 @@
         overflow-wrap: break-word;
         margin-bottom: 20px;
         &__image {
-            width: 220x;
+            width: 220px;
             height: 320px;
             cursor: pointer;
-            display: inline-block;
+            display: block;
             background-color: #ccc;
             background-position: center center;
             background-repeat: no-repeat;
