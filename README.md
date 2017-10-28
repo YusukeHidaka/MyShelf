@@ -36,6 +36,8 @@ go to `localhost:3000/` on browser
 │     │
 │     └── /search => Book Search (AmazonAPI)
 │
+├── original_books_rankings => Ranking
+│
 └── * => 404
 ```
 
