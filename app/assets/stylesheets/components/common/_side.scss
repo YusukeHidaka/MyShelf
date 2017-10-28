@@ -19,6 +19,7 @@
         justify-content: space-between;
         padding-top: 5px;
         margin-right: 50px;
+        margin-bottom: 20px;
         &__item {
             a {
               display: block;
@@ -42,7 +43,8 @@
         border-radius: 3px;
         transition: .4s;
         cursor: pointer;
-        margin-top: 20px;
+        text-align: center;
+        width: 45%;
         input {
             cursor: pointer;
         }
@@ -82,5 +84,23 @@
         i {
             width: 48px;
         }
+    }
+    .SelfFollowButton {
+        display: inline-block;
+        height: 30px;
+        line-height: 2;
+        padding: 0.3em 1em;
+        margin-left: auto;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        text-decoration: none;
+        border-radius: 3px;
+        width: 75px;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        color: #fff;
+        border: solid 2px $color-theme;
+        background: $color-theme;
     }
 }

@@ -1,0 +1,13 @@
+- unless current_user?(user)
+  - if current_user.following?(user)
+    .FollowForm.FollowButton
+      = form_for(current_user.following_relationships.find_by(following_id: user.id),html: { method: :delete }, remote: true) do |f|
+       = f.submit "フォロー中"
+  - else
+    .FollowForm.UnfollowButton
+      = form_for(current_user.following_relationships.build(following_id: user.id), remote: true) do |f|
+        = f.hidden_field :following_id
+        = f.submit "フォロー"
+- else
+    .SelfFollowButton
+      | ログイン中

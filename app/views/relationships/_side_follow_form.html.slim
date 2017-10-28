@@ -1,0 +1,10 @@
+ul.Status
+  li.Status__item
+    = link_to following_user_path(user)
+      span.Status__title フォロー
+      span.Status__number = user.followings.count
+  li.Status__item
+    = link_to followers_user_path(user)
+      span.Status__title フォロワー
+      span.Status__number = user.followers.count
+= render partial: 'relationships/follow_button', locals: { user: user }
