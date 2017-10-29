@@ -1,7 +1,7 @@
 .Body__content
   = render partial: "common/side"
   .BookList
-    h1.BookList__title 本棚追加数ランキング
+    h2.BookList__title 本棚追加数ランキング
     - if @original_books.present?
         - @original_books.each do |book|
           = render partial: 'common/modal/modal', locals: { original_book: book }

@@ -3,6 +3,10 @@
     flex-direction: column;
     width: 500px;
     margin: auto;
+    @include mq-sp {
+      width: 80%;
+      font-size: 25px;
+    }
     h2 {
         border-bottom: 2px solid $color-theme;
         padding: 10px 0;

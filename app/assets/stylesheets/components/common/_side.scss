@@ -51,6 +51,10 @@
         input {
             cursor: pointer;
         }
+        @include mq-sp {
+            width: 100%;
+            font-size: 20px;
+        }
         &.FollowButton {
             color: #fff;
             border: solid 2px $color-theme;
@@ -105,5 +109,8 @@
         color: #fff;
         border: solid 2px $color-theme;
         background: $color-theme;
+        @include mq-sp {
+            width: 100%;
+        }
     }
 }

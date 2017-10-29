@@ -1,4 +1,11 @@
-.TimeLine{
+.TimeLineSP {
+  .Side {
+    @include mq-sp {
+        display: block;
+    }
+  }
+}
+.TimeLine {
     display: flex;
     flex-direction: column;
     background-color: #fff;

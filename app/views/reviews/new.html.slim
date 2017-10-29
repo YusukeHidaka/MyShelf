@@ -1,7 +1,7 @@
 .Body__content
   = render partial: "common/side"
   .ReviewForm
-    h1 レビューを投稿する
+    h2 レビューを投稿する
     .ReviewForm__new
       = form_for @review, url: reviews_path do |f|
         .ReviewForm__header

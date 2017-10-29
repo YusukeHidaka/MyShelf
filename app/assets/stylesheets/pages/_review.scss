@@ -2,6 +2,18 @@
     display: flex;
     flex-direction: column;
     width: 600px;
+    @include mq-sp {
+        width:100%;
+        font-size: 30px;
+        margin: 15px;
+    }
+    h2 {
+        border-bottom: 2px solid $color-theme;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        margin-top: 0;
+    }
     &__new {
         border: 1px solid #ccc;
         margin: 20px;
@@ -40,6 +52,10 @@
         margin: 5px;
         border: 1px solid #ccc;
         background-size: cover;
+        @include mq-sp {
+            height: 360px;
+            width: 270px;
+        }
     }
     &__form {
         display: flex;

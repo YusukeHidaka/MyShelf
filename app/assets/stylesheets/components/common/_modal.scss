@@ -1,5 +1,11 @@
 
 .Modal {
+    @include mq-sp {
+        min-width: 800px;
+        min-height: 700px;
+        top: 10% !important;
+        left: 12% !important;
+    }
     min-width: 500px;
     max-width: 500px;
     height: auto;
@@ -18,12 +24,20 @@
         flex-direction: column;
     }
     &__header {
+        @include mq-sp {
+            line-height: 80px;
+            font-size: 25px;
+        }
         display: flex;
         justify-content: flex-start;
         align-items: center;
         i:first-of-type {
             cursor: pointer;
             margin-left: auto;
+            @include mq-sp {
+                margin-right: 2%;
+                font-size: 2em;
+            }
         }
         font-size: 16px;
         line-height: 44px;
@@ -43,6 +57,9 @@
     &__pic {
         height: 100px;
         margin-right: 10px;
+        @include mq-sp {
+            height: 300px;
+        }
     }
     &__text {
         display: flex;
@@ -51,9 +68,16 @@
     &__title {
         font-size: 130%;
         font-weight: bold;
+        @include mq-sp {
+          font-size: 200%;
+          font-weight: bold;
+        }
     }
     &__author {
         margin-left: 10px;
+        @include mq-sp {
+          font-size: 25px;
+        }
     }
     &__amazon {
         background-color: #f7d479;
@@ -78,6 +102,10 @@
         }
     }
     &__item {
+        @include mq-sp {
+          font-size: 30px;
+          padding: 1em;
+        }
         font-size: 12px;
         line-height: 38px;
         text-decoration: none;
