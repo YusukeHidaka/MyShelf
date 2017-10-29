@@ -1,6 +1,7 @@
 class ShelvedBook < ApplicationRecord
-  belongs_to :original_book, optional: true
-  belongs_to :user
+  belongs_to :original_book, dependent:   :destroy
+  belongs_to :user, dependent:   :destroy
+  has_one :review
 
   enum status: { tsundoku: 0, read: 1, wish: 2 }
 

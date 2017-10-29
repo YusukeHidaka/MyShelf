@@ -4,6 +4,8 @@ class OriginalBook < ApplicationRecord
   # presence: true,
   uniqueness: true
   has_many :shelved_books, dependent: :destroy
+  has_many :book_reviews, through: :colored_books, dependent: :destroy
+  has_many :users, through: :colored_books, dependent: :destroy
   has_one :original_book_ranking, dependent: :destroy
 
   def self.count_shelved(t_book)
