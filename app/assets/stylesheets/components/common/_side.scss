@@ -1,9 +1,9 @@
 .Side {
+    width: 280px;
+    padding: 25px;
     @include mq-sp {
         display: none;
     }
-    width: 280px;
-    padding: 25px;
     &__pic {
         height: 230px;
         border-radius: 5px;

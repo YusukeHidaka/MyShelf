@@ -17,6 +17,10 @@
         margin: 0 auto;
         padding: 0 20px;
         z-index: 999;
+        @include mq-sp {
+            height: 100px;
+            padding: 0 40px;
+        }
     }
     &__left {
         display: flex;
@@ -67,8 +71,16 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        @include mq-sp {
+            justify-content: flex-end;
+            width: 100%;
+        }
     }
     &__search {
+        @include mq-sp {
+            width: 80%;
+            padding: 10px;
+        }
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -87,12 +99,21 @@
                 border-radius: 5px;
                 border: 1px solid #DBDBDB;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+                @include mq-sp {
+                    width: 40%;
+                    font-size: 25px;
+                }
             }
             button {
                 cursor: pointer;
                 margin-left: 10px;
                 padding: 2px 10px;
                 border: 1px solid #DBDBDB;
+                @include mq-sp {
+                    width: 20%;
+                    font-size: 25px;
+                    padding: 4px 10px;
+                }
             }
         }
     }
@@ -111,11 +132,23 @@
                     width: 35px;
                     height: 35px;
                     margin-left: 8px;
+                    @include mq-sp {
+                      width: 70px;
+                      height: 70px;
+                    }
+                }
+                i {
+                    @include mq-sp {
+                        font-size: 2em;
+                    }
                 }
             }
             &__menu {
                 z-index: 999;
                 width: 200px;
+                @include mq-sp {
+                    width: 300px;
+                }
                 position: absolute;
                 right: 10%;
                 display: none;
@@ -127,6 +160,9 @@
                 box-shadow: 0 2px 1px rgba(0,0,0,.1);
                 background: #fff;
                 &__item {
+                    @include mq-sp {
+                        padding: 20px 50px;
+                    }
                     position: relative;
                     border-bottom: 1px solid #b5b5b5;
                     color: #b5b5b5;
@@ -150,6 +186,9 @@
                         display:block;
                         width:100%;
                         padding: 0 22px;
+                        @include mq-sp {
+                            font-size: 25px;
+                        }
                     }
                     i {
                         margin-right: 10px;
@@ -159,6 +198,7 @@
         }
     }
     &__button {
+        margin: 10px;
         @include mq-pc {
             display: none;
         }
@@ -166,6 +206,46 @@
             display: block;
             color: $color-main-text;
             font-size: 22px;
+        }
+        .Header__menu {
+            z-index: 999;
+            position: absolute;
+            display: none;
+            margin: 15px 0;
+            border: 1px solid #b5b5b5;
+            border-radius: 4px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 1px rgba(0,0,0,.1);
+            background: #fff;
+            &__item {
+                position: relative;
+                border-bottom: 1px solid #b5b5b5;
+                color: #b5b5b5;
+                line-height: 45px;
+                cursor: pointer;
+                display:block;
+                padding: 20px 50px;
+                margin: 0;
+                :first-of-type {
+                    border-radius: 4px 4px 0 0;
+                }
+                :last-of-type {
+                    border-bottom: 0;
+                    border-radius: 0 0 4px 4px;
+                }
+                :hover,.selection {
+                    background: #f9f9f9;
+                }
+                a {
+                    font-size: 25px;
+                    display:block;
+                    width:100%;
+                    padding: 0 22px;
+                }
+                i {
+                    margin-right: 10px;
+                }
+            }
         }
     }
 }

@@ -3,7 +3,24 @@ header
     .Header__inner
       .Header__left
         .Header__button
-          span.fa.fa-bars
+          i.fa.fa-bars.fa-2x.Header__trigger aria-hidden="true"
+          ul.Header__menu
+            li.Header__menu__item
+              = link_to reviews_path
+                i.fa.fa-home aria-hidden="true"
+                | Time Line
+            li.Header__menu__item
+              = link_to shelf_users_path(current_user)
+                i.fa.fa-barcode aria-hidden="true"
+                | My Shelf
+            li.Header__menu__item
+              = link_to user_path(current_user)
+                i.fa.fa-newspaper-o aria-hidden="true"
+                | My Reviews
+            li.Header__menu__item
+              = link_to original_book_rankings_path
+                i.fa.fa-flash aria-hidden="true"
+                | Ranking
         .Header__logo
           - if user_signed_in?
             = link_to reviews_path
@@ -32,13 +49,9 @@ header
               = image_tag current_user.image, alt: "no_image.png"
             ul.UserIcon__menu
               li.UserIcon__menu__item
-                = link_to shelf_users_path(current_user)
-                  i.fa.fa-barcode aria-hidden="true"
-                  | My Shelf
-              li.UserIcon__menu__item
                 = link_to user_path(current_user)
                   i.fa.fa-newspaper-o aria-hidden="true"
-                  | My Reviews
+                  | My Page
               li.UserIcon__menu__item
                 = link_to edit_user_path(current_user)
                   i.fa.fa-cog aria-hidden="true"
