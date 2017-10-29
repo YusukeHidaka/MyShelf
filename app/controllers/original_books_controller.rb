@@ -35,7 +35,7 @@ class OriginalBooksController < ApplicationController
     # ranking がない場合作成
     original_book_ranking = OriginalBookRanking.find_by(original_book_id: original_book.id)
     unless original_book_ranking.present?
-      OriginalBookRanking.create(original_book_id: original_book.id)
+      original_book_ranking = OriginalBookRanking.create(original_book_id: original_book.id)
     end
 
     if shelved_book = ShelvedBook.find_by(original_book_id: original_book.id, user_id: current_user.id)
