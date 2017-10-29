@@ -78,13 +78,16 @@ go to `localhost:3000/` on browser
 
 ## SCSS policy
 - using BEM
--
 
 ## Main Function
-- Search books -> done
+- Login via google
+- Search books by amazon API -> done
 - Post/Edit review -> done
 - Like/Unlike review -> done
-- Ajax of like -> done
+- Follow/Refollow user -> done
+- Ajax of like, follow -> done
+- Search users -> done
+- Book Ranking -> done
 - Comment -> pending
 - Add book from gmail by amazon -> pending
 - Change book status by Ajax -> pending
@@ -93,7 +96,10 @@ go to `localhost:3000/` on browser
 
 ### OriginalBooks
 #### association
-- has_many :shelved_books
+- has_many :shelved_books, dependent: :destroy
+- has_many :book_reviews, through: :colored_books, dependent: :destroy
+- has_many :users, through: :colored_books, dependent: :destroy
+- has_one :original_book_ranking, dependent: :destroy
 #### columns
 - title            :string
 - author           :string
@@ -109,8 +115,9 @@ go to `localhost:3000/` on browser
 
 ### ShelvedlBooks
 #### association
-- belongs_to :original_book, optional: true
-- has_one :review
+- belongs_to :original_book, dependent:   :destroy
+- belongs_to :user, dependent:   :destroy
+- has_one :review,  dependent: :destroy
 #### columns
 - original_book_id :integer
 - status           :references, foreign_key :true
@@ -119,22 +126,12 @@ go to `localhost:3000/` on browser
 
 ### Reviews
 #### association
-- belongs_to :user
-- belongs_to :shelved_book
+- belongs_to :shelved_book, dependent: :destroy
 - has_many   :likes
 - has_many   :comments
 #### columns
 - content         :text
 - shelved_book_id :integer
-
-
-### Comments
-#### association
-- belongs_to :review, dependent: :destroy
-#### columns
-- content   :text
-- user_id   :integer
-- review_id :integer
 
 
 ### Likes
@@ -144,5 +141,28 @@ go to `localhost:3000/` on browser
 - user_id   :integer
 - review_id :integer
 
-## Comming Soon
-- user follow, unfollow
+
+### Relationships
+#### association
+- belongs_to :follower, class_name: "User"
+- belongs_to :following, class_name: "User"
+#### columns
+- follower_id  :integer
+- following_id :integer
+
+
+### OriginalBookRankings
+#### association
+- belongs_to :original_book, dependent: :destroy
+#### columns
+- original_book_id :integer
+- shelved_amount   :integer
+
+
+### Comments
+#### association
+- belongs_to :review, dependent: :destroy
+#### columns
+- content   :text
+- user_id   :integer
+- review_id :integer
