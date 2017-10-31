@@ -5,7 +5,6 @@
     @include mq-sp {
         width:100%;
         font-size: 30px;
-        margin: 15px;
     }
     h2 {
         border-bottom: 2px solid $color-theme;
@@ -40,6 +39,7 @@
     }
     &__body {
         display: flex;
+        justify-content: space-around;
     }
     &__pic {
         width: 180px;
