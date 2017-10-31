@@ -38,21 +38,25 @@
         - unless check_shelved(review.shelved_book.original_book.isbn)
           li.Status__item.yet
             .Status__title
+              p 本棚
               i.fa.fa-barcode.fa-3x  aria-hidden="true"
             span.Status__number = OriginalBook.count_shelved(review.shelved_book.original_book.isbn)
         - else
           li.Status__item.already
             .Status__title
+              p 本棚
               i.fa.fa-barcode.fa-3x  aria-hidden="true"
             span.Status__number = OriginalBook.count_shelved(review.shelved_book.original_book.isbn)
         - unless check_reviewed(review.shelved_book.original_book.isbn)
           li.Status__item.yet
             .Status__title
+              p 感想
               i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
             span.Status__number = OriginalBook.count_reviews(review.shelved_book.original_book.isbn)
         - else
           li.Status__item.already
             .Status__title
+              p 感想
               i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
             span.Status__number = OriginalBook.count_reviews(review.shelved_book.original_book.isbn)
   hr/
