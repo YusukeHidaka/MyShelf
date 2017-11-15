@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-  resources :shelved_books, only: [:edit, :destroy]
-  resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy] do
+  resources :colored_books, only: [:edit, :destroy]
+  resources :book_reviews, only: [:index, :edit, :new, :create, :update, :destroy] do
     resources :likes, only: [:create, :destroy]
   end
   resources :original_books, only: [:index, :create] do

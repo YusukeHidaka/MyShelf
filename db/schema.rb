@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20171028110537) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
-    t.integer "review_id"
+    t.integer "book_review_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20171028110537) do
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
-    t.integer "review_id"
+    t.integer "book_review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "original_book_rankings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "original_book_id", null: false
-    t.integer "shelved_amount", default: 0, null: false
+    t.integer "colored_amount", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,12 +60,12 @@ ActiveRecord::Schema.define(version: 20171028110537) do
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "shelved_book_id", null: false
+    t.integer "colored_book_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "likes_count", default: 0
-    t.index ["shelved_book_id"], name: "index_reviews_on_shelved_book_id"
+    t.index ["colored_book_id"], name: "index_reviews_on_colored_book_id"
   end
 
   create_table "shelved_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

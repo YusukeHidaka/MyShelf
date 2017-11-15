@@ -11,7 +11,7 @@ class OriginalBook < ApplicationRecord
   def self.count_shelved(t_book)
     original_book = OriginalBook.find_by(isbn: t_book)
     if original_book.present?
-      ShelvedBook.where(original_book_id: original_book.id).count
+      ColoredBook.where(original_book_id: original_book.id).count
     else
       return 0
     end
@@ -20,7 +20,7 @@ class OriginalBook < ApplicationRecord
   def self.count_reviews(t_book)
     original_book = OriginalBook.find_by(isbn: t_book)
     if original_book.present?
-      Review.with_shelved_book.search_with_original_book_id(original_book.id).count
+      BookReview.with_original_book.search_with_original_book_id(original_book.id).count
     else
       return 0
     end
