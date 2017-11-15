@@ -32,7 +32,7 @@ class User < ApplicationRecord
     ColoredBook.where(user_id: t_user.id).count
   end
 
-  def self.count_reviews(t_user)
+  def self.count_book_reviews(t_user)
     BookReview.with_user.search_with_user_id(t_user.id).count
   end
 
@@ -46,6 +46,10 @@ class User < ApplicationRecord
 
   def self.count_wish_books(t_user)
     ColoredBook.where(user_id: t_user.id, status: "wish").count
+  end
+
+  def self.count_quit_books(t_user)
+    ColoredBook.where(user_id: t_user.id, status: "quit").count
   end
 
   def following?(other_user)

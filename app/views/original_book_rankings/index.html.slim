@@ -38,11 +38,11 @@
                     | レビュー数
                     .Status__title
                       i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-                    span.Status__number = OriginalBook.count_reviews(book.isbn)
+                    span.Status__number = OriginalBook.count_book_reviews(book.isbn)
                 - else
                   li.Status__item.already
                     | レビュー数
                     .Status__title
                       i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-                    span.Status__number = OriginalBook.count_reviews(book.isbn)
+                    span.Status__number = OriginalBook.count_book_reviews(book.isbn)
               .Book__button

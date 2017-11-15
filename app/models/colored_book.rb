@@ -6,9 +6,9 @@ class ColoredBook < ApplicationRecord
 
   def update_status_amount(original_book)
     target_book_reviews = ColoredBook.where(original_book_id: original_book.id)
-    original_book.update_attributes!(:read_amount, target_book_reviews.where(status: "read").count)
-    original_book.update_attributes!(:tsundoku_amount, target_book_reviews.where(status: "tsundoku").count)
-    original_book.update_attributes!(:wish_amount, target_book_reviews.where(status: "wish").count)
-    original_book.update_attributes!(:quit_amount, target_book_reviews.where(status: "quit").count)
+    original_book.update_attributes!(read_amount: target_book_reviews.where(status: "read").count)
+    original_book.update_attributes!(tsundoku_amount: target_book_reviews.where(status: "tsundoku").count)
+    original_book.update_attributes!(wish_amount: target_book_reviews.where(status: "wish").count)
+    original_book.update_attributes!(quit_amount: target_book_reviews.where(status: "quit").count)
   end
 end

@@ -17,7 +17,7 @@ class OriginalBook < ApplicationRecord
     end
   end
 
-  def self.count_reviews(t_book)
+  def self.count_book_reviews(t_book)
     original_book = OriginalBook.find_by(isbn: t_book)
     if original_book.present?
       BookReview.with_original_book.search_with_original_book_id(original_book.id).count

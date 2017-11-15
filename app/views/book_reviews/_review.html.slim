@@ -52,11 +52,11 @@
             .Status__title
               p 感想
               i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-            span.Status__number = OriginalBook.count_reviews(book_review.colored_book.original_book.isbn)
+            span.Status__number = OriginalBook.count_book_reviews(book_review.colored_book.original_book.isbn)
         - else
           li.Status__item.already
             .Status__title
               p 感想
               i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-            span.Status__number = OriginalBook.count_reviews(book_review.colored_book.original_book.isbn)
+            span.Status__number = OriginalBook.count_book_reviews(book_review.colored_book.original_book.isbn)
   hr/

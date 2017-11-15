@@ -39,13 +39,13 @@ end
 
 # / → welcome:index ( only logged out user can visit here like landing page )
 # │
-# ├── reviews  => Tilme Line (root_path)
+# ├── book_reviews  => Tilme Line (root_path)
 # │
 # ├── users => User List (pending)
 # │     │
 # │     ├── /:id => Profile
 # │     │    │
-# │     │    ├── /reviews => One's Reviews
+# │     │    ├── /book_reviews => One's BookReviews
 # │     │    │
 # │     │    └── /shelf => One's Shelf
 # │     │

@@ -22,6 +22,10 @@
           = link_to shelf_users_path(@user, set_status: "wish")
             span.Counter__title 読みたい
             span.Counter__number = User.count_wish_books(@user)
+        li.Counter__item
+          = link_to shelf_users_path(@user, set_status: "quit")
+            span.Counter__title 辞めた
+            span.Counter__number = User.count_quit_books(@user)
     .Shelf__books
       - @colored_books.each do |colored_book|
         = render partial: "common/modal/modal", locals: { original_book: colored_book.original_book }

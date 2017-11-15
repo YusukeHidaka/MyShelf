@@ -43,6 +43,16 @@
             = link_to original_books_path(set_book(original_book,"wish", "add")), method: :post
               i.fa.fa-list-ul aria-hidden="true"
               = check_wish_status(check_colored(original_book.isbn))
+        - if check_colored(original_book.isbn) == "quit"
+          li.Modal__item.already
+            = link_to colored_book_path(get_colored_book_id(original_book.isbn)), method: :delete
+              i.fa.fa-list-ul aria-hidden="true"
+              = check_quit_status(check_colored(original_book.isbn))
+        - else
+          li.Modal__item
+            = link_to original_books_path(set_book(original_book,"quit", "add")), method: :post
+              i.fa.fa-list-ul aria-hidden="true"
+              = check_quit_status(check_colored(original_book.isbn))
         - if check_book_reviewed(original_book.isbn)
           li.Modal__item.already
             = link_to edit_book_review_path(id: get_book_review_id(original_book.isbn)), method: :get
@@ -50,6 +60,6 @@
               | レビューを編集
         - else
           li.Modal__item
-            = link_to original_books_path(set_book(original_book,"read", "review")), method: :post
+            = link_to original_books_path(set_book(original_book,"read", "book_review")), method: :post
               i.fa.fa-pencil-square-o aria-hidden="true"
               | レビューを投稿
