@@ -1,0 +1,62 @@
+.TimeLine__review.Review
+  .Review__left
+    .Review__head
+      = image_tag book_review.colored_book.user.image, class: "Review__head__pic"
+      .Review__head__info
+        .Review__head__text
+          = link_to book_review.colored_book.user.name, user_path(book_review.colored_book.user)
+          span さんがレビューを投稿しました
+        .Review__head__date = time_ago_in_words(book_review.created_at)
+      .Review__head__setting
+        - if user_signed_in? && current_user.id == book_review.colored_book.user_id
+          i.fa.fa-cog.fa-2x  aria-hidden="true"
+          ul.Review__head__setting__menu
+            li.Review__head__setting__menu__item
+              = link_to '編集', "/book_reviews/#{book_review.id}/edit", method: :get
+            li.Review__head__setting__menu__item
+              = link_to '削除', "/book_reviews/#{book_review.id}", method: :delete
+    .Review__body
+      .Review__content
+        = link_to book_review.colored_book.original_book.title, book_review.colored_book.original_book.url, class: "Review__title"
+        .Review__author
+          = book_review.colored_book.original_book.author
+        .Review__sentence
+          span
+            = simple_format(h(book_review.content))
+        .Review__reaction
+          .Review__like
+            span id="like-of-#{book_review.id}"
+              = render partial: 'likes/like', locals: { book_review: book_review }
+          .Review__comment
+            i.fa.fa-comment.fa-2x
+            span 0
+  .Review__right
+    .Book
+      = link_to book_review.colored_book.original_book.url
+        = image_tag book_review.colored_book.original_book.image_url, class: "Book__image"
+      ul.Status.modal-button
+        - unless check_colored(book_review.colored_book.original_book.isbn)
+          li.Status__item.yet
+            .Status__title
+              p 本棚
+              i.fa.fa-barcode.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_colored(book_review.colored_book.original_book.isbn)
+        - else
+          li.Status__item.already
+            .Status__title
+              p 本棚
+              i.fa.fa-barcode.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_colored(book_review.colored_book.original_book.isbn)
+        - unless check_book_reviewed(book_review.colored_book.original_book.isbn)
+          li.Status__item.yet
+            .Status__title
+              p 感想
+              i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_book_reviews(book_review.colored_book.original_book.isbn)
+        - else
+          li.Status__item.already
+            .Status__title
+              p 感想
+              i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
+            span.Status__number = OriginalBook.count_book_reviews(book_review.colored_book.original_book.isbn)
+  hr/

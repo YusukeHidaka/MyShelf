@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
-     @o_reviews = Review.with_user.search_with_user_id(params[:id])
-     @reviews = @o_reviews.page(params[:page]).per(10).order("updated_at DESC")
+     @o_book_reviews = BookReview.with_user.search_with_user_id(params[:id])
+     @book_reviews = @o_book_reviews.page(params[:page]).per(10).order("updated_at DESC")
   end
 
   def edit
@@ -37,9 +37,9 @@ class UsersController < ApplicationController
   def shelf
     @user = User.find(params[:id])
     unless params[:set_status].present?
-      @shelved_books = ShelvedBook.where(user_id: params[:id]).page(params[:page]).per(12).order("updated_at DESC")
+      @colored_books = ColoredBook.where(user_id: params[:id]).page(params[:page]).per(12).order("updated_at DESC")
     else
-      @shelved_books = ShelvedBook.where(user_id: params[:id], status: params[:set_status]).page(params[:page]).per(12).order("updated_at DESC")
+      @colored_books = ColoredBook.where(user_id: params[:id], status: params[:set_status]).page(params[:page]).per(12).order("updated_at DESC")
     end
   end
 

@@ -22,9 +22,13 @@
           = link_to shelf_users_path(@user, set_status: "wish")
             span.Counter__title 読みたい
             span.Counter__number = User.count_wish_books(@user)
+        li.Counter__item
+          = link_to shelf_users_path(@user, set_status: "quit")
+            span.Counter__title 辞めた
+            span.Counter__number = User.count_quit_books(@user)
     .Shelf__books
-      - @shelved_books.each do |shelved_book|
-        = render partial: "common/modal/modal", locals: { original_book: shelved_book.original_book }
+      - @colored_books.each do |colored_book|
+        = render partial: "common/modal/modal", locals: { original_book: colored_book.original_book }
         .Shelf__book
-          = image_tag shelved_book.original_book.image_url, alt: "no_image.png", class: "Shelf__pic modal-button"
-    = paginate(@shelved_books)
+          = image_tag colored_book.original_book.image_url, alt: "no_image.png", class: "Shelf__pic modal-button"
+    = paginate(@colored_books)

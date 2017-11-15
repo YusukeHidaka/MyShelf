@@ -51,7 +51,7 @@ go to `localhost:3000/` on browser
 ```
 / → welcome:index ( only logged out user can visit here like landing page )
 │
-├── reviews  => Tilme Line (root_path)
+├── book_reviews  => Tilme Line (root_path)
 │
 ├── users => User List (pending)
 │     │
@@ -61,7 +61,7 @@ go to `localhost:3000/` on browser
 │     │    │
 │     │    ├── /followers => One's Followers
 │     │    │
-│     │    └── /reviews => One's Reviews
+│     │    └── /book_reviews => One's book_reviews
 │     │
 │     └── /search => User Search
 │
@@ -82,8 +82,8 @@ go to `localhost:3000/` on browser
 ## Main Function
 - Login via google
 - Search books by amazon API -> done
-- Post/Edit review -> done
-- Like/Unlike review -> done
+- Post/Edit book_review -> done
+- Like/Unlike book_review -> done
 - Follow/Refollow user -> done
 - Ajax of like, follow -> done
 - Search users -> done
@@ -96,8 +96,8 @@ go to `localhost:3000/` on browser
 
 ### OriginalBooks
 #### association
-- has_many :shelved_books, dependent: :destroy
-- has_many :book_reviews, through: :colored_books, dependent: :destroy
+- has_many :colored_books, dependent: :destroy
+- has_many :book_book_reviews, through: :colored_books, dependent: :destroy
 - has_many :users, through: :colored_books, dependent: :destroy
 - has_one :original_book_ranking, dependent: :destroy
 #### columns
@@ -113,33 +113,33 @@ go to `localhost:3000/` on browser
 - url              :string
 
 
-### ShelvedlBooks
+### ColoredBooks
 #### association
 - belongs_to :original_book, dependent:   :destroy
 - belongs_to :user, dependent:   :destroy
-- has_one :review,  dependent: :destroy
+- has_one :book_review,  dependent: :destroy
 #### columns
 - original_book_id :integer
 - status           :references, foreign_key :true
 - user_id          :references, foreign_key :true
 
 
-### Reviews
+### BookReviews
 #### association
-- belongs_to :shelved_book, dependent: :destroy
+- belongs_to :colored_book, dependent: :destroy
 - has_many   :likes
 - has_many   :comments
 #### columns
 - content         :text
-- shelved_book_id :integer
+- colored_book_id :integer
 
 
 ### Likes
 #### association
-- belongs_to :review, dependent: :destroy
+- belongs_to :book_review, dependent: :destroy
 #### columns
 - user_id   :integer
-- review_id :integer
+- book_review_id :integer
 
 
 ### Relationships
@@ -156,13 +156,13 @@ go to `localhost:3000/` on browser
 - belongs_to :original_book, dependent: :destroy
 #### columns
 - original_book_id :integer
-- shelved_amount   :integer
+- colored_amount   :integer
 
 
 ### Comments
 #### association
-- belongs_to :review, dependent: :destroy
+- belongs_to :book_review, dependent: :destroy
 #### columns
 - content   :text
 - user_id   :integer
-- review_id :integer
+- book_review_id :integer

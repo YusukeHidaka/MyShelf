@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-  resources :shelved_books, only: [:edit, :destroy]
-  resources :reviews, only: [:index, :edit, :new, :create, :update, :destroy] do
+  resources :colored_books, only: [:edit, :destroy]
+  resources :book_reviews, only: [:index, :edit, :new, :create, :update, :destroy] do
     resources :likes, only: [:create, :destroy]
   end
   resources :original_books, only: [:index, :create] do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'reviews#index', as: :authenticated_root
+      root :to => 'book_reviews#index', as: :authenticated_root
     end
     unauthenticated :user do
       root :to => "welcome#index", as: :unauthenticated_root
@@ -39,13 +39,13 @@ end
 
 # / → welcome:index ( only logged out user can visit here like landing page )
 # │
-# ├── reviews  => Tilme Line (root_path)
+# ├── book_reviews  => Tilme Line (root_path)
 # │
 # ├── users => User List (pending)
 # │     │
 # │     ├── /:id => Profile
 # │     │    │
-# │     │    ├── /reviews => One's Reviews
+# │     │    ├── /book_reviews => One's BookReviews
 # │     │    │
 # │     │    └── /shelf => One's Shelf
 # │     │

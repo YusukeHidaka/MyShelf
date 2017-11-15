@@ -1,8 +1,0 @@
-.Body__content
-  = render partial: "common/side"
-  .TimeLine
-    h2.TimeLine__title タイムライン
-    - @reviews.each do |review|
-      = render partial: "common/modal/modal", locals: { original_book: review.shelved_book.original_book }
-      = render partial: "review", locals: { review: review }
-    = paginate(@reviews)
