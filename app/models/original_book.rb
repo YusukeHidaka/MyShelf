@@ -3,12 +3,12 @@ class OriginalBook < ApplicationRecord
   validates :isbn,
   # presence: true,
   uniqueness: true
-  has_many :shelved_books, dependent: :destroy
+  has_many :colored_books, dependent: :destroy
   has_many :book_reviews, through: :colored_books, dependent: :destroy
   has_many :users, through: :colored_books, dependent: :destroy
   has_one :original_book_ranking, dependent: :destroy
 
-  def self.count_shelved(t_book)
+  def self.count_colored(t_book)
     original_book = OriginalBook.find_by(isbn: t_book)
     if original_book.present?
       ColoredBook.where(original_book_id: original_book.id).count

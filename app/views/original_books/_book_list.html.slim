@@ -17,28 +17,28 @@
             .Book__date
               = book.publication_date
           ul.Status.modal-button
-            - unless check_shelved(book.isbn)
+            - unless check_colored(book.isbn)
               li.Status__item.yet
                 | 本棚追加数
                 .Status__title
                   i.fa.fa-barcode.fa-3x  aria-hidden="true"
-                span.Status__number = OriginalBook.count_shelved(book.isbn)
+                span.Status__number = OriginalBook.count_colored(book.isbn)
             - else
               li.Status__item.already
                 | 本棚追加数
                 .Status__title
                   i.fa.fa-barcode.fa-3x  aria-hidden="true"
-                span.Status__number = OriginalBook.count_shelved(book.isbn)
-            - unless check_reviewed(book.isbn)
+                span.Status__number = OriginalBook.count_colored(book.isbn)
+            - unless check_book_reviewed(book.isbn)
               li.Status__item.yet
                 | レビュー数
                 .Status__title
                   i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-                span.Status__number = OriginalBook.count_reviews(book.isbn)
+                span.Status__number = OriginalBook.count_book_reviews(book.isbn)
             - else
               li.Status__item.already
                 | レビュー数
                 .Status__title
                   i.fa.fa-newspaper-o.fa-3x  aria-hidden="true"
-                span.Status__number = OriginalBook.count_reviews(book.isbn)
+                span.Status__number = OriginalBook.count_book_reviews(book.isbn)
           .Book__button

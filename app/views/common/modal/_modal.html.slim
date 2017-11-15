@@ -13,39 +13,39 @@
           .Modal__title = original_book.title
           .Modal__author = original_book.author
       ul.Modal__action
-        - if check_shelved(original_book.isbn) == "read"
+        - if check_colored(original_book.isbn) == "read"
           li.Modal__item.already
-            = link_to  shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+            = link_to  colored_book_path(get_colored_book_id(original_book.isbn)), method: :delete
               i.fa.fa-check-square-o aria-hidden="true"
-              = check_read_status(check_shelved(original_book.isbn))
+              = check_read_status(check_colored(original_book.isbn))
         - else
           li.Modal__item
             = link_to  original_books_path(set_book(original_book,"read", "add")), method: :post
               i.fa.fa-check-square-o aria-hidden="true"
-              = check_read_status(check_shelved(original_book.isbn))
-        - if check_shelved(original_book.isbn) == "tsundoku"
+              = check_read_status(check_colored(original_book.isbn))
+        - if check_colored(original_book.isbn) == "tsundoku"
           li.Modal__item.already
-            = link_to shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+            = link_to colored_book_path(get_colored_book_id(original_book.isbn)), method: :delete
               i.fa.fa-archive aria-hidden="true"
-              = check_tsundoku_status(check_shelved(original_book.isbn))
+              = check_tsundoku_status(check_colored(original_book.isbn))
         - else
           li.Modal__item
             = link_to original_books_path(set_book(original_book,"tsundoku", "add")), method: :post
               i.fa.fa-archive aria-hidden="true"
-              = check_tsundoku_status(check_shelved(original_book.isbn))
-        - if check_shelved(original_book.isbn) == "wish"
+              = check_tsundoku_status(check_colored(original_book.isbn))
+        - if check_colored(original_book.isbn) == "wish"
           li.Modal__item.already
-            = link_to shelved_book_path(get_shelved_book_id(original_book.isbn)), method: :delete
+            = link_to colored_book_path(get_colored_book_id(original_book.isbn)), method: :delete
               i.fa.fa-list-ul aria-hidden="true"
-              = check_wish_status(check_shelved(original_book.isbn))
+              = check_wish_status(check_colored(original_book.isbn))
         - else
           li.Modal__item
             = link_to original_books_path(set_book(original_book,"wish", "add")), method: :post
               i.fa.fa-list-ul aria-hidden="true"
-              = check_wish_status(check_shelved(original_book.isbn))
-        - if check_reviewed(original_book.isbn)
+              = check_wish_status(check_colored(original_book.isbn))
+        - if check_book_reviewed(original_book.isbn)
           li.Modal__item.already
-            = link_to edit_review_path(id: get_review_id(original_book.isbn)), method: :get
+            = link_to edit_book_review_path(id: get_book_review_id(original_book.isbn)), method: :get
               i.fa.fa-pencil-square-o aria-hidden="true"
               | レビューを編集
         - else

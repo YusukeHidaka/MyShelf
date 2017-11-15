@@ -4,9 +4,9 @@
     h1.TimeLine__title
       = @user.name
       | さんのレビュー ：
-      = @o_reviews.count
+      = @o_book_reviews.count
       | 件
-    - @reviews.each do |review|
-      = render partial: "common/modal/modal", locals: { original_book: review.shelved_book.original_book }
-      = render partial: "reviews/review", locals: { review: review }
-    = paginate(@reviews)
+    - @book_reviews.each do |book_review|
+      = render partial: "common/modal/modal", locals: { original_book: book_review.colored_book.original_book }
+      = render partial: "book_reviews/review", locals: { book_review: book_review }
+    = paginate(@book_reviews)

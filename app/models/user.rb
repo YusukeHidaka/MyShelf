@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  has_many :shelved_books, dependent: :destroy
+  has_many :colored_books, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
@@ -29,23 +29,23 @@ class User < ApplicationRecord
   end
 
   def self.count_books(t_user)
-    ShelvedBook.where(user_id: t_user.id).count
+    ColoredBook.where(user_id: t_user.id).count
   end
 
   def self.count_reviews(t_user)
-    Review.with_user.search_with_user_id(t_user.id).count
+    BookReview.with_user.search_with_user_id(t_user.id).count
   end
 
   def self.count_read_books(t_user)
-    ShelvedBook.where(user_id: t_user.id, status: "read").count
+    ColoredBook.where(user_id: t_user.id, status: "read").count
   end
 
   def self.count_tsundoku_books(t_user)
-    ShelvedBook.where(user_id: t_user.id, status: "tsundoku").count
+    ColoredBook.where(user_id: t_user.id, status: "tsundoku").count
   end
 
   def self.count_wish_books(t_user)
-    ShelvedBook.where(user_id: t_user.id, status: "wish").count
+    ColoredBook.where(user_id: t_user.id, status: "wish").count
   end
 
   def following?(other_user)

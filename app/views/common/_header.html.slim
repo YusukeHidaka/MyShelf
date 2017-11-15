@@ -7,7 +7,7 @@ header
             i.fa.fa-bars.fa-2x.Header__trigger aria-hidden="true"
             ul.Header__menu
               li.Header__menu__item
-                = link_to reviews_path
+                = link_to book_reviews_path
                   i.fa.fa-home aria-hidden="true"
                   | Time Line
               li.Header__menu__item
@@ -24,7 +24,7 @@ header
                   | Ranking
         .Header__logo
           - if user_signed_in?
-            = link_to reviews_path
+            = link_to book_reviews_path
               i.fa.fa-book
               h1.Header__logo__title Myshelf
           - else
@@ -33,7 +33,7 @@ header
         - if user_signed_in?
           ul.Header__navi
             li.Header__navi__item
-              = link_to "TimeLine", reviews_path
+              = link_to "TimeLine", book_reviews_path
             li.Header__navi__item
               = link_to "Shelf", shelf_users_path(current_user)
             li.Header__navi__item
