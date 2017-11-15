@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   before_action :set_review
   def create
+    binding.pry
     @like = Like.create(user_id: current_user.id, book_review_id: params[:book_review_id], comment_id: params[:comment_id])
   end
 
