@@ -1,0 +1,4 @@
+.Body__content
+  = render partial: "common/side"
+  = render partial: "comment_form", locals: { book_review: @book_review }
+  = render partial: "review", locals: { book_review: @book_review }

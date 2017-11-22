@@ -28,8 +28,9 @@
             span id="like-of-#{book_review.id}"
               = render partial: 'likes/like', locals: { book_review: book_review }
           .Review__comment
-            i.fa.fa-comment.fa-2x
-            span 0
+            = link_to book_review_path(book_review)
+              i.fa.fa-comment.fa-2x
+              span 0
   .Review__right
     .Book
       = link_to book_review.colored_book.original_book.url

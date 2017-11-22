@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-  resources :colored_books, only: [:edit, :destroy]
-  resources :book_reviews, only: [:index, :edit, :new, :create, :update, :destroy] do
-    resources :likes, only: [:create, :destroy]
-  end
   resources :original_books, only: [:index, :create] do
   collection do
       get 'search'
     end
+  end
+  resources :colored_books, only: [:edit, :destroy]
+  resources :book_reviews do
+    resources :likes, only: [:create, :destroy]
   end
   resources :original_book_rankings, only: [:index]
 

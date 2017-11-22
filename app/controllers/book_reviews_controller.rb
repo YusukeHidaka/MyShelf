@@ -33,6 +33,11 @@ class BookReviewsController < ApplicationController
     redirect_to book_reviews_path, flash: {success: '削除が完了しました。'}
   end
 
+  def show
+    @book_review = BookReview.find(params[:id])
+    @user = current_user
+  end
+
   def edit
     @book_review = BookReview.find(params[:id])
     @user = current_user
